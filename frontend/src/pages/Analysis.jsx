@@ -5,22 +5,35 @@ import "leaflet/dist/leaflet.css";
 
 const API_BASE = "http://127.0.0.1:8000";
 
-// Map Event click listener to draw polygons
-function MapEventsHandler({ onMapClick }) {
-  useMapEvents({
+// Map Event click and move listener to draw polygons and capture center
+function MapEventsHandler({ onMapClick, onMapMove }) {
+  const map = useMapEvents({
     click(e) {
       onMapClick(e.latlng.lat, e.latlng.lng);
+    },
+    moveend() {
+      const center = map.getCenter();
+      if (onMapMove) {
+        onMapMove(center.lat, center.lng);
+      }
     }
   });
   return null;
 }
 
-// Adjusts map viewport dynamically
+// Adjusts map viewport dynamically (with loop prevention)
 function ChangeView({ center, zoom }) {
   const map = useMap();
   useEffect(() => {
     if (center) {
-      map.setView(center, zoom);
+      const currentCenter = map.getCenter();
+      const dist = Math.sqrt(
+        Math.pow(currentCenter.lat - center[0], 2) +
+        Math.pow(currentCenter.lng - center[1], 2)
+      );
+      if (dist > 0.0001) {
+        map.setView(center, zoom);
+      }
     }
   }, [center, zoom]);
   return null;
@@ -58,6 +71,11 @@ export default function Analysis() {
 
   // Results state
   const [analysisResult, setAnalysisResult] = useState(null);
+  const [resultCenter, setResultCenter] = useState([22.45, 78.20]);
+  const [resultBounds, setResultBounds] = useState([
+    [22.43, 78.18],
+    [22.47, 78.22]
+  ]);
 
   // Load backend config default values
   useEffect(() => {
@@ -85,6 +103,13 @@ export default function Analysis() {
 
   const handleMapClick = (latVal, lonVal) => {
     setPolygonPoints(prev => [...prev, [latVal, lonVal]]);
+  };
+
+  const handleMapMove = (centerLat, centerLng) => {
+    if (!loading) {
+      setLat(parseFloat(centerLat.toFixed(6)));
+      setLon(parseFloat(centerLng.toFixed(6)));
+    }
   };
 
   const clearMapPolygon = () => {
@@ -227,6 +252,20 @@ export default function Analysis() {
       // Close polygon coordinates properly for GeoJSON formatting
       const closedPoints = [...polygonPoints, polygonPoints[0]];
       const coords = closedPoints.map(p => [p[1], p[0]]); // GeoJSON is [lon, lat]
+
+      // Compute bounding box and centroid of the drawn polygon
+      const lats = polygonPoints.map(p => p[0]);
+      const lons = polygonPoints.map(p => p[1]);
+      const minLat = Math.min(...lats);
+      const maxLat = Math.max(...lats);
+      const minLon = Math.min(...lons);
+      const maxLon = Math.max(...lons);
+      const centerLat = lats.reduce((a, b) => a + b, 0) / lats.length;
+      const centerLon = lons.reduce((a, b) => a + b, 0) / lons.length;
+
+      setResultCenter([centerLat, centerLon]);
+      setResultBounds([[minLat, minLon], [maxLat, maxLon]]);
+
       const payload = {
         before_dates: beforeDates,
         after_dates: afterDates,
@@ -237,13 +276,23 @@ export default function Analysis() {
       };
       runPipeline(payload);
     } else if (activeTab === "latlon") {
+      const flatLat = parseFloat(lat);
+      const flatLon = parseFloat(lon);
+      const flatBuf = parseFloat(buffer);
+
+      setResultCenter([flatLat, flatLon]);
+      setResultBounds([
+        [flatLat - flatBuf, flatLon - flatBuf],
+        [flatLat + flatBuf, flatLon + flatBuf]
+      ]);
+
       const payload = {
         before_dates: beforeDates,
         after_dates: afterDates,
         roi_latlon: {
-          lat: parseFloat(lat),
-          lon: parseFloat(lon),
-          buffer_degree: parseFloat(buffer)
+          lat: flatLat,
+          lon: flatLon,
+          buffer_degree: flatBuf
         }
       };
       runPipeline(payload);
@@ -252,6 +301,40 @@ export default function Analysis() {
         triggerToast("Please upload a valid GeoJSON file", "error");
         return;
       }
+      let gCoords = [];
+      try {
+        let geom = geojsonObj;
+        if (geojsonObj.type === "FeatureCollection") {
+          geom = geojsonObj.features[0].geometry;
+        } else if (geojsonObj.type === "Feature") {
+          geom = geojsonObj.geometry;
+        }
+        if (geom.type === "Polygon") {
+          gCoords = geom.coordinates[0]; // List of [lon, lat]
+        } else if (geom.type === "MultiPolygon") {
+          gCoords = geom.coordinates[0][0];
+        }
+      } catch (e) {
+        console.error("Failed to parse geojson coords", e);
+      }
+
+      if (gCoords.length > 0) {
+        const lats = gCoords.map(c => c[1]);
+        const lons = gCoords.map(c => c[0]);
+        const minLat = Math.min(...lats);
+        const maxLat = Math.max(...lats);
+        const minLon = Math.min(...lons);
+        const maxLon = Math.max(...lons);
+        const centerLat = lats.reduce((a, b) => a + b, 0) / lats.length;
+        const centerLon = lons.reduce((a, b) => a + b, 0) / lons.length;
+
+        setResultCenter([centerLat, centerLon]);
+        setResultBounds([[minLat, minLon], [maxLat, maxLon]]);
+      } else {
+        setResultCenter([lat, lon]);
+        setResultBounds([[lat - buffer, lon - buffer], [lat + buffer, lon + buffer]]);
+      }
+
       const payload = {
         before_dates: beforeDates,
         after_dates: afterDates,
@@ -259,6 +342,8 @@ export default function Analysis() {
       };
       runPipeline(payload);
     } else if (activeTab === "upload") {
+      setResultCenter([lat, lon]);
+      setResultBounds([[lat - buffer, lon - buffer], [lat + buffer, lon + buffer]]);
       runSimulation();
     }
   };
@@ -509,7 +594,7 @@ export default function Analysis() {
                   url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                   attribution='&copy; OpenStreetMap contributors'
                 />
-                <MapEventsHandler onMapClick={handleMapClick} />
+                <MapEventsHandler onMapClick={handleMapClick} onMapMove={handleMapMove} />
                 {polygonPoints.length > 0 && (
                   <Polygon positions={polygonPoints} pathOptions={{ color: "#4ade80", fillColor: "#4ade80", fillOpacity: 0.2 }} />
                 )}
@@ -552,7 +637,7 @@ export default function Analysis() {
 
               {/* Map displaying Heatmap Overlay */}
               <div className="glass-panel p-2 rounded-2xl relative overflow-hidden">
-                <MapContainer center={mapCenter} zoom={13}>
+                <MapContainer center={resultCenter} zoom={13}>
                   <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     attribution='&copy; OpenStreetMap contributors'
@@ -560,9 +645,10 @@ export default function Analysis() {
                   {/* Heatmap overlay image directly mounted on Leaflet */}
                   <ImageOverlay
                     url={`${API_BASE}${analysisResult.output_files.heatmap}?t=${Date.now()}`}
-                    bounds={heatmapBounds}
+                    bounds={resultBounds}
                     opacity={0.65}
                   />
+                  <ChangeView center={resultCenter} zoom={13} />
                 </MapContainer>
                 <div className="absolute top-4 right-4 z-[99] bg-slate-950/90 border border-forest-500/30 p-2.5 rounded text-[10px] text-emerald-400">
                   🔴 Heatmap overlay active

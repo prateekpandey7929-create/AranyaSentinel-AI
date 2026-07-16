@@ -62,7 +62,35 @@ async def analyze_forest_loss(request: AnalyzeRequest, req: Request):
             detail=f"Configuration error: {e}"
         )
     
-    # 2. Resolve ROI descriptor for detailed logging
+    # 2. Overwrite in-memory config based on custom ROI to reflect in reports
+    if request.roi_latlon:
+        config['roi']['lat'] = request.roi_latlon.lat
+        config['roi']['lon'] = request.roi_latlon.lon
+        config['roi']['buffer_degree'] = request.roi_latlon.buffer_degree
+        config['roi']['name'] = "Custom Coordinate Bounds"
+    elif request.roi_geojson:
+        # Resolve centroid of GeoJSON geometry to represent center in reports
+        try:
+            geom = request.roi_geojson
+            if request.roi_geojson.get("type") == "FeatureCollection":
+                geom = request.roi_geojson.get("features", [])[0].get("geometry", {})
+            elif request.roi_geojson.get("type") == "Feature":
+                geom = request.roi_geojson.get("geometry", {})
+                
+            if geom.get("type") == "Polygon":
+                coords = geom.get("coordinates", [[]])[0]
+                if coords:
+                    lons = [c[0] for c in coords]
+                    lats = [c[1] for c in coords]
+                    avg_lat = sum(lats) / len(lats)
+                    avg_lon = sum(lons) / len(lons)
+                    config['roi']['lat'] = round(avg_lat, 6)
+                    config['roi']['lon'] = round(avg_lon, 6)
+                    config['roi']['name'] = "Custom Map Selection Polygon"
+        except Exception as e:
+            logger.warning(f"Could not compute GeoJSON centroid for report metadata: {e}")
+
+    # 3. Resolve ROI descriptor for detailed logging
     if request.roi_geojson:
         roi_desc = f"GeoJSON Polygon (Type: {request.roi_geojson.get('type')})"
     elif request.roi_latlon:
