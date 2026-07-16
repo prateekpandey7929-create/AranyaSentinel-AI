@@ -1,0 +1,450 @@
+2026-07-14 22:23:36,543 [INFO] backend: Initializing FastAPI Backend server...
+2026-07-14 22:23:36,550 [INFO] backend: Mounted static outputs route at: /static (pointing to D:\Projects\AS\outputs)
+2026-07-14 22:23:38,173 [INFO] backend: Registered API routes successfully.
+2026-07-14 22:23:38,307 [INFO] backend: Lifespan startup: Loading model weights...
+2026-07-14 22:23:40,099 [INFO] backend: Inference device: cuda
+2026-07-14 22:23:40,099 [INFO] backend: Loading U-Net weights from: D:\Projects\AS\weights\unet_forest_loss.pth
+2026-07-14 22:23:40,357 [INFO] backend: Loading YOLOv8 weights from: D:\Projects\AS\weights\yolov8_encroachment.pt
+2026-07-14 22:23:40,441 [INFO] backend: AI models pre-loaded in memory successfully!
+2026-07-14 22:23:49,658 [INFO] backend: Health check endpoint hit.
+2026-07-14 22:23:49,663 [INFO] backend: Retrieving configuration settings.
+2026-07-14 22:23:49,673 [INFO] backend: Received configuration update: {'thresholds': {'morphology_kernel_size': 5}}
+2026-07-14 22:23:49,678 [INFO] backend: Configuration updated successfully.
+2026-07-14 22:23:49,682 [INFO] backend: Retrieving configuration settings.
+2026-07-14 22:23:49,704 [INFO] backend: Received AnalyzeRequest: {'before_dates': {'start': '2022-01-01', 'end': '2022-03-31'}, 'after_dates': {'start': '2026-01-01', 'end': '2026-03-31'}, 'roi_latlon': None, 'roi_geojson': None}
+2026-07-14 22:23:49,709 [ERROR] backend: Unexpected Earth Engine error: Earth Engine client library not initialized. See http://goo.gle/ee-auth.
+2026-07-14 22:24:13,927 [INFO] backend: Initializing FastAPI Backend server...
+2026-07-14 22:24:13,928 [INFO] backend: Mounted static outputs route at: /static (pointing to D:\Projects\AS\outputs)
+2026-07-14 22:24:14,084 [INFO] backend: Registered API routes successfully.
+2026-07-14 22:24:14,113 [INFO] backend: Lifespan startup: Initializing Earth Engine and loading model weights...
+2026-07-14 22:24:22,391 [INFO] backend: Inference device: cuda
+2026-07-14 22:24:22,391 [INFO] backend: Loading U-Net weights from: D:\Projects\AS\weights\unet_forest_loss.pth
+2026-07-14 22:24:22,515 [INFO] backend: Loading YOLOv8 weights from: D:\Projects\AS\weights\yolov8_encroachment.pt
+2026-07-14 22:24:22,563 [INFO] backend: AI models pre-loaded in memory successfully!
+2026-07-14 22:24:27,571 [INFO] backend: Health check endpoint hit.
+2026-07-14 22:24:27,578 [INFO] backend: Retrieving configuration settings.
+2026-07-14 22:24:27,586 [INFO] backend: Received configuration update: {'thresholds': {'morphology_kernel_size': 5}}
+2026-07-14 22:24:27,590 [INFO] backend: Configuration updated successfully.
+2026-07-14 22:24:27,593 [INFO] backend: Retrieving configuration settings.
+2026-07-14 22:24:27,605 [INFO] backend: Received AnalyzeRequest: {'before_dates': {'start': '2022-01-01', 'end': '2022-03-31'}, 'after_dates': {'start': '2026-01-01', 'end': '2026-03-31'}, 'roi_latlon': None, 'roi_geojson': None}
+2026-07-14 22:25:10,238 [INFO] backend: Running preprocessing on downloaded GeoTIFFs...
+2026-07-14 22:25:10,248 [WARNING] rasterio._env: CPLE_AppDefined in before.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-14 22:25:10,268 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-14 22:25:10,312 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-14 22:25:10,316 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-14 22:25:10,360 [INFO] backend: Calculating NDVI maps...
+2026-07-14 22:25:10,430 [INFO] backend: Running AI Model Inference...
+2026-07-14 22:25:13,097 [INFO] backend: Combining NDVI and AI results to compute metrics...
+2026-07-14 22:25:13,113 [INFO] backend: Generating heatmap and visual dashboard overlays...
+2026-07-14 22:25:13,163 [INFO] backend: API /analyze run completed in 45.56 seconds.
+2026-07-14 22:25:13,169 [INFO] backend: Listing output file URLs.
+2026-07-14 22:25:13,172 [INFO] backend: Retrieving plain-text summary report.
+2026-07-14 22:25:13,190 [INFO] backend: Retrieving severity.json metrics.
+2026-07-14 22:29:23,439 [INFO] backend: Health check endpoint hit.
+2026-07-14 22:30:19,574 [INFO] backend: Retrieving severity.json metrics.
+2026-07-14 22:41:04,795 [INFO] backend: Retrieving severity.json metrics.
+2026-07-14 22:41:04,814 [INFO] backend: Retrieving severity.json metrics.
+2026-07-14 22:41:14,968 [INFO] backend: Retrieving configuration settings.
+2026-07-14 22:41:14,984 [INFO] backend: Retrieving configuration settings.
+2026-07-14 22:41:43,777 [INFO] backend: Received AnalyzeRequest: {'before_dates': {'start': '2022-01-01', 'end': '2022-03-31'}, 'after_dates': {'start': '2026-01-01', 'end': '2026-03-31'}, 'roi_latlon': None, 'roi_geojson': {'type': 'Polygon', 'coordinates': [[[78.16066240257337, 22.447809440987356], [78.16735655001618, 22.4544727575201], [78.17885675203323, 22.443684370298996], [78.1723342493967, 22.434005838319244], [78.20580498661056, 22.457962938376564], [78.15568470319286, 22.432101785347733], [78.16066240257337, 22.447809440987356]]]}}
+2026-07-14 22:42:01,220 [INFO] backend: Running preprocessing on downloaded GeoTIFFs...
+2026-07-14 22:42:01,227 [WARNING] rasterio._env: CPLE_AppDefined in before.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-14 22:42:01,235 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-14 22:42:01,330 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-14 22:42:01,333 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-14 22:42:01,405 [INFO] backend: Calculating NDVI maps...
+2026-07-14 22:42:01,537 [INFO] backend: Running AI Model Inference...
+2026-07-14 22:42:01,879 [INFO] backend: Combining NDVI and AI results to compute metrics...
+2026-07-14 22:42:01,881 [INFO] backend: Generating heatmap and visual dashboard overlays...
+2026-07-14 22:42:01,914 [INFO] backend: API /analyze run completed in 18.14 seconds.
+2026-07-14 22:42:17,065 [INFO] backend: Retrieving plain-text summary report.
+2026-07-14 22:42:17,074 [INFO] backend: Retrieving severity.json metrics.
+2026-07-14 22:42:17,081 [INFO] backend: Retrieving plain-text summary report.
+2026-07-14 22:42:17,086 [INFO] backend: Retrieving severity.json metrics.
+2026-07-14 22:42:29,224 [INFO] backend: Retrieving configuration settings.
+2026-07-14 22:42:29,245 [INFO] backend: Retrieving configuration settings.
+2026-07-14 22:42:37,432 [INFO] backend: Retrieving configuration settings.
+2026-07-14 22:42:37,445 [INFO] backend: Retrieving configuration settings.
+2026-07-14 22:42:38,831 [INFO] backend: Retrieving configuration settings.
+2026-07-14 22:42:38,844 [INFO] backend: Retrieving configuration settings.
+2026-07-14 22:42:41,719 [INFO] backend: Retrieving plain-text summary report.
+2026-07-14 22:42:41,724 [INFO] backend: Retrieving severity.json metrics.
+2026-07-14 22:42:41,733 [INFO] backend: Retrieving severity.json metrics.
+2026-07-14 22:42:41,737 [INFO] backend: Retrieving plain-text summary report.
+2026-07-14 22:42:44,082 [INFO] backend: Retrieving severity.json metrics.
+2026-07-14 22:42:44,094 [INFO] backend: Retrieving severity.json metrics.
+2026-07-14 22:42:47,268 [INFO] backend: Retrieving configuration settings.
+2026-07-14 22:42:47,291 [INFO] backend: Retrieving configuration settings.
+2026-07-14 22:42:49,363 [INFO] backend: Retrieving severity.json metrics.
+2026-07-14 22:42:49,370 [INFO] backend: Retrieving severity.json metrics.
+2026-07-14 22:43:18,765 [INFO] backend: Retrieving configuration settings.
+2026-07-14 22:43:18,779 [INFO] backend: Retrieving configuration settings.
+2026-07-14 22:44:01,060 [INFO] backend: Received AnalyzeRequest: {'before_dates': {'start': '2022-01-01', 'end': '2022-03-31'}, 'after_dates': {'start': '2026-01-01', 'end': '2026-03-31'}, 'roi_latlon': None, 'roi_geojson': {'type': 'Polygon', 'coordinates': [[[78.46450216153181, 22.476205635032585], [78.15637128241778, 22.46621210740832], [78.20099893203626, 22.426389469707548], [78.40094098424544, 22.530063084606756], [78.46450216153181, 22.476205635032585]]]}}
+2026-07-14 22:44:30,962 [INFO] backend: Running preprocessing on downloaded GeoTIFFs...
+2026-07-14 22:44:30,967 [WARNING] rasterio._env: CPLE_AppDefined in before.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-14 22:44:30,979 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-14 22:44:31,418 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-14 22:44:31,421 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-14 22:44:31,822 [INFO] backend: Calculating NDVI maps...
+2026-07-14 22:44:31,940 [INFO] backend: Running AI Model Inference...
+2026-07-14 22:44:32,392 [INFO] backend: Combining NDVI and AI results to compute metrics...
+2026-07-14 22:44:32,395 [INFO] backend: Generating heatmap and visual dashboard overlays...
+2026-07-14 22:44:32,422 [INFO] backend: API /analyze run completed in 31.36 seconds.
+2026-07-14 22:44:45,046 [INFO] backend: Retrieving configuration settings.
+2026-07-14 22:44:45,064 [INFO] backend: Retrieving configuration settings.
+2026-07-14 22:45:14,847 [INFO] backend: Received AnalyzeRequest: {'before_dates': {'start': '2022-01-01', 'end': '2022-03-31'}, 'after_dates': {'start': '2026-01-01', 'end': '2026-03-31'}, 'roi_latlon': None, 'roi_geojson': {'type': 'Polygon', 'coordinates': [[[78.13319711252419, 22.45653514773822], [78.1713032868913, 22.458121580872998], [78.16684209614859, 22.447174822713315], [78.13319711252419, 22.45653514773822]]]}}
+2026-07-14 22:45:29,319 [INFO] backend: Running preprocessing on downloaded GeoTIFFs...
+2026-07-14 22:45:29,330 [WARNING] rasterio._env: CPLE_AppDefined in before.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-14 22:45:29,348 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-14 22:45:29,476 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-14 22:45:29,482 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-14 22:45:29,576 [INFO] backend: Calculating NDVI maps...
+2026-07-14 22:45:29,719 [INFO] backend: Running AI Model Inference...
+2026-07-14 22:45:30,062 [INFO] backend: Combining NDVI and AI results to compute metrics...
+2026-07-14 22:45:30,071 [INFO] backend: Generating heatmap and visual dashboard overlays...
+2026-07-14 22:45:30,118 [INFO] backend: API /analyze run completed in 15.27 seconds.
+2026-07-14 22:45:46,052 [INFO] backend: Retrieving severity.json metrics.
+2026-07-14 22:45:46,064 [INFO] backend: Retrieving severity.json metrics.
+2026-07-14 22:47:19,947 [INFO] backend: Retrieving plain-text summary report.
+2026-07-14 22:47:19,957 [INFO] backend: Retrieving severity.json metrics.
+2026-07-14 22:47:19,964 [INFO] backend: Retrieving plain-text summary report.
+2026-07-14 22:47:19,970 [INFO] backend: Retrieving severity.json metrics.
+2026-07-14 22:47:29,338 [INFO] backend: Retrieving configuration settings.
+2026-07-14 22:47:29,358 [INFO] backend: Retrieving configuration settings.
+2026-07-14 22:50:20,505 [INFO] backend: Retrieving configuration settings.
+2026-07-14 22:50:20,515 [INFO] backend: Retrieving configuration settings.
+2026-07-14 22:50:21,445 [INFO] backend: Retrieving configuration settings.
+2026-07-14 22:50:21,454 [INFO] backend: Retrieving configuration settings.
+2026-07-14 22:50:51,376 [INFO] backend: Received AnalyzeRequest: {'before_dates': {'start': '2022-01-01', 'end': '2022-03-31'}, 'after_dates': {'start': '2026-01-01', 'end': '2026-03-31'}, 'roi_latlon': {'lat': 22.334, 'lon': 80.6108, 'buffer_degree': 0.02}, 'roi_geojson': None}
+2026-07-14 22:51:09,305 [INFO] backend: Running preprocessing on downloaded GeoTIFFs...
+2026-07-14 22:51:09,305 [WARNING] rasterio._env: CPLE_AppDefined in before.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-14 22:51:09,310 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-14 22:51:09,386 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-14 22:51:09,392 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-14 22:51:09,463 [INFO] backend: Calculating NDVI maps...
+2026-07-14 22:51:09,698 [INFO] backend: Running AI Model Inference...
+2026-07-14 22:51:10,059 [INFO] backend: Combining NDVI and AI results to compute metrics...
+2026-07-14 22:51:10,070 [INFO] backend: Generating heatmap and visual dashboard overlays...
+2026-07-14 22:51:10,101 [INFO] backend: API /analyze run completed in 18.73 seconds.
+2026-07-14 22:51:55,974 [INFO] backend: Retrieving plain-text summary report.
+2026-07-14 22:51:55,975 [INFO] backend: Retrieving severity.json metrics.
+2026-07-14 22:51:55,981 [INFO] backend: Retrieving severity.json metrics.
+2026-07-14 22:51:55,983 [INFO] backend: Retrieving plain-text summary report.
+2026-07-14 22:52:06,725 [INFO] backend: Retrieving configuration settings.
+2026-07-14 22:52:06,736 [INFO] backend: Retrieving configuration settings.
+2026-07-14 22:52:10,700 [INFO] backend: Retrieving severity.json metrics.
+2026-07-14 22:52:10,713 [INFO] backend: Retrieving severity.json metrics.
+2026-07-14 22:54:55,933 [INFO] backend: Initializing FastAPI Backend server...
+2026-07-14 22:54:55,934 [INFO] backend: Mounted static outputs route at: /static (pointing to D:\Projects\AS\outputs)
+2026-07-14 22:54:56,114 [INFO] backend: Registered API routes successfully.
+2026-07-14 22:54:56,114 [INFO] backend: Lifespan startup: Initializing Earth Engine and loading model weights...
+2026-07-14 22:55:02,245 [INFO] backend: Inference device: cuda
+2026-07-14 22:55:02,245 [INFO] backend: Loading U-Net weights from: D:\Projects\AS\weights\unet_forest_loss.pth
+2026-07-14 22:55:02,372 [INFO] backend: Loading YOLOv8 weights from: D:\Projects\AS\weights\yolov8_encroachment.pt
+2026-07-14 22:55:02,450 [INFO] backend: AI models pre-loaded in memory successfully!
+2026-07-14 22:55:05,230 [INFO] backend: Health check endpoint hit.
+2026-07-14 22:55:05,237 [INFO] backend: Retrieving configuration settings.
+2026-07-14 22:55:05,245 [INFO] backend: Received configuration update: {'thresholds': {'morphology_kernel_size': 5}}
+2026-07-14 22:55:05,251 [INFO] backend: Configuration updated successfully.
+2026-07-14 22:55:05,255 [INFO] backend: Retrieving configuration settings.
+2026-07-14 22:55:23,499 [INFO] backend: Lifespan shutdown: Cleaning up resources...
+2026-07-14 22:55:23,499 [INFO] backend: Server stopped successfully.
+2026-07-14 22:55:27,551 [INFO] backend: Initializing FastAPI Backend server...
+2026-07-14 22:55:27,563 [INFO] backend: Mounted static outputs route at: /static (pointing to D:\Projects\AS\outputs)
+2026-07-14 22:55:27,719 [INFO] backend: Registered API routes successfully.
+2026-07-14 22:55:27,720 [INFO] backend: Lifespan startup: Initializing Earth Engine and loading model weights...
+2026-07-15 11:23:53,399 [INFO] backend: Initializing FastAPI Backend server...
+2026-07-15 11:23:53,399 [INFO] backend: Mounted static outputs route at: /static (pointing to D:\Projects\AS\outputs)
+2026-07-15 11:23:55,010 [INFO] backend: Registered API routes successfully.
+2026-07-15 11:24:56,295 [INFO] backend: Initializing FastAPI Backend server...
+2026-07-15 11:24:56,296 [INFO] backend: Mounted static outputs route at: /static (pointing to D:\Projects\AS\outputs)
+2026-07-15 11:24:56,482 [INFO] backend: Registered API routes successfully.
+2026-07-15 11:24:56,483 [INFO] backend: Lifespan startup: Initializing Earth Engine and loading model weights...
+2026-07-15 11:25:03,010 [INFO] backend: Inference device: cuda
+2026-07-15 11:25:03,014 [INFO] backend: Loading U-Net weights from: D:\Projects\AS\weights\unet_forest_loss.pth
+2026-07-15 11:25:03,294 [INFO] backend: Loading YOLOv8 weights from: D:\Projects\AS\weights\yolov8_encroachment.pt
+2026-07-15 11:25:03,350 [INFO] backend: AI models pre-loaded in memory successfully!
+2026-07-15 11:25:13,746 [INFO] backend: Health check endpoint hit.
+2026-07-15 11:25:13,753 [INFO] backend: Retrieving configuration settings.
+2026-07-15 11:25:13,763 [INFO] backend: Received configuration update: {'thresholds': {'morphology_kernel_size': 5}}
+2026-07-15 11:25:13,766 [INFO] backend: Configuration updated successfully.
+2026-07-15 11:25:13,769 [INFO] backend: Retrieving configuration settings.
+2026-07-15 11:25:13,781 [INFO] backend: ==================================================
+2026-07-15 11:25:13,781 [INFO] backend: API EXECUTION: POST /analyze request received
+2026-07-15 11:25:13,781 [INFO] backend: ROI Parameters: Default Bounding Box (Center: Lat 22.45, Lon 78.2)
+2026-07-15 11:25:13,781 [INFO] backend: Before Date Range: 2022-01-01 to 2022-03-31
+2026-07-15 11:25:13,781 [INFO] backend: After Date Range: 2026-01-01 to 2026-03-31
+2026-07-15 11:25:13,781 [INFO] backend: ==================================================
+2026-07-15 11:25:29,588 [INFO] backend: GEE Download status: SUCCESS (Time taken: 15.80 seconds)
+2026-07-15 11:25:29,588 [INFO] backend: Running preprocessing on downloaded GeoTIFFs...
+2026-07-15 11:25:29,682 [WARNING] rasterio._env: CPLE_AppDefined in before.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-15 11:25:29,749 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-15 11:25:29,795 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-15 11:25:29,797 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-15 11:25:29,853 [INFO] backend: Calculating NDVI maps...
+2026-07-15 11:25:29,991 [INFO] backend: Running AI Model Inference...
+2026-07-15 11:25:36,133 [INFO] backend: AI Inference execution time: 6.14 seconds (U-Net + YOLOv8)
+2026-07-15 11:25:36,133 [INFO] backend: Combining NDVI and AI results to compute metrics...
+2026-07-15 11:25:36,134 [INFO] backend: Generating heatmap and visual dashboard overlays...
+2026-07-15 11:25:36,214 [INFO] backend: Visual outputs and report generated in 0.49 seconds.
+2026-07-15 11:25:36,214 [INFO] backend: API /analyze run completed in 22.43 seconds.
+2026-07-15 11:25:36,221 [INFO] backend: Listing output file URLs.
+2026-07-15 11:25:36,225 [INFO] backend: Retrieving plain-text summary report.
+2026-07-15 11:25:36,239 [INFO] backend: Retrieving severity.json metrics.
+2026-07-15 11:26:45,939 [INFO] backend: Retrieving severity.json metrics.
+2026-07-15 11:26:45,955 [INFO] backend: Retrieving severity.json metrics.
+2026-07-15 11:31:28,067 [INFO] backend: Retrieving configuration settings.
+2026-07-15 11:31:28,078 [INFO] backend: Retrieving configuration settings.
+2026-07-15 11:31:42,762 [INFO] backend: ==================================================
+2026-07-15 11:31:42,764 [INFO] backend: API EXECUTION: POST /analyze request received
+2026-07-15 11:31:42,764 [INFO] backend: ROI Parameters: GeoJSON Polygon (Type: Polygon)
+2026-07-15 11:31:42,764 [INFO] backend: Before Date Range: 2022-01-01 to 2022-03-31
+2026-07-15 11:31:42,764 [INFO] backend: After Date Range: 2026-01-01 to 2026-03-31
+2026-07-15 11:31:42,765 [INFO] backend: ==================================================
+2026-07-15 11:31:57,235 [INFO] backend: GEE Download status: SUCCESS (Time taken: 14.46 seconds)
+2026-07-15 11:31:57,235 [INFO] backend: Running preprocessing on downloaded GeoTIFFs...
+2026-07-15 11:31:57,237 [WARNING] rasterio._env: CPLE_AppDefined in before.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-15 11:31:57,241 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-15 11:31:57,318 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-15 11:31:57,322 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-15 11:31:57,411 [INFO] backend: Calculating NDVI maps...
+2026-07-15 11:31:57,556 [INFO] backend: Running AI Model Inference...
+2026-07-15 11:31:57,968 [INFO] backend: AI Inference execution time: 0.41 seconds (U-Net + YOLOv8)
+2026-07-15 11:31:57,968 [INFO] backend: Combining NDVI and AI results to compute metrics...
+2026-07-15 11:31:57,970 [INFO] backend: Generating heatmap and visual dashboard overlays...
+2026-07-15 11:31:58,038 [INFO] backend: Visual outputs and report generated in 0.41 seconds.
+2026-07-15 11:31:58,039 [INFO] backend: API /analyze run completed in 15.28 seconds.
+2026-07-15 11:33:01,271 [INFO] backend: Retrieving configuration settings.
+2026-07-15 11:33:01,283 [INFO] backend: Retrieving configuration settings.
+2026-07-15 11:38:19,658 [INFO] backend: Retrieving severity.json metrics.
+2026-07-15 11:38:19,685 [INFO] backend: Retrieving severity.json metrics.
+2026-07-15 11:38:34,134 [INFO] backend: Retrieving configuration settings.
+2026-07-15 11:38:34,151 [INFO] backend: Retrieving configuration settings.
+2026-07-15 11:39:13,892 [INFO] backend: Retrieving severity.json metrics.
+2026-07-15 11:46:21,968 [INFO] backend: ==================================================
+2026-07-15 11:46:21,968 [INFO] backend: API EXECUTION: POST /analyze request received
+2026-07-15 11:46:21,968 [INFO] backend: ROI Parameters: Coordinates (Center: Lat 22.45, Lon 78.2, Buffer: 0.02)
+2026-07-15 11:46:21,968 [INFO] backend: Before Date Range: 2022-01-01 to 2022-03-31
+2026-07-15 11:46:21,969 [INFO] backend: After Date Range: 2026-01-01 to 2026-03-31
+2026-07-15 11:46:21,969 [INFO] backend: ==================================================
+2026-07-15 11:46:37,598 [INFO] backend: GEE Download status: SUCCESS (Time taken: 15.62 seconds)
+2026-07-15 11:46:37,598 [INFO] backend: Running preprocessing on downloaded GeoTIFFs...
+2026-07-15 11:46:37,600 [WARNING] rasterio._env: CPLE_AppDefined in before.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-15 11:46:37,603 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-15 11:46:37,656 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-15 11:46:37,663 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-15 11:46:37,841 [INFO] backend: Calculating NDVI maps...
+2026-07-15 11:46:38,000 [INFO] backend: Running AI Model Inference...
+2026-07-15 11:46:38,330 [INFO] backend: AI Inference execution time: 0.33 seconds (U-Net + YOLOv8)
+2026-07-15 11:46:38,330 [INFO] backend: Combining NDVI and AI results to compute metrics...
+2026-07-15 11:46:38,333 [INFO] backend: Generating heatmap and visual dashboard overlays...
+2026-07-15 11:46:38,376 [INFO] backend: Visual outputs and report generated in 0.46 seconds.
+2026-07-15 11:46:38,376 [INFO] backend: API /analyze run completed in 16.42 seconds.
+2026-07-15 11:57:17,281 [INFO] backend: Retrieving configuration settings.
+2026-07-15 11:57:17,289 [INFO] backend: Retrieving configuration settings.
+2026-07-15 11:57:26,183 [INFO] backend: ==================================================
+2026-07-15 11:57:26,184 [INFO] backend: API EXECUTION: POST /analyze request received
+2026-07-15 11:57:26,184 [INFO] backend: ROI Parameters: Coordinates (Center: Lat 22.45, Lon 78.2, Buffer: 0.02)
+2026-07-15 11:57:26,184 [INFO] backend: Before Date Range: 2022-01-01 to 2022-03-31
+2026-07-15 11:57:26,184 [INFO] backend: After Date Range: 2026-01-01 to 2026-03-31
+2026-07-15 11:57:26,185 [INFO] backend: ==================================================
+2026-07-15 11:57:40,597 [INFO] backend: GEE Download status: SUCCESS (Time taken: 14.41 seconds)
+2026-07-15 11:57:40,597 [INFO] backend: Running preprocessing on downloaded GeoTIFFs...
+2026-07-15 11:57:40,606 [WARNING] rasterio._env: CPLE_AppDefined in before.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-15 11:57:40,610 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-15 11:57:40,659 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-15 11:57:40,672 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-15 11:57:40,723 [INFO] backend: Calculating NDVI maps...
+2026-07-15 11:57:40,923 [INFO] backend: Running AI Model Inference...
+2026-07-15 11:57:41,251 [INFO] backend: AI Inference execution time: 0.33 seconds (U-Net + YOLOv8)
+2026-07-15 11:57:41,251 [INFO] backend: Combining NDVI and AI results to compute metrics...
+2026-07-15 11:57:41,251 [INFO] backend: Generating heatmap and visual dashboard overlays...
+2026-07-15 11:57:41,293 [INFO] backend: Visual outputs and report generated in 0.38 seconds.
+2026-07-15 11:57:41,293 [INFO] backend: API /analyze run completed in 15.12 seconds.
+2026-07-15 11:59:42,603 [INFO] backend: ==================================================
+2026-07-15 11:59:42,603 [INFO] backend: API EXECUTION: POST /analyze request received
+2026-07-15 11:59:42,603 [INFO] backend: ROI Parameters: Coordinates (Center: Lat 22.334, Lon 80.611, Buffer: 0.02)
+2026-07-15 11:59:42,603 [INFO] backend: Before Date Range: 2022-01-01 to 2022-03-31
+2026-07-15 11:59:42,603 [INFO] backend: After Date Range: 2026-01-01 to 2026-03-31
+2026-07-15 11:59:42,603 [INFO] backend: ==================================================
+2026-07-15 11:59:58,090 [INFO] backend: GEE Download status: SUCCESS (Time taken: 15.48 seconds)
+2026-07-15 11:59:58,090 [INFO] backend: Running preprocessing on downloaded GeoTIFFs...
+2026-07-15 11:59:58,090 [WARNING] rasterio._env: CPLE_AppDefined in before.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-15 11:59:58,097 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-15 11:59:58,152 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-15 11:59:58,157 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-15 11:59:58,217 [INFO] backend: Calculating NDVI maps...
+2026-07-15 11:59:58,374 [INFO] backend: Running AI Model Inference...
+2026-07-15 11:59:58,714 [INFO] backend: AI Inference execution time: 0.34 seconds (U-Net + YOLOv8)
+2026-07-15 11:59:58,714 [INFO] backend: Combining NDVI and AI results to compute metrics...
+2026-07-15 11:59:58,716 [INFO] backend: Generating heatmap and visual dashboard overlays...
+2026-07-15 11:59:58,758 [INFO] backend: Visual outputs and report generated in 0.33 seconds.
+2026-07-15 11:59:58,762 [INFO] backend: API /analyze run completed in 16.16 seconds.
+2026-07-15 12:03:19,401 [INFO] backend: Retrieving configuration settings.
+2026-07-15 12:03:19,410 [INFO] backend: Retrieving configuration settings.
+2026-07-15 12:03:24,182 [INFO] backend: ==================================================
+2026-07-15 12:03:24,182 [INFO] backend: API EXECUTION: POST /analyze request received
+2026-07-15 12:03:24,182 [INFO] backend: ROI Parameters: Coordinates (Center: Lat 22.45, Lon 78.2, Buffer: 0.02)
+2026-07-15 12:03:24,182 [INFO] backend: Before Date Range: 2022-01-01 to 2022-03-31
+2026-07-15 12:03:24,182 [INFO] backend: After Date Range: 2026-01-01 to 2026-03-31
+2026-07-15 12:03:24,182 [INFO] backend: ==================================================
+2026-07-15 12:03:39,090 [INFO] backend: GEE Download status: SUCCESS (Time taken: 14.91 seconds)
+2026-07-15 12:03:39,091 [INFO] backend: Running preprocessing on downloaded GeoTIFFs...
+2026-07-15 12:03:39,094 [WARNING] rasterio._env: CPLE_AppDefined in before.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-15 12:03:39,104 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-15 12:03:39,191 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-15 12:03:39,194 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-15 12:03:39,262 [INFO] backend: Calculating NDVI maps...
+2026-07-15 12:03:39,408 [INFO] backend: Running AI Model Inference...
+2026-07-15 12:03:39,756 [INFO] backend: AI Inference execution time: 0.35 seconds (U-Net + YOLOv8)
+2026-07-15 12:03:39,756 [INFO] backend: Combining NDVI and AI results to compute metrics...
+2026-07-15 12:03:39,759 [INFO] backend: Generating heatmap and visual dashboard overlays...
+2026-07-15 12:03:39,810 [INFO] backend: Visual outputs and report generated in 0.38 seconds.
+2026-07-15 12:03:39,810 [INFO] backend: API /analyze run completed in 15.63 seconds.
+2026-07-15 12:04:21,517 [INFO] backend: ==================================================
+2026-07-15 12:04:21,517 [INFO] backend: API EXECUTION: POST /analyze request received
+2026-07-15 12:04:21,517 [INFO] backend: ROI Parameters: Coordinates (Center: Lat 22.45, Lon 78.2, Buffer: 0.02)
+2026-07-15 12:04:21,517 [INFO] backend: Before Date Range: 2021-01-01 to 2021-03-31
+2026-07-15 12:04:21,517 [INFO] backend: After Date Range: 2024-01-01 to 2024-03-31
+2026-07-15 12:04:21,517 [INFO] backend: ==================================================
+2026-07-15 12:04:36,497 [INFO] backend: GEE Download status: SUCCESS (Time taken: 14.97 seconds)
+2026-07-15 12:04:36,497 [INFO] backend: Running preprocessing on downloaded GeoTIFFs...
+2026-07-15 12:04:36,500 [WARNING] rasterio._env: CPLE_AppDefined in before.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-15 12:04:36,506 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-15 12:04:36,563 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-15 12:04:36,569 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-15 12:04:36,635 [INFO] backend: Calculating NDVI maps...
+2026-07-15 12:04:36,801 [INFO] backend: Running AI Model Inference...
+2026-07-15 12:04:37,168 [INFO] backend: AI Inference execution time: 0.37 seconds (U-Net + YOLOv8)
+2026-07-15 12:04:37,171 [INFO] backend: Combining NDVI and AI results to compute metrics...
+2026-07-15 12:04:37,171 [INFO] backend: Generating heatmap and visual dashboard overlays...
+2026-07-15 12:04:37,231 [INFO] backend: Visual outputs and report generated in 0.38 seconds.
+2026-07-15 12:04:37,231 [INFO] backend: API /analyze run completed in 15.72 seconds.
+2026-07-15 12:10:08,333 [INFO] backend: Retrieving plain-text summary report.
+2026-07-15 12:10:08,341 [INFO] backend: Retrieving severity.json metrics.
+2026-07-15 12:10:08,348 [INFO] backend: Retrieving plain-text summary report.
+2026-07-15 12:10:08,353 [INFO] backend: Retrieving severity.json metrics.
+2026-07-15 12:10:16,841 [INFO] backend: Retrieving configuration settings.
+2026-07-15 12:10:16,858 [INFO] backend: Retrieving configuration settings.
+2026-07-15 12:10:39,325 [INFO] backend: ==================================================
+2026-07-15 12:10:39,326 [INFO] backend: API EXECUTION: POST /analyze request received
+2026-07-15 12:10:39,330 [INFO] backend: ROI Parameters: Coordinates (Center: Lat 22.334, Lon 80.6108, Buffer: 0.02)
+2026-07-15 12:10:39,330 [INFO] backend: Before Date Range: 2022-01-01 to 2022-03-31
+2026-07-15 12:10:39,330 [INFO] backend: After Date Range: 2026-01-01 to 2026-03-31
+2026-07-15 12:10:39,330 [INFO] backend: ==================================================
+2026-07-15 12:10:53,595 [INFO] backend: GEE Download status: SUCCESS (Time taken: 14.25 seconds)
+2026-07-15 12:10:53,596 [INFO] backend: Running preprocessing on downloaded GeoTIFFs...
+2026-07-15 12:10:53,601 [WARNING] rasterio._env: CPLE_AppDefined in before.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-15 12:10:53,612 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-15 12:10:53,672 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-15 12:10:53,678 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-15 12:10:53,742 [INFO] backend: Calculating NDVI maps...
+2026-07-15 12:10:53,888 [INFO] backend: Running AI Model Inference...
+2026-07-15 12:10:54,331 [INFO] backend: AI Inference execution time: 0.44 seconds (U-Net + YOLOv8)
+2026-07-15 12:10:54,331 [INFO] backend: Combining NDVI and AI results to compute metrics...
+2026-07-15 12:10:54,332 [INFO] backend: Generating heatmap and visual dashboard overlays...
+2026-07-15 12:10:54,380 [INFO] backend: Visual outputs and report generated in 0.37 seconds.
+2026-07-15 12:10:54,380 [INFO] backend: API /analyze run completed in 15.06 seconds.
+2026-07-15 12:10:57,848 [INFO] backend: Retrieving plain-text summary report.
+2026-07-15 12:10:57,852 [INFO] backend: Retrieving severity.json metrics.
+2026-07-15 12:10:57,875 [INFO] backend: Retrieving plain-text summary report.
+2026-07-15 12:10:57,881 [INFO] backend: Retrieving severity.json metrics.
+2026-07-15 12:11:41,353 [INFO] backend: Retrieving configuration settings.
+2026-07-15 12:11:41,369 [INFO] backend: Retrieving configuration settings.
+2026-07-15 12:12:09,130 [INFO] backend: ==================================================
+2026-07-15 12:12:09,131 [INFO] backend: API EXECUTION: POST /analyze request received
+2026-07-15 12:12:09,131 [INFO] backend: ROI Parameters: Coordinates (Center: Lat 22.45, Lon 78.2, Buffer: 0.02)
+2026-07-15 12:12:09,131 [INFO] backend: Before Date Range: 2021-01-01 to 2021-03-31
+2026-07-15 12:12:09,131 [INFO] backend: After Date Range: 2022-01-01 to 2022-03-31
+2026-07-15 12:12:09,131 [INFO] backend: ==================================================
+2026-07-15 12:12:22,219 [INFO] backend: GEE Download status: SUCCESS (Time taken: 13.08 seconds)
+2026-07-15 12:12:22,219 [INFO] backend: Running preprocessing on downloaded GeoTIFFs...
+2026-07-15 12:12:22,223 [WARNING] rasterio._env: CPLE_AppDefined in before.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-15 12:12:22,235 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-15 12:12:22,318 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-15 12:12:22,324 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-15 12:12:22,462 [INFO] backend: Calculating NDVI maps...
+2026-07-15 12:12:22,668 [INFO] backend: Running AI Model Inference...
+2026-07-15 12:12:22,989 [INFO] backend: AI Inference execution time: 0.32 seconds (U-Net + YOLOv8)
+2026-07-15 12:12:22,989 [INFO] backend: Combining NDVI and AI results to compute metrics...
+2026-07-15 12:12:22,989 [INFO] backend: Generating heatmap and visual dashboard overlays...
+2026-07-15 12:12:23,031 [INFO] backend: Visual outputs and report generated in 0.50 seconds.
+2026-07-15 12:12:23,031 [INFO] backend: API /analyze run completed in 13.91 seconds.
+2026-07-15 12:12:25,431 [INFO] backend: Retrieving plain-text summary report.
+2026-07-15 12:12:25,459 [INFO] backend: Retrieving plain-text summary report.
+2026-07-15 12:12:25,466 [INFO] backend: Retrieving severity.json metrics.
+2026-07-15 12:12:25,507 [INFO] backend: Retrieving severity.json metrics.
+2026-07-15 12:12:48,535 [INFO] backend: Retrieving configuration settings.
+2026-07-15 12:12:48,555 [INFO] backend: Retrieving configuration settings.
+2026-07-15 12:13:18,567 [INFO] backend: Received configuration update: {'gee': {'dataset': 'COPERNICUS/S2_SR_HARMONIZED', 'max_cloud_percentage': 20, 'scale': 10}, 'roi': {'name': 'Satpura Tiger Reserve', 'lat': 22.45, 'lon': 78.2, 'buffer_degree': 0.02}, 'dates': {'before': {'start': '2022-01-01', 'end': '2022-03-31'}, 'after': {'start': '2026-01-01', 'end': '2026-03-31'}}, 'thresholds': {'ndvi_loss_threshold': 0.15, 'unet_threshold': 0.5, 'yolo_conf': 0.25, 'morphology_kernel_size': 3, 'severity': {'low': 5, 'medium': 15}}}
+2026-07-15 12:13:18,601 [INFO] backend: Configuration updated successfully.
+2026-07-15 12:13:27,503 [INFO] backend: Retrieving configuration settings.
+2026-07-15 12:13:27,550 [INFO] backend: Retrieving configuration settings.
+2026-07-15 12:13:31,227 [INFO] backend: ==================================================
+2026-07-15 12:13:31,227 [INFO] backend: API EXECUTION: POST /analyze request received
+2026-07-15 12:13:31,228 [INFO] backend: ROI Parameters: Coordinates (Center: Lat 22.45, Lon 78.2, Buffer: 0.02)
+2026-07-15 12:13:31,228 [INFO] backend: Before Date Range: 2022-01-01 to 2022-03-31
+2026-07-15 12:13:31,228 [INFO] backend: After Date Range: 2026-01-01 to 2026-03-31
+2026-07-15 12:13:31,228 [INFO] backend: ==================================================
+2026-07-15 12:13:44,082 [INFO] backend: GEE Download status: SUCCESS (Time taken: 12.85 seconds)
+2026-07-15 12:13:44,082 [INFO] backend: Running preprocessing on downloaded GeoTIFFs...
+2026-07-15 12:13:44,086 [WARNING] rasterio._env: CPLE_AppDefined in before.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-15 12:13:44,090 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-15 12:13:44,145 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-15 12:13:44,148 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-15 12:13:44,206 [INFO] backend: Calculating NDVI maps...
+2026-07-15 12:13:44,357 [INFO] backend: Running AI Model Inference...
+2026-07-15 12:13:44,681 [INFO] backend: AI Inference execution time: 0.32 seconds (U-Net + YOLOv8)
+2026-07-15 12:13:44,682 [INFO] backend: Combining NDVI and AI results to compute metrics...
+2026-07-15 12:13:44,684 [INFO] backend: Generating heatmap and visual dashboard overlays...
+2026-07-15 12:13:44,744 [INFO] backend: Visual outputs and report generated in 0.35 seconds.
+2026-07-15 12:13:44,744 [INFO] backend: API /analyze run completed in 13.52 seconds.
+2026-07-15 12:14:24,500 [INFO] backend: Retrieving configuration settings.
+2026-07-15 12:16:28,388 [INFO] backend: Retrieving configuration settings.
+2026-07-15 12:16:28,403 [INFO] backend: Retrieving configuration settings.
+2026-07-15 12:17:05,015 [INFO] backend: Received configuration update: {'gee': {'dataset': 'COPERNICUS/S2_SR_HARMONIZED', 'max_cloud_percentage': 20, 'scale': 10}, 'roi': {'name': 'Satpura Tiger Reserve', 'lat': 22.45, 'lon': 78.2, 'buffer_degree': 0.02}, 'dates': {'before': {'start': '2022-01-01', 'end': '2022-03-31'}, 'after': {'start': '2026-01-01', 'end': '2026-03-31'}}, 'thresholds': {'ndvi_loss_threshold': 0.15, 'unet_threshold': 0.5, 'yolo_conf': 0.25, 'morphology_kernel_size': 5, 'severity': {'low': 5, 'medium': 15}}}
+2026-07-15 12:17:05,024 [INFO] backend: Configuration updated successfully.
+2026-07-15 12:17:34,489 [INFO] backend: Received configuration update: {'gee': {'dataset': 'COPERNICUS/S2_SR_HARMONIZED', 'max_cloud_percentage': 20, 'scale': 10}, 'roi': {'name': 'Kanha Santury', 'lat': 22.334, 'lon': 80.611, 'buffer_degree': 0.02}, 'dates': {'before': {'start': '2022-01-01', 'end': '2022-03-31'}, 'after': {'start': '2026-01-01', 'end': '2026-03-31'}}, 'thresholds': {'ndvi_loss_threshold': 0.15, 'unet_threshold': 0.5, 'yolo_conf': 0.25, 'morphology_kernel_size': 5, 'severity': {'low': 5, 'medium': 15}}}
+2026-07-15 12:17:34,551 [INFO] backend: Configuration updated successfully.
+2026-07-15 12:17:36,768 [INFO] backend: Retrieving severity.json metrics.
+2026-07-15 12:17:36,791 [INFO] backend: Retrieving severity.json metrics.
+2026-07-15 12:17:40,091 [INFO] backend: Retrieving severity.json metrics.
+2026-07-15 12:17:40,105 [INFO] backend: Retrieving severity.json metrics.
+2026-07-15 12:17:42,235 [INFO] backend: Retrieving configuration settings.
+2026-07-15 12:17:42,277 [INFO] backend: Retrieving configuration settings.
+2026-07-15 12:17:43,282 [INFO] backend: Retrieving plain-text summary report.
+2026-07-15 12:17:43,288 [INFO] backend: Retrieving severity.json metrics.
+2026-07-15 12:17:43,301 [INFO] backend: Retrieving plain-text summary report.
+2026-07-15 12:17:43,308 [INFO] backend: Retrieving severity.json metrics.
+2026-07-15 12:17:46,530 [INFO] backend: Retrieving configuration settings.
+2026-07-15 12:17:46,538 [INFO] backend: Retrieving configuration settings.
+2026-07-15 12:17:50,079 [INFO] backend: Retrieving plain-text summary report.
+2026-07-15 12:17:50,083 [INFO] backend: Retrieving severity.json metrics.
+2026-07-15 12:17:50,091 [INFO] backend: Retrieving plain-text summary report.
+2026-07-15 12:17:50,100 [INFO] backend: Retrieving severity.json metrics.
+2026-07-15 12:17:51,820 [INFO] backend: Retrieving configuration settings.
+2026-07-15 12:17:51,829 [INFO] backend: Retrieving configuration settings.
+2026-07-15 12:17:55,080 [INFO] backend: Retrieving configuration settings.
+2026-07-15 12:17:55,100 [INFO] backend: Retrieving configuration settings.
+2026-07-15 12:30:25,305 [INFO] backend: Retrieving configuration settings.
+2026-07-15 12:30:25,327 [INFO] backend: Retrieving configuration settings.
+2026-07-15 13:16:14,049 [INFO] backend: Retrieving configuration settings.
+2026-07-15 13:16:14,111 [INFO] backend: Retrieving configuration settings.
+2026-07-15 13:28:26,913 [INFO] backend: Retrieving configuration settings.
+2026-07-15 13:28:26,933 [INFO] backend: Retrieving configuration settings.
+2026-07-15 14:36:56,770 [INFO] backend: Retrieving configuration settings.
+2026-07-15 14:36:56,779 [INFO] backend: Retrieving configuration settings.
+2026-07-15 14:36:57,418 [INFO] backend: Retrieving configuration settings.
+2026-07-15 14:36:57,427 [INFO] backend: Retrieving configuration settings.
+2026-07-15 14:37:00,365 [INFO] backend: Retrieving configuration settings.
+2026-07-15 14:37:00,371 [INFO] backend: Retrieving configuration settings.
+2026-07-15 14:37:02,683 [INFO] backend: Retrieving plain-text summary report.
+2026-07-15 14:37:02,686 [INFO] backend: Retrieving severity.json metrics.
+2026-07-15 14:37:02,689 [INFO] backend: Retrieving severity.json metrics.
+2026-07-15 14:37:02,693 [INFO] backend: Retrieving plain-text summary report.
+2026-07-15 14:37:04,969 [INFO] backend: Retrieving severity.json metrics.
+2026-07-15 14:37:04,988 [INFO] backend: Retrieving severity.json metrics.
+2026-07-15 14:37:18,419 [INFO] backend: Retrieving plain-text summary report.
+2026-07-15 14:37:18,422 [INFO] backend: Retrieving severity.json metrics.
+2026-07-15 14:37:18,426 [INFO] backend: Retrieving severity.json metrics.
+2026-07-15 14:37:18,428 [INFO] backend: Retrieving plain-text summary report.

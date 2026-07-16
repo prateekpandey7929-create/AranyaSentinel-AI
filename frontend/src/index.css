@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@theme {
+  --color-forest-50: #f2faf4;
+  --color-forest-100: #e2f3e7;
+  --color-forest-200: #c5e7d0;
+  --color-forest-300: #97d2ab;
+  --color-forest-400: #64b680;
+  --color-forest-500: #3e995f;
+  --color-forest-600: #2f7c4b;
+  --color-forest-700: #27633e;
+  --color-forest-800: #214f33;
+  --color-forest-900: #1b412b;
+  --color-forest-950: #0e2417;
+}
+
+body {
+  @apply bg-slate-950 text-slate-100 min-h-screen font-sans overflow-x-hidden;
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: rgba(15, 36, 23, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(62, 153, 95, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel-hover:hover {
+  background: rgba(15, 36, 23, 0.6);
+  border-color: rgba(62, 153, 95, 0.45);
+  box-shadow: 0 12px 40px 0 rgba(62, 153, 95, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Leaflet Map custom style */
+.leaflet-container {
+  width: 100%;
+  height: 450px;
+  border-radius: 0.75rem;
+  z-index: 10;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #090d16;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3e995f;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64b680;
+}
