@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { MapContainer, TileLayer, Polygon, ImageOverlay, useMap, useMapEvents } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
@@ -63,8 +64,11 @@ export default function Analysis() {
   const [beforeImage, setBeforeImage] = useState(null);
   const [afterImage, setAfterImage] = useState(null);
 
+  const navigate = useNavigate();
+
   // Processing state
   const [loading, setLoading] = useState(false);
+  const [generatingReport, setGeneratingReport] = useState(false);
   const [progress, setProgress] = useState(0);
   const [statusLog, setStatusLog] = useState("");
   const [toast, setToast] = useState({ show: false, message: "", type: "success" });
@@ -698,6 +702,46 @@ export default function Analysis() {
                     />
                   </a>
                 </div>
+              </div>
+
+              {/* Action Buttons for Trend Analysis & Report Generation */}
+              <div className="pt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                <button
+                  onClick={() => navigate("/trend-analysis")}
+                  className="w-full py-4 rounded-xl font-bold transition shadow-lg bg-emerald-900/30 hover:bg-emerald-800/50 text-emerald-400 border border-emerald-500/20 flex items-center justify-center space-x-2"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span>Trend Analysis</span>
+                </button>
+                <button
+                  onClick={async () => {
+                    try {
+                      setGeneratingReport(true);
+                      triggerToast("Generating comprehensive report...", "success");
+                      const res = await axios.post(`${API_BASE}/report/generate?lang=hi`);
+                      if (res.data.status === "success") {
+                        triggerToast("Report Generated! Navigating to History...", "success");
+                        setTimeout(() => navigate("/history"), 1500);
+                      }
+                    } catch (err) {
+                      console.error(err);
+                      triggerToast("Failed to generate report.", "error");
+                    } finally {
+                      setGeneratingReport(false);
+                    }
+                  }}
+                  disabled={generatingReport}
+                  className={`w-full py-4 rounded-xl font-bold transition shadow-lg flex items-center justify-center space-x-2 ${
+                    generatingReport ? "bg-forest-900/50 text-slate-500 cursor-not-allowed" : "bg-forest-500 hover:bg-forest-600 text-white"
+                  }`}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
+                  </svg>
+                  <span>{generatingReport ? "Generating..." : "Generate Report"}</span>
+                </button>
               </div>
             </div>
           )}

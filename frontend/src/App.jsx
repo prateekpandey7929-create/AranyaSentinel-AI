@@ -99,16 +99,6 @@ function Sidebar() {
           {t('nav_knowledge')}
         </NavLink>
         <NavLink
-          to="/reports"
-          icon={
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
-          }
-        >
-          {t('nav_reports')}
-        </NavLink>
-        <NavLink
           to="/notifications"
           icon={
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -157,10 +147,10 @@ export default function App() {
             <Route path="/" element={<Dashboard />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/analyze" element={<Analysis />} />
-            <Route path="/history" element={<History />} />
+            <Route path="/trend-analysis" element={<History />} />
             <Route path="/knowledge" element={<Knowledge />} />
             <Route path="/cloud-removal" element={<CloudRemoval />} />
-            <Route path="/reports" element={<Reports />} />
+            <Route path="/history" element={<Reports />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/notifications" element={<NotificationCenter />} />
           </Routes>

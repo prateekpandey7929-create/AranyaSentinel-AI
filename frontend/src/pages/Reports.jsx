@@ -8,10 +8,8 @@ export default function Reports() {
   const { t } = useTranslation();
   const [reports, setReports] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [generating, setGenerating] = useState(false);
   const [previewReportId, setPreviewReportId] = useState(null);
   const [error, setError] = useState(null);
-  const [pdfLang, setPdfLang] = useState("hi");
 
   // Fetch report list
   const fetchReports = async () => {
@@ -30,20 +28,7 @@ export default function Reports() {
     fetchReports();
   }, []);
 
-  const handleGenerate = async () => {
-    try {
-      setGenerating(true);
-      const res = await axios.post(`${API_BASE}/report/generate?lang=${pdfLang}`);
-      if (res.data.status === "success") {
-        await fetchReports(); // Refresh the list
-        setPreviewReportId(res.data.report_id); // Auto open preview
-      }
-    } catch (err) {
-      alert("Failed to generate report. Make sure analysis has been run first.");
-    } finally {
-      setGenerating(false);
-    }
-  };
+
 
   const handleDownload = (reportId) => {
     const url = `${API_BASE}/report/download/${reportId}`;
@@ -68,56 +53,6 @@ export default function Reports() {
               {t('reports_title')}
             </h1>
             <p className="text-forest-300 text-lg">Generate, preview, and download formal environmental analysis reports.</p>
-          </div>
-          <div className="flex items-center space-x-4">
-            <div className="relative">
-              <select
-                value={pdfLang}
-                onChange={(e) => setPdfLang(e.target.value)}
-                disabled={generating}
-                className="bg-forest-950/80 border border-forest-700/50 text-forest-200 text-sm rounded-xl focus:ring-emerald-500 focus:border-emerald-500 block px-4 py-3 outline-none appearance-none cursor-pointer pr-10 shadow-xl"
-              >
-                <option value="en">English Only</option>
-                <option value="hi">+ हिंदी (Hindi)</option>
-                <option value="mr">+ मराठी (Marathi)</option>
-                <option value="gu">+ ગુજરાતી (Gujarati)</option>
-                <option value="ta">+ தமிழ் (Tamil)</option>
-                <option value="te">+ తెలుగు (Telugu)</option>
-                <option value="kn">+ ಕನ್ನಡ (Kannada)</option>
-                <option value="ml">+ മലയാളം (Malayalam)</option>
-                <option value="bn">+ বাংলা (Bengali)</option>
-                <option value="pa">+ ਪੰਜਾਬੀ (Punjabi)</option>
-              </select>
-              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-forest-400">
-                <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-              </div>
-            </div>
-            <button
-              onClick={handleGenerate}
-              disabled={generating}
-              className={`flex items-center space-x-2 px-6 py-3 rounded-xl font-medium tracking-wide transition-all shadow-xl
-                ${generating 
-                  ? 'bg-forest-900 text-forest-400 cursor-not-allowed border border-forest-800' 
-                  : 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-emerald-900/20 hover:-translate-y-0.5'
-                }`}
-            >
-              {generating ? (
-                <>
-                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-forest-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
-                  <span>{t('generating')}</span>
-                </>
-              ) : (
-                <>
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" />
-                  </svg>
-                  <span>{t('generate_report')}</span>
-                </>
-              )}
-            </button>
           </div>
         </div>
 
