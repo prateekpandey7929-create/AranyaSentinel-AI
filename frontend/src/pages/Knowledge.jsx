@@ -29,8 +29,8 @@ export default function Knowledge() {
           setSelectedForest(res.data[0]);
         }
       } catch (err) {
-        console.error("Failed to fetch knowledge base:", err);
-        setError("Failed to load Knowledge Base.");
+        console.error("Failed to fetch forest encyclopedia:", err);
+        setError("Failed to load Forest Encyclopedia.");
       } finally {
         setLoading(false);
       }
