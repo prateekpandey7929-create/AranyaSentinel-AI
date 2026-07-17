@@ -10,6 +10,13 @@ export default function Reports() {
   const [error, setError] = useState("");
 
   useEffect(() => {
+    const hasRun = sessionStorage.getItem("active_analysis_run") === "true";
+    if (!hasRun) {
+      setError("No active analysis run found in this session. Please execute the forest analysis on the Analysis page first.");
+      setLoading(false);
+      return;
+    }
+
     const fetchReports = async () => {
       try {
         const [sumRes, sevRes] = await Promise.all([

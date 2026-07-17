@@ -178,6 +178,7 @@ export default function Analysis() {
       setProgress(100);
       setStatusLog("Analysis completed successfully!");
       setAnalysisResult(response.data);
+      sessionStorage.setItem("active_analysis_run", "true");
       triggerToast("Forest analysis complete!", "success");
     } catch (error) {
       clearInterval(progressInterval);
@@ -233,6 +234,7 @@ export default function Analysis() {
             combined_result: "/static/combined_result.png"
           }
         });
+        sessionStorage.setItem("active_analysis_run", "true");
         triggerToast("Simulation complete! Displaying metrics for uploaded profiles.", "success");
       } catch (err) {
         triggerToast("Failed to fetch simulation metrics", "error");

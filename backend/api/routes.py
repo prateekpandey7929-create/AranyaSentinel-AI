@@ -90,6 +90,18 @@ async def analyze_forest_loss(request: AnalyzeRequest, req: Request):
         except Exception as e:
             logger.warning(f"Could not compute GeoJSON centroid for report metadata: {e}")
 
+    # Overwrite in-memory config dates to reflect correct date metadata in reports
+    config['dates'] = {
+        'before': {
+            'start': request.before_dates.start,
+            'end': request.before_dates.end
+        },
+        'after': {
+            'start': request.after_dates.start,
+            'end': request.after_dates.end
+        }
+    }
+
     # 3. Resolve ROI descriptor for detailed logging
     if request.roi_geojson:
         roi_desc = f"GeoJSON Polygon (Type: {request.roi_geojson.get('type')})"

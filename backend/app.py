@@ -45,6 +45,19 @@ async def lifespan(app: FastAPI):
     """
     logger.info("Lifespan startup: Initializing Earth Engine and loading model weights...")
     
+    # Clear old outputs to guarantee fresh startup state
+    logger.info("Cleaning outputs directory of stale files...")
+    for filename in os.listdir(OUTPUTS_DIR):
+        file_path = os.path.join(OUTPUTS_DIR, filename)
+        try:
+            if os.path.isfile(file_path) or os.path.islink(file_path):
+                os.unlink(file_path)
+            elif os.path.isdir(file_path):
+                import shutil
+                shutil.rmtree(file_path)
+        except Exception as e:
+            logger.warning(f"Failed to delete {file_path}: {e}")
+
     # Initialize GEE
     try:
         init_gee()
