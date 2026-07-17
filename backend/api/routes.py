@@ -2,6 +2,7 @@ import os
 import sys
 import time
 import logging
+import numpy as np
 from fastapi import APIRouter, Request, HTTPException, status
 from fastapi.responses import PlainTextResponse
 from typing import Dict, Any
@@ -25,37 +26,30 @@ from ndvi import calculate_ndvi, calculate_ndvi_difference
 from severity import calculate_change_metrics, save_metrics_outputs
 from visualization import generate_change_mask, generate_heatmap, generate_combined_dashboard
 
+# Import Forest Health modules
+from forest_health.schemas.health_schema import ForestHealthResponse
+from forest_health.services.health_engine import run_forest_health_analysis
+
+# Import Cloud Removal modules
+from cloud_removal.cloud_service import process_monsoon_image
+
+# Import Season Verification modules
+from season_verification.decision_engine import verify_season_impact
+from season_verification.schemas import SeasonVerificationRequest, SeasonVerificationResponse
+
+# Import Forest Knowledge Explorer modules
+from forest_knowledge.resolver import resolve_forest_knowledge
+from forest_knowledge.schemas import ForestKnowledgeRequest, ForestKnowledgeResponse
+
+# Import AI Prediction modules
+from ai_prediction import compute_ai_prediction, AIPredictionRequest, AIPredictionResponse
+
 router = APIRouter()
 logger = logging.getLogger("backend")
 
 # Resolve folders
 OUTPUTS_DIR = os.path.join(BASE_DIR, 'outputs')
 WEIGHTS_DIR = os.path.join(BASE_DIR, 'weights')
-
-def log_history_event(title: str, detail: str):
-    import json
-    from datetime import datetime
-    history_path = os.path.join(BASE_DIR, "config", "history.json")
-    os.makedirs(os.path.dirname(history_path), exist_ok=True)
-    history = []
-    if os.path.exists(history_path):
-        try:
-            with open(history_path, "r") as f:
-                history = json.load(f)
-        except Exception:
-            pass
-    entry = {
-        "date": datetime.now().strftime("%d %B %Y"),
-        "title": title,
-        "detail": detail
-    }
-    history.insert(0, entry)
-    history = history[:15]
-    try:
-        with open(history_path, "w") as f:
-            json.dump(history, f, indent=4)
-    except Exception as e:
-        logger.warning(f"Failed to write history log: {e}")
 
 @router.get("/", status_code=status.HTTP_200_OK)
 async def health_check():
@@ -115,18 +109,6 @@ async def analyze_forest_loss(request: AnalyzeRequest, req: Request):
         except Exception as e:
             logger.warning(f"Could not compute GeoJSON centroid for report metadata: {e}")
 
-    # Overwrite in-memory config dates to reflect correct date metadata in reports
-    config['dates'] = {
-        'before': {
-            'start': request.before_dates.start,
-            'end': request.before_dates.end
-        },
-        'after': {
-            'start': request.after_dates.start,
-            'end': request.after_dates.end
-        }
-    }
-
     # 3. Resolve ROI descriptor for detailed logging
     if request.roi_geojson:
         roi_desc = f"GeoJSON Polygon (Type: {request.roi_geojson.get('type')})"
@@ -182,6 +164,52 @@ async def analyze_forest_loss(request: AnalyzeRequest, req: Request):
         before_bands, before_profile = load_geotiff(before_tif, target_size=(256, 256))
         after_bands, after_profile = load_geotiff(after_tif, target_size=(256, 256))
         
+        # 3.5. Run Cloud Detection & Apply Hybrid Monsoon Cloud Filter
+        logger.info("Running Monsoon Cloud Filter...")
+        from cloud_removal.cloud_detector import detect_clouds
+        
+        # Detect clouds
+        before_initial_mask = detect_clouds(before_bands)
+        after_initial_mask = detect_clouds(after_bands)
+        
+        before_cloud_pct = float((np.sum(before_initial_mask == 255) / before_initial_mask.size) * 100.0)
+        after_cloud_pct = float((np.sum(after_initial_mask == 255) / after_initial_mask.size) * 100.0)
+        
+        logger.info(f"Detected Cloud Coverage - Before: {before_cloud_pct:.2f}%, After: {after_cloud_pct:.2f}%")
+        
+        # Hard Filter Rule: Block if cloud cover > 40%
+        if after_cloud_pct > 40.0:
+            logger.warning(f"Analysis blocked: Cloud cover on after image is {after_cloud_pct:.2f}% (exceeds 40% threshold)")
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail=f"Severe Cloud Cover detected ({after_cloud_pct:.2f}%). Analysis blocked. Please select a different date range or region with less cloud cover."
+            )
+            
+        # Warning generation for moderate cloud cover (15% - 40%)
+        cloud_warning = None
+        if after_cloud_pct >= 15.0:
+            cloud_warning = f"Moderate Cloud Cover detected ({after_cloud_pct:.2f}%). Gap-filling and enhancement applied, but some AI predictions may be simulated or less reliable."
+            logger.warning(cloud_warning)
+
+        # Proceed with Gap Filling and Enhancement for both images
+        try:
+            # Process 'before' bands
+            before_bands, before_mask, _, _, _, _ = process_monsoon_image(
+                before_bands, historical_bands=None
+            )
+            # Process 'after' bands using 'before' bands as historical reference
+            after_bands, after_mask, _, _, _, _ = process_monsoon_image(
+                after_bands, historical_bands=before_bands
+            )
+            
+            # Save cloud mask images for visualization
+            import cv2
+            cv2.imwrite(os.path.join(OUTPUTS_DIR, "before_cloud_mask.png"), before_mask)
+            cv2.imwrite(os.path.join(OUTPUTS_DIR, "after_cloud_mask.png"), after_mask)
+            logger.info("Cloud removal and image enhancement finished successfully.")
+        except Exception as e:
+            logger.error(f"Error during cloud removal pipeline execution: {e}. Proceeding with raw imagery.")
+
         before_rgb = convert_to_8bit_rgb(before_bands)
         after_rgb = convert_to_8bit_rgb(after_bands)
         
@@ -273,6 +301,97 @@ async def analyze_forest_loss(request: AnalyzeRequest, req: Request):
             detail=f"Combined analysis failed: {e}"
         )
 
+    # 7.5. Run Season-Aware Verification & Forest Knowledge Explorer
+    logger.info("Executing Season-Aware Verification & Forest Knowledge Explorer...")
+    season_detail = None
+    knowledge_detail = None
+    prediction_detail = None
+    try:
+        # Resolve centroid lat, lon
+        lat_val = config['roi']['lat']
+        lon_val = config['roi']['lon']
+        if request.roi_latlon:
+            lat_val = request.roi_latlon.lat
+            lon_val = request.roi_latlon.lon
+        elif request.roi_geojson:
+            try:
+                geom = request.roi_geojson
+                if geom.get("type") == "FeatureCollection" and geom.get("features"):
+                    geom = geom["features"][0].get("geometry", {})
+                elif geom.get("type") == "Feature" and geom.get("geometry"):
+                    geom = geom["geometry"]
+                
+                if geom.get("type") == "Polygon" and geom.get("coordinates"):
+                    coords = geom["coordinates"][0]
+                    lat_val = sum(c[1] for c in coords) / len(coords)
+                    lon_val = sum(c[0] for c in coords) / len(coords)
+            except Exception as e:
+                logger.warning(f"Failed to calculate centroid from GeoJSON: {e}. Using default ROI coordinates.")
+
+        # Resolve month
+        analysis_month = 3
+        try:
+            from datetime import datetime
+            dt = datetime.strptime(request.after_dates.start, "%Y-%m-%d")
+            analysis_month = dt.month
+        except Exception as e:
+            logger.warning(f"Could not parse after_dates.start: {e}. Using default month 3 (March).")
+
+        # Resolve current NDVI average
+        current_ndvi_val = float(np.nanmean(ndvi_after))
+
+        # Run verification engine
+        verif_res = verify_season_impact(
+            lat=lat_val,
+            lon=lon_val,
+            month=analysis_month,
+            forest_loss_pct=metrics['forest_loss_percentage'],
+            encroachments=metrics['encroachment_count'],
+            current_ndvi=current_ndvi_val
+        )
+
+        # Modify severity score if it's natural seasonal change
+        if verif_res["classification"] == "Natural Seasonal Change":
+            metrics['severity_score'] = "Low"
+
+        # Build Response Detail schema
+        from schemas.response import SeasonVerificationDetail
+        season_detail = SeasonVerificationDetail(
+            classification=verif_res["classification"],
+            confidence_score=verif_res["confidence"],
+            explanation=verif_res["explanation"],
+            weather_summary=f"Season: {verif_res['weather']['season']}, Temp: {verif_res['weather']['temp']}°C, Rainfall: {verif_res['weather']['rainfall']}mm",
+            historical_ndvi_average=verif_res["ndvi_comparison"]["historical_average"]
+        )
+
+        # Run Forest Knowledge Explorer
+        try:
+            from schemas.response import ForestKnowledgeDetail
+            knowledge_res = resolve_forest_knowledge(lat=lat_val, lon=lon_val)
+            knowledge_detail = ForestKnowledgeDetail(
+                name=knowledge_res["name"],
+                forest_type=knowledge_res["forest_type"],
+                protected_status=knowledge_res["protected_status"],
+                district=knowledge_res["district"],
+                state=knowledge_res["state"],
+                country=knowledge_res["country"],
+                geographical_location=knowledge_res["geographical_location"],
+                climate=knowledge_res["climate"],
+                annual_rainfall=knowledge_res["annual_rainfall"],
+                major_vegetation=knowledge_res["major_vegetation"],
+                dominant_tree_species=knowledge_res["dominant_tree_species"],
+                biodiversity=knowledge_res["biodiversity"],
+                important_flora_and_fauna=knowledge_res["important_flora_and_fauna"],
+                ecological_importance=knowledge_res["ecological_importance"],
+                nearby_water_bodies=knowledge_res["nearby_water_bodies"],
+                why_famous=knowledge_res["why_famous"]
+            )
+        except Exception as e:
+            logger.error(f"Forest Knowledge lookup failed: {e}. Continuing.")
+
+    except Exception as e:
+        logger.error(f"Season verification failed: {e}. Continuing without verification.")
+
     # 8. Generate Visualizations
     logger.info("Generating heatmap and visual dashboard overlays...")
     try:
@@ -317,16 +436,50 @@ async def analyze_forest_loss(request: AnalyzeRequest, req: Request):
             out_txt_path=os.path.join(OUTPUTS_DIR, "summary.txt"),
             config=config
         )
-        log_history_event(
-            title="Forest Analysis Completed",
-            detail=f"{config['roi']['name']} scan completed. Loss: {metrics['forest_loss_percentage']}%. YOLOv8 detected {metrics['encroachment_count']} buildings."
-        )
     except Exception as e:
         logger.error(f"Saving final report outputs failed: {e}")
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Saving report outputs failed: {e}"
         )
+
+    # 7.7. Run AI Prediction Engine
+    logger.info("Executing AI Prediction Engine after report outputs are written...")
+    try:
+        from forest_health.services.health_engine import run_forest_health_analysis
+        from schemas.response import AIPredictionDetail
+        
+        # Fetch current health score (loads the freshly saved outputs correctly!)
+        health_data = run_forest_health_analysis()
+        health_val = health_data.overall_score
+        
+        # Get season classification string
+        season_class = season_detail.classification if season_detail else None
+        
+        # Run prediction logic
+        pred_res = compute_ai_prediction(
+            forest_loss_pct=metrics['forest_loss_percentage'],
+            encroachments=metrics['encroachment_count'],
+            health_score=health_val,
+            season_classification=season_class,
+            cloud_pct=after_cloud_pct
+        )
+        
+        # Build Response schema
+        prediction_detail = AIPredictionDetail(
+            prediction=pred_res["prediction"],
+            reason=pred_res["reason"],
+            severity=pred_res["severity"],
+            confidence_score=pred_res["confidence_score"],
+            suggested_actions=pred_res["suggested_actions"],
+            ai_summary=pred_res["ai_summary"],
+            trend_direction=pred_res["trend_direction"],
+            future_prediction=pred_res["future_prediction"],
+            recovery_probability=pred_res["recovery_probability"],
+            trend_summary=pred_res["trend_summary"]
+        )
+    except Exception as e:
+        logger.error(f"AI Prediction Engine failed: {e}. Continuing.")
 
     # Construct and return response
     return AnalyzeResponse(
@@ -336,6 +489,11 @@ async def analyze_forest_loss(request: AnalyzeRequest, req: Request):
         encroachment_count=metrics['encroachment_count'],
         average_unet_confidence=metrics['average_unet_confidence'],
         average_yolo_confidence=metrics['average_yolo_confidence'],
+        cloud_coverage_percentage=round(after_cloud_pct, 2),
+        cloud_warning=cloud_warning,
+        season_verification=season_detail,
+        forest_knowledge=knowledge_detail,
+        ai_prediction=prediction_detail,
         output_files=OutputFiles(
             before_rgb="/static/before_rgb.png",
             after_rgb="/static/after_rgb.png",
@@ -439,10 +597,6 @@ async def update_configuration(new_config: Dict[str, Any]):
         # Save back to disk
         save_settings(current_config)
         logger.info("Configuration updated successfully.")
-        log_history_event(
-            title="Configuration Updated",
-            detail="Canopy thresholds/settings updated dynamically without rebooting."
-        )
         return {"status": "success", "message": "Configuration updated dynamically."}
     except Exception as e:
         logger.error(f"Failed to save configuration update: {e}")
@@ -451,162 +605,197 @@ async def update_configuration(new_config: Dict[str, Any]):
             detail=f"Failed to update configuration: {e}"
         )
 
-@router.get("/activity-log", status_code=status.HTTP_200_OK)
-async def get_history_log():
-    """
-    Returns persistent run timeline history logs from config/history.json.
-    """
-    import json
-    history_path = os.path.join(BASE_DIR, "config", "history.json")
-    if os.path.exists(history_path):
-        try:
-            with open(history_path, "r") as f:
-                return json.load(f)
-        except Exception:
-            pass
-    # Return default baseline history
-    return [
-        { "date": "17 July 2026", "title": "Forest Analysis Completed", "detail": "Kanha Sanctuary scan completed. Loss index: 4.85%. GEE bands sync successful." },
-        { "date": "16 July 2026", "title": "Canopy Thresholds Modified", "detail": "NDVI loss threshold updated dynamically to 0.15 without server restarts." },
-        { "date": "15 July 2026", "title": "Forest Analysis Completed", "detail": "Satpura Tiger Reserve baseline scan completed. Loss index: 7.84%." },
-        { "date": "14 July 2026", "title": "System Environment Deployed", "detail": "FastAPI server preloaded PyTorch U-Net weights on CUDA 0 successfully." }
-    ]
-
-@router.get("/knowledge-base", status_code=status.HTTP_200_OK)
-async def get_ecosystem_knowledge():
-    """
-    Returns reference forest database definitions.
-    """
-    return {
-        "overview": {
-            "title": "Satpura Tiger Reserve Ecosystem",
-            "desc": "Satpura Tiger Reserve (STR) is a unique forest ecosystem located in the Hoshangabad district of Madhya Pradesh, India. It spans over 2,200 square kilometers, presenting a rich bio-diverse habitat with unique geographical features such as sandstone peaks, deep gorges, and dense canopy woodlands.",
-            "highlights": ["Total Area: 2,133.30 sq km", "Declared Tiger Reserve: 1999", "Ecosystem type: Tropical Dry Deciduous & Moist Deciduous"]
-        },
-        "species": {
-            "title": "Critically Monitored Species",
-            "desc": "STR serves as a vital corridor for major Indian wildlife species. AI model mapping focuses on habitat preservation of indicator species that represent overall canopy health.",
-            "highlights": ["Royal Bengal Tiger (Indicator Species)", "Indian Leopard & Wild Dog (Dhole)", "Barasingha (Swamp Deer) & Malabar Giant Squirrel"]
-        },
-        "vegetation": {
-            "title": "Flora & Canopy Vegetation Classifications",
-            "desc": "The forest canopy is dominated by dense woodlands and deciduous flora. NDVI analysis tracks changes across Sal and Teak patches, which are vulnerable to timber erosion and illegal logging footprint shifts.",
-            "highlights": ["Dominant tree species: Teak (Tectona grandis) & Sal (Shorea robusta)", "Medicinal plants: Over 1,300 species identified", "Bamboo woodlands in buffer gorges"]
-        },
-        "climate": {
-            "title": "Micro-climate Conditions",
-            "desc": "Experience extreme seasonal climate variations, which affect NDVI values. Dry summers (March to May) lead to natural deciduous leaf shed, causing drops in NDVI that are cloud-masked and filtered to avoid false deforestation alerts.",
-            "highlights": ["Temperature range: 10°C (Winter) to 46°C (Summer)", "Average rainfall: 1,200mm - 1,500mm", "Monsoon season: June to September"]
-        },
-        "importance": {
-            "title": "Ecological Importance",
-            "desc": "The reserve acts as a major carbon sink and watershed catcher for Central India. It hosts the catchment area of the Tawa Reservoir, protecting local groundwater basins and regulating seasonal temperatures.",
-            "highlights": ["Major carbon capture zone in Central India", "Protects river system watersheds (Tawa, Denwa rivers)", "Sustains regional weather cycles"]
-        },
-        "protected": {
-            "title": "Legal Protected Status & Zonation",
-            "desc": "STR is divided into Core (National Park) and Buffer zones. AI encroachment monitoring primarily targets core perimeter fences to prevent illegal construction footprints in zones where human presence is strictly prohibited.",
-            "highlights": ["Core area protection: Wildlife Protection Act 1972", "No human settlement allowed in Core Zone", "Buffer zone permits restricted sustainable community farming"]
-        }
-    }
-
-@router.get("/forest-health", status_code=status.HTTP_200_OK)
+@router.get("/forest-health", response_model=ForestHealthResponse, status_code=status.HTTP_200_OK)
 async def get_forest_health():
     """
-    Computes dynamic canopy indices from outputs/severity.json.
+    Computes overall Forest Health Score and breakdown of metrics based on the latest generated outputs.
     """
+    logger.info("API EXECUTION: GET /forest-health request received")
     try:
-        metrics = get_severity_json()
-        loss = metrics.get("forest_loss_percentage", 0.0)
-        encroachments = metrics.get("encroachment_count", 0)
-    except Exception:
-        loss = 0.0
-        encroachments = 0
+        health_data = run_forest_health_analysis()
+        return health_data.to_dict()
+    except Exception as e:
+        logger.error(f"Forest Health Score compilation failed: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Forest Health computation failed: {e}"
+        )
 
-    score = max(15, min(100, 100 - int(loss * 2.5) - int(encroachments * 3)))
-    status_label = "Healthy" if score > 80 else "Moderate" if score > 50 else "Critical"
-
-    # Handle seasonal wildfire risk based on active dates config
+@router.post("/cloud-removal", status_code=status.HTTP_200_OK)
+async def run_cloud_removal(image_type: str = "after"):
+    """
+    Applies the cloud detection, masking, and enhancement pipeline to the selected image.
+    """
+    logger.info(f"API EXECUTION: POST /cloud-removal received for image_type={image_type}")
+    
+    if image_type not in ["before", "after"]:
+        raise HTTPException(status_code=400, detail="Invalid image_type. Must be 'before' or 'after'")
+        
+    target_tif = os.path.join(OUTPUTS_DIR, f"{image_type}.tif")
+    if not os.path.exists(target_tif):
+        raise HTTPException(status_code=404, detail=f"Satellite image '{image_type}.tif' not found. Run /analyze first to download it.")
+        
     try:
-        config = load_settings()
-        start_month = int(config.get("dates", {}).get("after", {}).get("start", "2026-01-01").split("-")[1])
-        # Spring/Summer has high fire risk in central India deciduous forests
-        fire_risk = "High (45%)" if start_month in [3, 4, 5] else "Low (18%)"
-    except Exception:
-        fire_risk = "Low (18%)"
+        # Load raw bands
+        bands, profile = load_geotiff(target_tif, target_size=(256, 256))
+        
+        # Load historical if we are processing "after"
+        historical_bands = None
+        if image_type == "after":
+            before_tif_path = os.path.join(OUTPUTS_DIR, "before.tif")
+            if os.path.exists(before_tif_path):
+                historical_bands, _ = load_geotiff(before_tif_path, target_size=(256, 256))
+                
+        # Process
+        enhanced_bands, mask, initial_pct, final_pct, quality, duration = process_monsoon_image(
+            bands, historical_bands
+        )
+        
+        # Convert to RGB and save outputs for dashboard visualization
+        enhanced_rgb = convert_to_8bit_rgb(enhanced_bands)
+        original_rgb = convert_to_8bit_rgb(bands)
+        
+        import cv2
+        cv2.imwrite(os.path.join(OUTPUTS_DIR, f"{image_type}_cloud_mask.png"), mask)
+        cv2.imwrite(os.path.join(OUTPUTS_DIR, f"{image_type}_enhanced_rgb.png"), cv2.cvtColor(enhanced_rgb, cv2.COLOR_RGB2BGR))
+        cv2.imwrite(os.path.join(OUTPUTS_DIR, f"{image_type}_original_rgb.png"), cv2.cvtColor(original_rgb, cv2.COLOR_RGB2BGR))
+        
+        # Calculate NDVI values
+        orig_ndvi = calculate_ndvi(bands)
+        enh_ndvi = calculate_ndvi(enhanced_bands)
+        
+        # Save NDVI maps as geotiffs
+        save_single_band_geotiff(orig_ndvi, profile, os.path.join(OUTPUTS_DIR, f"{image_type}_orig_ndvi.tif"))
+        save_single_band_geotiff(enh_ndvi, profile, os.path.join(OUTPUTS_DIR, f"{image_type}_enh_ndvi.tif"))
+        
+        # Generate warning if cloud coverage is too high
+        warning = None
+        if final_pct > 35.0:
+            warning = f"High cloud cover warning: Remaining clouds ({final_pct:.1f}%) exceed threshold."
+            
+        return {
+            "status": "success",
+            "image_type": image_type,
+            "initial_cloud_percentage": round(initial_pct, 2),
+            "final_cloud_percentage": round(final_pct, 2),
+            "image_quality_score": quality,
+            "processing_time_seconds": round(duration, 4),
+            "warning": warning,
+            "urls": {
+                "original_image": f"/static/{image_type}_original_rgb.png",
+                "cloud_mask": f"/static/{image_type}_cloud_mask.png",
+                "enhanced_image": f"/static/{image_type}_enhanced_rgb.png"
+            }
+        }
+    except Exception as e:
+        logger.error(f"Cloud removal API failed: {e}")
+        raise HTTPException(status_code=500, detail=f"Cloud removal processing failed: {e}")
 
-    return {
-        "score": score,
-        "status": status_label,
-        "metrics": [
-            { "name": "Vegetation Index (NDVI)", "val": f"{max(10, 95 - int(loss * 3))}%", "level": "Good" if loss < 5 else "Warning" },
-            { "name": "Canopy Density", "val": f"{max(10, 88 - int(loss * 4))}%", "level": "Good" if loss < 10 else "Warning" },
-            { "name": "Water Index (NDWI)", "val": "68%", "level": "Stable" },
-            { "name": "Human Encroachment Level", "val": "High Activity" if encroachments > 3 else "Minor Shift" if encroachments > 0 else "Undisturbed", "level": "Warning" if encroachments > 0 else "Clear" },
-            { "name": "Seasonal Fire Risk", "val": fire_risk, "level": "Warning" if "High" in fire_risk else "Low" }
-        ]
-    }
-
-@router.get("/ai-summary", status_code=status.HTTP_200_OK)
-async def get_ai_analysis_summary():
+@router.post("/season-verification", response_model=SeasonVerificationResponse, status_code=status.HTTP_200_OK)
+async def run_season_verification(request: SeasonVerificationRequest):
     """
-    Returns dynamic copilot analysis insights based on latest runs.
+    Direct endpoint to verify a detected forest change against historical weather and NDVI baselines.
     """
+    logger.info("API EXECUTION: POST /season-verification request received")
     try:
-        metrics = get_severity_json()
-        loss = metrics.get("forest_loss_percentage", 0.0)
-        encroachments = metrics.get("encroachment_count", 0)
-        changed_ha = metrics.get("changed_area_hectares", 0.0)
-        accuracy = f"{round(metrics.get('average_unet_confidence', 0.85) * 100, 1)}%"
-    except Exception:
-        loss = 0.0
-        encroachments = 0
-        changed_ha = 0.0
-        accuracy = "N/A"
+        res = verify_season_impact(
+            lat=request.latitude,
+            lon=request.longitude,
+            month=request.month,
+            forest_loss_pct=request.forest_loss_percentage,
+            encroachments=request.encroachment_count,
+            current_ndvi=request.current_ndvi
+        )
+        return SeasonVerificationResponse(
+            status="success",
+            classification=res["classification"],
+            confidence_score=res["confidence"],
+            explanation=res["explanation"],
+            weather={
+                "season": res["weather"]["season"],
+                "temp": res["weather"]["temp"],
+                "rainfall": res["weather"]["rainfall"]
+            },
+            ndvi_comparison={
+                "current": res["ndvi_comparison"]["current"],
+                "historical_average": res["ndvi_comparison"]["historical_average"],
+                "historical_min": res["ndvi_comparison"]["historical_min"],
+                "historical_max": res["ndvi_comparison"]["historical_max"]
+            }
+        )
+    except Exception as e:
+        logger.error(f"Season verification API failed: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Verification failed: {e}"
+        )
 
-    if loss > 15:
-        status_text = "Critical threat level. Immediate intervention required."
-        findings = f"U-Net model identified major canopy degradation amounting to {loss}% ({changed_ha} Ha). YOLOv8 scanner flagged {encroachments} structures as active human encroachments within deforested quadrants."
-        recommendations = "1. Deploy UAV patrols to scan coordinate hotspots.\n2. Cross-reference property registration records for building coordinates.\n3. Halt all logging permits in saturated buffer zones immediately."
-        reason = f"Loss threshold exceeded critical limit of 15.0%. Segmentation overlap confidence remains high at {accuracy}."
-    elif loss > 5:
-        status_text = "Moderate threat. Active surveillance recommended."
-        findings = f"Canopy loss stands at {loss}%. Localized degradation patterns indicate edge deforestation. YOLOv8 detected {encroachments} construction footprints."
-        recommendations = "1. Conduct standard ground checks in identified edge grids.\n2. Schedule follow-up GEE Sentinel-2 pass in 30 days to assess change velocity.\n3. Review forest patrol schedules near encroachment boundaries."
-        reason = f"Loss falls within moderate threshold bounds (5% - 15%). Dice intersection coefficient is stable at {accuracy}."
-    else:
-        status_text = "Canopy is stable. Low threat indicators."
-        findings = f"Minimal forest cover modification detected ({loss}% loss). YOLOv8 building detection shows {encroachments} encroachments."
-        recommendations = "1. Continue routine satellite-based monitoring cycles.\n2. Maintain local forest boundary checks.\n3. Store baseline outputs as reference templates for future scans."
-        reason = f"Deforestation index is below low limit (5.0%). Spectral changes are within normal seasonal range."
-
-    return {
-        "status": status_text,
-        "findings": findings,
-        "recommendations": recommendations,
-        "reason": reason
-    }
-
-@router.get("/predictions", status_code=status.HTTP_200_OK)
-async def get_canopy_predictions():
+@router.post("/forest-knowledge", response_model=ForestKnowledgeResponse, status_code=status.HTTP_200_OK)
+async def get_forest_knowledge_info(request: ForestKnowledgeRequest):
     """
-    Computes 12-month projections based on latest runs.
+    Retrieves rich ecological and encyclopedic information for the given coordinates.
     """
+    logger.info("API EXECUTION: POST /forest-knowledge request received")
     try:
-        metrics = get_severity_json()
-        loss = metrics.get("forest_loss_percentage", 0.0)
-        changed_ha = metrics.get("changed_area_hectares", 0.0)
-    except Exception:
-        loss = 0.0
-        changed_ha = 0.0
+        res = resolve_forest_knowledge(lat=request.latitude, lon=request.longitude)
+        return ForestKnowledgeResponse(
+            status="success",
+            name=res["name"],
+            forest_type=res["forest_type"],
+            protected_status=res["protected_status"],
+            district=res["district"],
+            state=res["state"],
+            country=res["country"],
+            geographical_location=res["geographical_location"],
+            climate=res["climate"],
+            annual_rainfall=res["annual_rainfall"],
+            major_vegetation=res["major_vegetation"],
+            dominant_tree_species=res["dominant_tree_species"],
+            biodiversity=res["biodiversity"],
+            important_flora_and_fauna=res["important_flora_and_fauna"],
+            ecological_importance=res["ecological_importance"],
+            nearby_water_bodies=res["nearby_water_bodies"],
+            why_famous=res["why_famous"]
+        )
+    except Exception as e:
+        logger.error(f"Forest knowledge API failed: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Failed to retrieve forest knowledge: {e}"
+        )
 
-    projected_loss = round(loss * 0.35 + 1.2, 1)
-    confidence = min(95, max(60, 92 - int(loss * 2)))
+@router.post("/ai-prediction", response_model=AIPredictionResponse, status_code=status.HTTP_200_OK)
+async def get_ai_prediction_insights(request: AIPredictionRequest):
+    """
+    Executes rules-based prediction reasoning engine on the provided metrics.
+    """
+    logger.info("API EXECUTION: POST /ai-prediction request received")
+    try:
+        res = compute_ai_prediction(
+            forest_loss_pct=request.forest_loss_percentage,
+            encroachments=request.encroachment_count,
+            health_score=request.health_score,
+            season_classification=request.season_classification,
+            cloud_pct=request.cloud_coverage_percentage
+        )
+        return AIPredictionResponse(
+            status="success",
+            prediction=res["prediction"],
+            reason=res["reason"],
+            severity=res["severity"],
+            confidence_score=res["confidence_score"],
+            suggested_actions=res["suggested_actions"],
+            ai_summary=res["ai_summary"],
+            trend_direction=res["trend_direction"],
+            future_prediction=res["future_prediction"],
+            recovery_probability=res["recovery_probability"],
+            trend_summary=res["trend_summary"]
+        )
+    except Exception as e:
+        logger.error(f"AI prediction API failed: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Prediction failed: {e}"
+        )
 
-    return {
-        "projected_loss": f"+{projected_loss}%",
-        "projected_hectares": f"{round(changed_ha * 0.35, 2)} Ha",
-        "confidence": confidence,
-        "reason": "Model extrapolates changes based on local logging velocities and NDVI indices. Canopy edge erosion indicates moderate expansion risk near eastern buffer quadrants due to seasonal moisture dry-outs.",
-        "action": "Deploy fire lines and schedule satellite passes during maximum dry seasons (March-May). Target surveillance resources to high edge threat zones."
-    }
+
