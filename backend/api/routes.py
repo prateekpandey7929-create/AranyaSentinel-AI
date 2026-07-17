@@ -730,39 +730,6 @@ async def run_season_verification(request: SeasonVerificationRequest):
             detail=f"Verification failed: {e}"
         )
 
-@router.post("/forest-knowledge", response_model=ForestKnowledgeResponse, status_code=status.HTTP_200_OK)
-async def get_forest_knowledge_info(request: ForestKnowledgeRequest):
-    """
-    Retrieves rich ecological and encyclopedic information for the given coordinates.
-    """
-    logger.info("API EXECUTION: POST /forest-knowledge request received")
-    try:
-        res = resolve_forest_knowledge(lat=request.latitude, lon=request.longitude)
-        return ForestKnowledgeResponse(
-            status="success",
-            name=res["name"],
-            forest_type=res["forest_type"],
-            protected_status=res["protected_status"],
-            district=res["district"],
-            state=res["state"],
-            country=res["country"],
-            geographical_location=res["geographical_location"],
-            climate=res["climate"],
-            annual_rainfall=res["annual_rainfall"],
-            major_vegetation=res["major_vegetation"],
-            dominant_tree_species=res["dominant_tree_species"],
-            biodiversity=res["biodiversity"],
-            important_flora_and_fauna=res["important_flora_and_fauna"],
-            ecological_importance=res["ecological_importance"],
-            nearby_water_bodies=res["nearby_water_bodies"],
-            why_famous=res["why_famous"]
-        )
-    except Exception as e:
-        logger.error(f"Forest knowledge API failed: {e}")
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Failed to retrieve forest knowledge: {e}"
-        )
 
 @router.post("/ai-prediction", response_model=AIPredictionResponse, status_code=status.HTTP_200_OK)
 async def get_ai_prediction_insights(request: AIPredictionRequest):
