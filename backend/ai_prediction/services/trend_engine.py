@@ -17,7 +17,7 @@ def compute_forest_trend(
 
     # 1. Determine Trend Direction
     if forest_loss_pct > 5.0 or encroachments > 0 or health_score < 60.0:
-        trend_direction = "Degrading 📉"
+        trend_direction = "Degrading "
         future_prediction = "Forest vegetation is expected to decline if the current environmental conditions continue."
         
         # Calculate recovery probability (typically lower for degrading forests)
@@ -31,7 +31,7 @@ def compute_forest_trend(
             "Without intervention, the forest condition is expected to worsen."
         )
     elif forest_loss_pct < 2.0 and encroachments == 0 and health_score > 80.0:
-        trend_direction = "Improving 📈"
+        trend_direction = "Improving "
         future_prediction = "Forest canopy and vegetative biomass are expected to continue expanding."
         recovery_prob = max(60.0, min(98.0, int(70.0 + (health_score * 0.25))))
         trend_summary = (
@@ -39,7 +39,7 @@ def compute_forest_trend(
             "showing strong natural regrowth and minimal forest loss."
         )
     else:
-        trend_direction = "Stable ➡️"
+        trend_direction = "Stable "
         future_prediction = "Forest vegetation and canopy structure are expected to remain steady in the next monitoring cycle."
         recovery_prob = max(50.0, min(85.0, int(50.0 + (health_score * 0.3))))
         trend_summary = (

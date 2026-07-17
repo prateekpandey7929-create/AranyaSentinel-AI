@@ -67,7 +67,7 @@ export default function Knowledge() {
       <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-forest-900/30 pb-4 gap-4">
         <div>
           <h1 className="text-3xl font-extrabold text-white tracking-tight uppercase flex items-center gap-3">
-            <span className="text-4xl">📚</span> Forest Knowledge Explorer
+            <span className="text-4xl"></span> Forest Knowledge Explorer
           </h1>
           <p className="text-slate-400 text-sm mt-2 font-mono">
             Comprehensive encyclopedia of critical ecosystems.

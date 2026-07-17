@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 import { MapContainer, TileLayer, Polygon, ImageOverlay, useMap, useMapEvents } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
@@ -41,7 +42,9 @@ function ChangeView({ center, zoom }) {
 }
 
 export default function Analysis() {
+  const { i18n } = useTranslation();
   const [activeTab, setActiveTab] = useState("map");
+  const [reportLang, setReportLang] = useState("en");
   const [config, setConfig] = useState(null);
 
   // Date ranges
@@ -74,12 +77,34 @@ export default function Analysis() {
   const [toast, setToast] = useState({ show: false, message: "", type: "success" });
 
   // Results state
-  const [analysisResult, setAnalysisResult] = useState(null);
-  const [resultCenter, setResultCenter] = useState([22.45, 78.20]);
-  const [resultBounds, setResultBounds] = useState([
-    [22.43, 78.18],
-    [22.47, 78.22]
-  ]);
+  const [analysisResult, setAnalysisResult] = useState(() => {
+    const saved = sessionStorage.getItem("analysisResult");
+    return saved ? JSON.parse(saved) : null;
+  });
+  const [resultCenter, setResultCenter] = useState(() => {
+    const saved = sessionStorage.getItem("resultCenter");
+    return saved ? JSON.parse(saved) : [22.45, 78.20];
+  });
+  const [resultBounds, setResultBounds] = useState(() => {
+    const saved = sessionStorage.getItem("resultBounds");
+    return saved ? JSON.parse(saved) : [
+      [22.43, 78.18],
+      [22.47, 78.22]
+    ];
+  });
+
+  // Persist results
+  useEffect(() => {
+    if (analysisResult) {
+      sessionStorage.setItem("analysisResult", JSON.stringify(analysisResult));
+      sessionStorage.setItem("resultCenter", JSON.stringify(resultCenter));
+      sessionStorage.setItem("resultBounds", JSON.stringify(resultBounds));
+    } else {
+      sessionStorage.removeItem("analysisResult");
+      sessionStorage.removeItem("resultCenter");
+      sessionStorage.removeItem("resultBounds");
+    }
+  }, [analysisResult, resultCenter, resultBounds]);
 
   // Load backend config default values
   useEffect(() => {
@@ -657,7 +682,7 @@ export default function Analysis() {
                   <ChangeView center={resultCenter} zoom={13} />
                 </MapContainer>
                 <div className="absolute top-4 right-4 z-[99] bg-slate-950/90 border border-forest-500/30 p-2.5 rounded text-[10px] text-emerald-400">
-                  🔴 Heatmap overlay active
+                   Heatmap overlay active
                 </div>
               </div>
 
@@ -704,10 +729,66 @@ export default function Analysis() {
                 </div>
               </div>
 
+              {/* AI Prediction & Recommendations */}
+              {analysisResult.ai_prediction && (
+                <div className="glass-panel p-6 rounded-2xl space-y-4 border-l-4 border-emerald-500">
+                  <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+                    <h3 className="text-lg font-bold text-white flex items-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-emerald-400 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.381z" clipRule="evenodd" />
+                      </svg>
+                      AI Diagnostic & Solutions
+                    </h3>
+                    <span className={`px-3 py-1 rounded-full text-xs font-bold ${
+                      analysisResult.ai_prediction.severity === 'Critical' ? 'bg-red-900/50 text-red-400' :
+                      analysisResult.ai_prediction.severity === 'High' ? 'bg-orange-900/50 text-orange-400' :
+                      analysisResult.ai_prediction.severity === 'Moderate' ? 'bg-yellow-900/50 text-yellow-400' :
+                      'bg-emerald-900/50 text-emerald-400'
+                    }`}>
+                      {analysisResult.ai_prediction.severity} Severity
+                    </span>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-3">
+                      <div>
+                        <span className="text-xs text-slate-400 uppercase font-semibold">Diagnosis</span>
+                        <p className="text-sm text-slate-300 mt-1 font-medium">{analysisResult.ai_prediction.prediction}</p>
+                      </div>
+                      <div>
+                        <span className="text-xs text-slate-400 uppercase font-semibold">Reasoning</span>
+                        <p className="text-sm text-slate-300 mt-1">{analysisResult.ai_prediction.reason}</p>
+                      </div>
+                      <div>
+                        <span className="text-xs text-slate-400 uppercase font-semibold">AI Summary</span>
+                        <p className="text-sm text-slate-500 mt-1 italic leading-relaxed">{analysisResult.ai_prediction.ai_summary}</p>
+                      </div>
+                    </div>
+
+                    <div className="bg-slate-900/50 rounded-xl p-4 border border-slate-800/80">
+                      <span className="text-xs text-emerald-400 uppercase font-bold flex items-center mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Recommended Actions
+                      </span>
+                      <ul className="space-y-2">
+                        {analysisResult.ai_prediction.suggested_actions.map((action, idx) => (
+                          <li key={idx} className="text-sm text-slate-300 flex items-start">
+                            <span className="text-emerald-500 mr-2 mt-0.5">•</span>
+                            <span>{action}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              )}
+
               {/* Action Buttons for Trend Analysis & Report Generation */}
-              <div className="pt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="pt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
                 <button
-                  onClick={() => navigate("/trend-analysis")}
+                  onClick={() => navigate("/history")}
                   className="w-full py-4 rounded-xl font-bold transition shadow-lg bg-emerald-900/30 hover:bg-emerald-800/50 text-emerald-400 border border-emerald-500/20 flex items-center justify-center space-x-2"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -715,15 +796,36 @@ export default function Analysis() {
                   </svg>
                   <span>Trend Analysis</span>
                 </button>
+                <div className="flex flex-col justify-center">
+                  <div className="flex items-center bg-slate-900/80 border border-slate-700 rounded-xl px-4 py-3.5 h-full">
+                    <span className="text-sm text-slate-300 whitespace-nowrap mr-2">English +</span>
+                    <select 
+                      value={reportLang}
+                      onChange={(e) => setReportLang(e.target.value)}
+                      className="w-full bg-transparent text-emerald-400 text-sm font-semibold focus:outline-none cursor-pointer"
+                    >
+                      <option value="en">Any Regional Lang</option>
+                      <option value="hi">हिंदी (Hindi)</option>
+                      <option value="mr">मराठी (Marathi)</option>
+                      <option value="gu">ગુજરાતી (Gujarati)</option>
+                      <option value="ta">தமிழ் (Tamil)</option>
+                      <option value="te">తెలుగు (Telugu)</option>
+                      <option value="kn">ಕನ್ನಡ (Kannada)</option>
+                      <option value="ml">മലയാളം (Malayalam)</option>
+                      <option value="bn">বাংলা (Bengali)</option>
+                      <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
+                    </select>
+                  </div>
+                </div>
                 <button
                   onClick={async () => {
                     try {
                       setGeneratingReport(true);
                       triggerToast("Generating comprehensive report...", "success");
-                      const res = await axios.post(`${API_BASE}/report/generate?lang=hi`);
+                      const res = await axios.post(`${API_BASE}/report/generate?lang=${reportLang}`);
                       if (res.data.status === "success") {
-                        triggerToast("Report Generated! Navigating to History...", "success");
-                        setTimeout(() => navigate("/history"), 1500);
+                        triggerToast("Report Generated! Navigating to Reports...", "success");
+                        setTimeout(() => navigate("/reports"), 1500);
                       }
                     } catch (err) {
                       console.error(err);

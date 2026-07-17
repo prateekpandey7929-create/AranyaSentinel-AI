@@ -89,14 +89,14 @@ export default function ForestEncyclopedia() {
                 <span>Querying Ecological DB...</span>
               </span>
             ) : (
-              <span>🔍 Search Forest Region</span>
+              <span> Search Forest Region</span>
             )}
           </button>
         </form>
 
         {error && (
           <div className="mt-4 bg-red-950/40 border border-red-500/30 text-red-200 text-xs px-4 py-3 rounded-xl font-semibold">
-            ⚠️ {error}
+             {error}
           </div>
         )}
       </div>
@@ -118,17 +118,17 @@ export default function ForestEncyclopedia() {
           <div className="border-b border-forest-900/20 pb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
             <div className="space-y-2">
               <span className="bg-forest-950/60 text-forest-300 border border-forest-500/25 px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase inline-block">
-                📚 Geographical Registry Profile
+                 Geographical Registry Profile
               </span>
               <h2 className="text-2xl font-extrabold text-white tracking-tight">
                 {data.name}
               </h2>
               <p className="text-xs text-slate-400 font-semibold">
-                📍 {data.geographical_location} | {data.district}, {data.state}, {data.country}
+                 {data.geographical_location} | {data.district}, {data.state}, {data.country}
               </p>
             </div>
             <span className="bg-slate-900/90 border border-forest-900/40 px-4 py-2.5 rounded-xl text-xs text-slate-300 font-extrabold shadow-lg">
-              🛡️ {data.protected_status}
+               {data.protected_status}
             </span>
           </div>
 
@@ -138,7 +138,7 @@ export default function ForestEncyclopedia() {
             <div className="space-y-6">
               <div className="bg-slate-950/60 p-5 rounded-2xl border border-forest-900/10 space-y-3">
                 <span className="text-forest-300 font-extrabold uppercase tracking-wider block text-[10px]">
-                  🌲 Forest Type & Vegetation
+                   Forest Type & Vegetation
                 </span>
                 <p className="text-slate-300 font-semibold text-sm">
                   <strong>Type:</strong> {data.forest_type}
@@ -150,7 +150,7 @@ export default function ForestEncyclopedia() {
 
               <div className="bg-slate-950/60 p-5 rounded-2xl border border-forest-900/10 space-y-3">
                 <span className="text-forest-300 font-extrabold uppercase tracking-wider block text-[10px]">
-                  🐅 Wildlife & Biodiversity (Flora & Fauna)
+                   Wildlife & Biodiversity (Flora & Fauna)
                 </span>
                 <p className="text-slate-300 font-semibold text-sm">
                   <strong>Biodiversity Index:</strong> {data.biodiversity}
@@ -165,12 +165,12 @@ export default function ForestEncyclopedia() {
             <div className="space-y-6">
               <div className="bg-slate-950/60 p-5 rounded-2xl border border-forest-900/10 space-y-3">
                 <span className="text-forest-300 font-extrabold uppercase tracking-wider block text-[10px]">
-                  🍃 Dominant Canopy Tree Species
+                   Dominant Canopy Tree Species
                 </span>
                 <div className="flex flex-wrap gap-2.5 pt-1.5">
                   {data.dominant_tree_species.map((tree, idx) => (
                     <span key={idx} className="bg-forest-900/30 text-forest-300 border border-forest-500/20 px-3 py-1.5 rounded-lg font-extrabold text-[10px]">
-                      🌳 {tree}
+                       {tree}
                     </span>
                   ))}
                 </div>
@@ -178,7 +178,7 @@ export default function ForestEncyclopedia() {
 
               <div className="bg-slate-950/60 p-5 rounded-2xl border border-forest-900/10 space-y-3">
                 <span className="text-forest-300 font-extrabold uppercase tracking-wider block text-[10px]">
-                  💧 Climatology & Hydrological Profile
+                   Climatology & Hydrological Profile
                 </span>
                 <p className="text-slate-300 font-semibold">
                   <strong>Climate Range:</strong> {data.climate}
@@ -197,7 +197,7 @@ export default function ForestEncyclopedia() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-xs">
             <div className="md:col-span-2 bg-slate-950/60 p-5 rounded-2xl border border-forest-900/10 space-y-2">
               <span className="text-forest-300 font-extrabold uppercase tracking-wider block text-[10px]">
-                🌍 Ecological Significance
+                 Ecological Significance
               </span>
               <p className="text-slate-300 leading-relaxed font-semibold text-sm">
                 {data.ecological_importance}
@@ -206,7 +206,7 @@ export default function ForestEncyclopedia() {
 
             <div className="md:col-span-1 bg-forest-950/20 p-5 rounded-2xl border border-forest-500/25 space-y-2 relative overflow-hidden">
               <span className="text-emerald-400 font-black uppercase tracking-wider block text-[10px]">
-                💡 Did You Know?
+                 Did You Know?
               </span>
               <p className="text-slate-200 leading-relaxed font-semibold italic">
                 {data.why_famous}

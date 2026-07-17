@@ -78,7 +78,7 @@ class TestAIPrediction(unittest.TestCase):
             season_classification=None,
             cloud_pct=0.0
         )
-        self.assertEqual(res["trend_direction"], "Degrading 📉")
+        self.assertEqual(res["trend_direction"], "Degrading ")
         self.assertEqual(res["recovery_probability"], 38.0)
         self.assertIn("decline", res["future_prediction"])
         self.assertIn("decreased", res["trend_summary"])
@@ -92,7 +92,7 @@ class TestAIPrediction(unittest.TestCase):
             season_classification=None,
             cloud_pct=0.0
         )
-        self.assertEqual(res["trend_direction"], "Improving 📈")
+        self.assertEqual(res["trend_direction"], "Improving ")
         self.assertTrue(res["recovery_probability"] > 80.0)
         self.assertIn("expanding", res["future_prediction"])
 
@@ -105,7 +105,7 @@ class TestAIPrediction(unittest.TestCase):
             season_classification=None,
             cloud_pct=0.0
         )
-        self.assertEqual(res["trend_direction"], "Stable ➡️")
+        self.assertEqual(res["trend_direction"], "Stable ")
         self.assertTrue(50.0 <= res["recovery_probability"] <= 85.0)
 
 class TestAIPredictionAPI(unittest.TestCase):

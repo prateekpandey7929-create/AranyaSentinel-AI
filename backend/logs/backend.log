@@ -1262,3 +1262,822 @@
 2026-07-17 18:31:10,041 [INFO] backend: Registered API routes successfully.
 2026-07-17 18:31:10,047 [INFO] backend: Lifespan startup: Initializing Earth Engine and loading model weights...
 2026-07-17 18:31:10,047 [INFO] backend: Cleaning outputs directory of stale files...
+2026-07-18 00:19:11,849 [INFO] backend: Initializing FastAPI Backend server...
+2026-07-18 00:19:11,853 [INFO] backend: Mounted static outputs route at: /static (pointing to D:\Projects\AS\outputs)
+2026-07-18 00:19:13,655 [INFO] backend: Registered API routes successfully.
+2026-07-18 00:19:13,657 [INFO] backend: Lifespan startup: Initializing Earth Engine and loading model weights...
+2026-07-18 00:19:13,657 [INFO] backend: Cleaning outputs directory of stale files...
+2026-07-18 00:19:19,247 [INFO] backend: Inference device: cuda
+2026-07-18 00:19:19,247 [INFO] backend: Loading U-Net weights from: D:\Projects\AS\weights\unet_forest_loss.pth
+2026-07-18 00:19:19,462 [INFO] backend: Loading YOLOv8 weights from: D:\Projects\AS\weights\yolov8_encroachment.pt
+2026-07-18 00:19:19,512 [INFO] backend: AI models pre-loaded in memory successfully!
+2026-07-18 00:20:06,479 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:20:06,497 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:20:06,520 [INFO] backend: Retrieving severity.json metrics.
+2026-07-18 00:20:06,520 [ERROR] backend: Severity metrics not found: Severity metrics file not found at: D:\Projects\AS\outputs\severity.json. Run /analyze first.
+2026-07-18 00:20:06,526 [INFO] backend: Retrieving severity.json metrics.
+2026-07-18 00:20:06,526 [ERROR] backend: Severity metrics not found: Severity metrics file not found at: D:\Projects\AS\outputs\severity.json. Run /analyze first.
+2026-07-18 00:20:06,554 [INFO] backend: Retrieving plain-text summary report.
+2026-07-18 00:20:06,554 [ERROR] backend: Summary not found: Summary report file not found at: D:\Projects\AS\outputs\summary.txt. Run /analyze first.
+2026-07-18 00:20:06,557 [INFO] backend: Retrieving plain-text summary report.
+2026-07-18 00:20:06,558 [ERROR] backend: Summary not found: Summary report file not found at: D:\Projects\AS\outputs\summary.txt. Run /analyze first.
+2026-07-18 00:20:06,583 [INFO] backend: API EXECUTION: GET /forest-health request received
+2026-07-18 00:20:06,583 [INFO] backend: Starting Multi-Index Forest Health Score computation...
+2026-07-18 00:20:06,628 [WARNING] backend: severity.json not found. Running with fallback defaults.
+2026-07-18 00:20:06,629 [WARNING] backend: ndvi_after.tif not found.
+2026-07-18 00:20:06,629 [WARNING] backend: change_mask.png not found.
+2026-07-18 00:20:06,630 [WARNING] backend: after.tif not found.
+2026-07-18 00:20:06,630 [WARNING] backend: Invalid or missing change_mask. Returning default Density Score of 50.0
+2026-07-18 00:20:06,630 [INFO] backend: Forest Health Score calculation completed. Score: 71.33, Category: Good
+2026-07-18 00:20:06,703 [INFO] backend: API EXECUTION: GET /forest-health request received
+2026-07-18 00:20:06,703 [INFO] backend: Starting Multi-Index Forest Health Score computation...
+2026-07-18 00:20:06,741 [WARNING] backend: severity.json not found. Running with fallback defaults.
+2026-07-18 00:20:06,742 [WARNING] backend: ndvi_after.tif not found.
+2026-07-18 00:20:06,742 [WARNING] backend: change_mask.png not found.
+2026-07-18 00:20:06,748 [WARNING] backend: after.tif not found.
+2026-07-18 00:20:06,748 [WARNING] backend: Invalid or missing change_mask. Returning default Density Score of 50.0
+2026-07-18 00:20:06,748 [INFO] backend: Forest Health Score calculation completed. Score: 71.33, Category: Good
+2026-07-18 00:22:12,251 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:22:12,269 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:24:06,969 [INFO] backend: Fetching all historical records
+2026-07-18 00:24:06,990 [INFO] backend: Compiling historical trends
+2026-07-18 00:24:06,994 [INFO] backend: Fetching all historical records
+2026-07-18 00:24:06,998 [INFO] backend: Compiling historical trends
+2026-07-18 00:24:48,784 [INFO] backend: Lifespan shutdown: Cleaning up resources...
+2026-07-18 00:24:48,784 [INFO] backend: Server stopped successfully.
+2026-07-18 00:24:53,087 [INFO] backend: Initializing FastAPI Backend server...
+2026-07-18 00:24:53,093 [INFO] backend: Mounted static outputs route at: /static (pointing to D:\Projects\AS\outputs)
+2026-07-18 00:24:53,490 [INFO] backend: Registered API routes successfully.
+2026-07-18 00:24:53,491 [INFO] backend: Lifespan startup: Initializing Earth Engine and loading model weights...
+2026-07-18 00:24:53,491 [INFO] backend: Cleaning outputs directory of stale files...
+2026-07-18 00:25:57,976 [INFO] backend: Initializing FastAPI Backend server...
+2026-07-18 00:25:57,976 [INFO] backend: Mounted static outputs route at: /static (pointing to D:\Projects\AS\outputs)
+2026-07-18 00:25:58,420 [INFO] backend: Registered API routes successfully.
+2026-07-18 00:25:58,422 [INFO] backend: Lifespan startup: Initializing Earth Engine and loading model weights...
+2026-07-18 00:25:58,422 [INFO] backend: Cleaning outputs directory of stale files...
+2026-07-18 00:26:03,253 [INFO] backend: Inference device: cuda
+2026-07-18 00:26:03,260 [INFO] backend: Loading U-Net weights from: D:\Projects\AS\weights\unet_forest_loss.pth
+2026-07-18 00:26:03,394 [INFO] backend: Loading YOLOv8 weights from: D:\Projects\AS\weights\yolov8_encroachment.pt
+2026-07-18 00:26:03,441 [INFO] backend: AI models pre-loaded in memory successfully!
+2026-07-18 00:26:30,129 [INFO] backend: Fetching all historical records
+2026-07-18 00:26:30,137 [INFO] backend: Compiling historical trends
+2026-07-18 00:26:30,142 [INFO] backend: Fetching all historical records
+2026-07-18 00:26:30,146 [INFO] backend: Compiling historical trends
+2026-07-18 00:28:01,453 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:28:01,467 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:28:05,544 [INFO] backend: ==================================================
+2026-07-18 00:28:05,544 [INFO] backend: API EXECUTION: POST /analyze request received
+2026-07-18 00:28:05,544 [INFO] backend: ROI Parameters: Coordinates (Center: Lat 22.334, Lon 80.611, Buffer: 0.02)
+2026-07-18 00:28:05,544 [INFO] backend: Before Date Range: 2022-01-01 to 2022-03-31
+2026-07-18 00:28:05,544 [INFO] backend: After Date Range: 2026-01-01 to 2026-03-31
+2026-07-18 00:28:05,544 [INFO] backend: ==================================================
+2026-07-18 00:28:20,705 [INFO] backend: GEE Download status: SUCCESS (Time taken: 15.16 seconds)
+2026-07-18 00:28:20,705 [INFO] backend: Running preprocessing on downloaded GeoTIFFs...
+2026-07-18 00:28:20,753 [WARNING] rasterio._env: CPLE_AppDefined in before.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:28:20,823 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:28:20,879 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:28:20,888 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:28:20,922 [INFO] backend: Running Monsoon Cloud Filter...
+2026-07-18 00:28:20,932 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:28:20,937 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:28:20,942 [INFO] backend: Detected Cloud Coverage - Before: 0.00%, After: 0.00%
+2026-07-18 00:28:20,943 [INFO] backend: Executing Cloud Removal & Image Enhancement Pipeline...
+2026-07-18 00:28:20,946 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:28:20,948 [INFO] backend: Original image cloud cover: 0.00%
+2026-07-18 00:28:20,950 [INFO] backend: Gap filling and pixel reconstruction completed.
+2026-07-18 00:28:20,971 [INFO] backend: Atmospheric correction, noise reduction, and CLAHE enhancement completed successfully.
+2026-07-18 00:28:20,976 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:28:20,978 [INFO] backend: Enhanced image remaining cloud cover: 0.00%
+2026-07-18 00:28:20,978 [INFO] backend: Cloud removal pipeline completed in 0.0350s. Quality Score: Excellent
+2026-07-18 00:28:20,978 [INFO] backend: Executing Cloud Removal & Image Enhancement Pipeline...
+2026-07-18 00:28:20,983 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:28:20,983 [INFO] backend: Original image cloud cover: 0.00%
+2026-07-18 00:28:20,990 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:28:20,990 [INFO] backend: No pixels could be filled using historical imagery (historical also cloudy or no overlaps).
+2026-07-18 00:28:20,990 [INFO] backend: Gap filling and pixel reconstruction completed.
+2026-07-18 00:28:21,011 [INFO] backend: Atmospheric correction, noise reduction, and CLAHE enhancement completed successfully.
+2026-07-18 00:28:21,019 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:28:21,020 [INFO] backend: Enhanced image remaining cloud cover: 0.00%
+2026-07-18 00:28:21,021 [INFO] backend: Cloud removal pipeline completed in 0.0431s. Quality Score: Excellent
+2026-07-18 00:28:21,029 [INFO] backend: Cloud removal and image enhancement finished successfully.
+2026-07-18 00:28:21,080 [INFO] backend: Calculating NDVI maps...
+2026-07-18 00:28:21,199 [INFO] backend: Running AI Model Inference...
+2026-07-18 00:28:30,442 [INFO] backend: AI Inference execution time: 9.24 seconds (U-Net + YOLOv8)
+2026-07-18 00:28:30,442 [INFO] backend: Combining NDVI and AI results to compute metrics...
+2026-07-18 00:28:30,447 [INFO] backend: Executing Season-Aware Verification & Forest Knowledge Explorer...
+2026-07-18 00:28:30,447 [INFO] backend: Running Season-Aware False Positive Decision Engine...
+2026-07-18 00:28:30,449 [INFO] backend: Resolved weather parameters: Season=Winter (Cool & Dry), Temp=19.4°C, Rainfall=12.0mm.
+2026-07-18 00:28:30,449 [INFO] backend: Historical NDVI baseline calculated for coordinates (22.334, 80.611) in Month 1: Avg: 0.56, Range: [0.48 - 0.64]
+2026-07-18 00:28:30,449 [INFO] backend: Seasonal Verification Outcome: Result=Natural Seasonal Change, Confidence=80.0%
+2026-07-18 00:28:30,450 [INFO] backend: Resolving forest knowledge for coordinates (22.3340, 80.6110)...
+2026-07-18 00:28:30,450 [INFO] backend: Spatial match found in database: kanha (Kanha Tiger Reserve).
+2026-07-18 00:28:30,450 [INFO] backend: Forest knowledge resolved in 0.0000s.
+2026-07-18 00:28:30,450 [INFO] backend: Generating heatmap and visual dashboard overlays...
+2026-07-18 00:28:30,560 [INFO] backend: Visual outputs and report generated in 0.62 seconds.
+2026-07-18 00:28:30,560 [INFO] backend: API /analyze run completed in 25.02 seconds.
+2026-07-18 00:28:30,569 [INFO] backend: Executing AI Prediction Engine after report outputs are written...
+2026-07-18 00:28:30,569 [INFO] backend: Starting Multi-Index Forest Health Score computation...
+2026-07-18 00:28:30,594 [INFO] backend: Successfully loaded forest loss and detection metrics from severity.json
+2026-07-18 00:28:30,622 [INFO] backend: Successfully loaded ndvi_after.tif
+2026-07-18 00:28:30,627 [INFO] backend: Successfully loaded change_mask.png
+2026-07-18 00:28:30,629 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:28:30,638 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:28:30,671 [INFO] backend: Successfully loaded B3 and B8 bands from after.tif (SWIR missing)
+2026-07-18 00:28:30,678 [INFO] backend: Forest Health Score calculation completed. Score: 57.61, Category: Moderate
+2026-07-18 00:28:30,678 [INFO] backend: Prediction Service: Running unified pipeline analysis...
+2026-07-18 00:28:30,678 [INFO] backend: Rule Engine: Evaluating classification and severity...
+2026-07-18 00:28:30,678 [INFO] backend: Recommendation Engine: Resolving action checklist for 'Natural Seasonal Vegetation Change'...
+2026-07-18 00:28:30,678 [INFO] backend: Explanation Generator: Formatting reason details...
+2026-07-18 00:28:30,678 [INFO] backend: Trend Engine: Calculating forest trend direction and future prediction...
+2026-07-18 00:28:31,075 [INFO] backend: Prediction Service: Completed. Result = Natural Seasonal Vegetation Change (Low)
+2026-07-18 00:28:53,868 [INFO] backend: Fetching all historical records
+2026-07-18 00:28:53,892 [INFO] backend: Compiling historical trends
+2026-07-18 00:28:53,909 [INFO] backend: Compiling historical trends
+2026-07-18 00:28:53,923 [INFO] backend: Fetching all historical records
+2026-07-18 00:29:05,845 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:29:05,899 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:29:19,721 [INFO] backend: ==================================================
+2026-07-18 00:29:19,722 [INFO] backend: API EXECUTION: POST /analyze request received
+2026-07-18 00:29:19,722 [INFO] backend: ROI Parameters: Coordinates (Center: Lat 22.754654, Lon 81.256618, Buffer: 0.02)
+2026-07-18 00:29:19,722 [INFO] backend: Before Date Range: 2022-01-01 to 2022-03-31
+2026-07-18 00:29:19,722 [INFO] backend: After Date Range: 2026-01-01 to 2026-03-31
+2026-07-18 00:29:19,722 [INFO] backend: ==================================================
+2026-07-18 00:29:34,018 [INFO] backend: GEE Download status: SUCCESS (Time taken: 14.29 seconds)
+2026-07-18 00:29:34,019 [INFO] backend: Running preprocessing on downloaded GeoTIFFs...
+2026-07-18 00:29:34,063 [WARNING] rasterio._env: CPLE_AppDefined in before.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:29:34,075 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:29:34,150 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:29:34,154 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:29:34,195 [INFO] backend: Running Monsoon Cloud Filter...
+2026-07-18 00:29:34,200 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:29:34,205 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:29:34,205 [INFO] backend: Detected Cloud Coverage - Before: 0.00%, After: 0.00%
+2026-07-18 00:29:34,205 [INFO] backend: Executing Cloud Removal & Image Enhancement Pipeline...
+2026-07-18 00:29:34,213 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:29:34,213 [INFO] backend: Original image cloud cover: 0.00%
+2026-07-18 00:29:34,214 [INFO] backend: Gap filling and pixel reconstruction completed.
+2026-07-18 00:29:34,234 [INFO] backend: Atmospheric correction, noise reduction, and CLAHE enhancement completed successfully.
+2026-07-18 00:29:34,239 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:29:34,241 [INFO] backend: Enhanced image remaining cloud cover: 0.00%
+2026-07-18 00:29:34,242 [INFO] backend: Cloud removal pipeline completed in 0.0365s. Quality Score: Excellent
+2026-07-18 00:29:34,242 [INFO] backend: Executing Cloud Removal & Image Enhancement Pipeline...
+2026-07-18 00:29:34,249 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:29:34,249 [INFO] backend: Original image cloud cover: 0.00%
+2026-07-18 00:29:34,253 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:29:34,254 [INFO] backend: No pixels could be filled using historical imagery (historical also cloudy or no overlaps).
+2026-07-18 00:29:34,254 [INFO] backend: Gap filling and pixel reconstruction completed.
+2026-07-18 00:29:34,282 [INFO] backend: Atmospheric correction, noise reduction, and CLAHE enhancement completed successfully.
+2026-07-18 00:29:34,287 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:29:34,289 [INFO] backend: Enhanced image remaining cloud cover: 0.00%
+2026-07-18 00:29:34,289 [INFO] backend: Cloud removal pipeline completed in 0.0475s. Quality Score: Excellent
+2026-07-18 00:29:34,293 [INFO] backend: Cloud removal and image enhancement finished successfully.
+2026-07-18 00:29:34,344 [INFO] backend: Calculating NDVI maps...
+2026-07-18 00:29:34,595 [INFO] backend: Running AI Model Inference...
+2026-07-18 00:29:34,943 [INFO] backend: AI Inference execution time: 0.35 seconds (U-Net + YOLOv8)
+2026-07-18 00:29:34,943 [INFO] backend: Combining NDVI and AI results to compute metrics...
+2026-07-18 00:29:34,946 [INFO] backend: Executing Season-Aware Verification & Forest Knowledge Explorer...
+2026-07-18 00:29:34,947 [INFO] backend: Running Season-Aware False Positive Decision Engine...
+2026-07-18 00:29:34,947 [INFO] backend: Resolved weather parameters: Season=Winter (Cool & Dry), Temp=19.3°C, Rainfall=12.0mm.
+2026-07-18 00:29:34,948 [INFO] backend: Historical NDVI baseline calculated for coordinates (22.754654, 81.256618) in Month 1: Avg: 0.56, Range: [0.48 - 0.64]
+2026-07-18 00:29:34,948 [INFO] backend: Seasonal Verification Outcome: Result=Natural Seasonal Change, Confidence=80.0%
+2026-07-18 00:29:34,949 [INFO] backend: Resolving forest knowledge for coordinates (22.7547, 81.2566)...
+2026-07-18 00:29:34,949 [INFO] backend: No spatial match found in database. Loading regional bioclimatic fallback profile.
+2026-07-18 00:29:34,950 [INFO] backend: Generating fallback forest profile for coordinates (22.754654, 81.256618)
+2026-07-18 00:29:34,950 [INFO] backend: Forest knowledge resolved (fallback) in 0.0005s.
+2026-07-18 00:29:34,950 [INFO] backend: Generating heatmap and visual dashboard overlays...
+2026-07-18 00:29:34,997 [INFO] backend: Visual outputs and report generated in 0.65 seconds.
+2026-07-18 00:29:34,997 [INFO] backend: API /analyze run completed in 15.29 seconds.
+2026-07-18 00:29:34,997 [INFO] backend: Executing AI Prediction Engine after report outputs are written...
+2026-07-18 00:29:34,997 [INFO] backend: Starting Multi-Index Forest Health Score computation...
+2026-07-18 00:29:35,039 [INFO] backend: Successfully loaded forest loss and detection metrics from severity.json
+2026-07-18 00:29:35,066 [INFO] backend: Successfully loaded ndvi_after.tif
+2026-07-18 00:29:35,091 [INFO] backend: Successfully loaded change_mask.png
+2026-07-18 00:29:35,092 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:29:35,099 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:29:35,129 [INFO] backend: Successfully loaded B3 and B8 bands from after.tif (SWIR missing)
+2026-07-18 00:29:35,136 [INFO] backend: Forest Health Score calculation completed. Score: 64.64, Category: Moderate
+2026-07-18 00:29:35,136 [INFO] backend: Prediction Service: Running unified pipeline analysis...
+2026-07-18 00:29:35,136 [INFO] backend: Rule Engine: Evaluating classification and severity...
+2026-07-18 00:29:35,136 [INFO] backend: Recommendation Engine: Resolving action checklist for 'Natural Seasonal Vegetation Change'...
+2026-07-18 00:29:35,136 [INFO] backend: Explanation Generator: Formatting reason details...
+2026-07-18 00:29:35,136 [INFO] backend: Trend Engine: Calculating forest trend direction and future prediction...
+2026-07-18 00:29:35,148 [INFO] backend: Prediction Service: Completed. Result = Natural Seasonal Vegetation Change (Low)
+2026-07-18 00:30:15,498 [INFO] backend: Generated new PDF report: AS_REPORT_20260718_002939 with lang: hi
+2026-07-18 00:34:21,828 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:34:21,851 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:34:24,812 [INFO] backend: ==================================================
+2026-07-18 00:34:24,813 [INFO] backend: API EXECUTION: POST /analyze request received
+2026-07-18 00:34:24,813 [INFO] backend: ROI Parameters: Coordinates (Center: Lat 22.334, Lon 80.611, Buffer: 0.02)
+2026-07-18 00:34:24,814 [INFO] backend: Before Date Range: 2022-01-01 to 2022-03-31
+2026-07-18 00:34:24,814 [INFO] backend: After Date Range: 2026-01-01 to 2026-03-31
+2026-07-18 00:34:24,814 [INFO] backend: ==================================================
+2026-07-18 00:34:40,899 [INFO] backend: GEE Download status: SUCCESS (Time taken: 16.08 seconds)
+2026-07-18 00:34:40,900 [INFO] backend: Running preprocessing on downloaded GeoTIFFs...
+2026-07-18 00:34:40,944 [WARNING] rasterio._env: CPLE_AppDefined in before.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:34:40,950 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:34:41,012 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:34:41,022 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:34:41,060 [INFO] backend: Running Monsoon Cloud Filter...
+2026-07-18 00:34:41,067 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:34:41,076 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:34:41,076 [INFO] backend: Detected Cloud Coverage - Before: 0.00%, After: 0.00%
+2026-07-18 00:34:41,076 [INFO] backend: Executing Cloud Removal & Image Enhancement Pipeline...
+2026-07-18 00:34:41,081 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:34:41,081 [INFO] backend: Original image cloud cover: 0.00%
+2026-07-18 00:34:41,081 [INFO] backend: Gap filling and pixel reconstruction completed.
+2026-07-18 00:34:41,103 [INFO] backend: Atmospheric correction, noise reduction, and CLAHE enhancement completed successfully.
+2026-07-18 00:34:41,112 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:34:41,112 [INFO] backend: Enhanced image remaining cloud cover: 0.00%
+2026-07-18 00:34:41,112 [INFO] backend: Cloud removal pipeline completed in 0.0359s. Quality Score: Excellent
+2026-07-18 00:34:41,112 [INFO] backend: Executing Cloud Removal & Image Enhancement Pipeline...
+2026-07-18 00:34:41,119 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:34:41,120 [INFO] backend: Original image cloud cover: 0.00%
+2026-07-18 00:34:41,124 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:34:41,124 [INFO] backend: No pixels could be filled using historical imagery (historical also cloudy or no overlaps).
+2026-07-18 00:34:41,124 [INFO] backend: Gap filling and pixel reconstruction completed.
+2026-07-18 00:34:41,143 [INFO] backend: Atmospheric correction, noise reduction, and CLAHE enhancement completed successfully.
+2026-07-18 00:34:41,143 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:34:41,143 [INFO] backend: Enhanced image remaining cloud cover: 0.00%
+2026-07-18 00:34:41,143 [INFO] backend: Cloud removal pipeline completed in 0.0307s. Quality Score: Excellent
+2026-07-18 00:34:41,158 [INFO] backend: Cloud removal and image enhancement finished successfully.
+2026-07-18 00:34:41,198 [INFO] backend: Calculating NDVI maps...
+2026-07-18 00:34:41,366 [INFO] backend: Running AI Model Inference...
+2026-07-18 00:34:41,706 [INFO] backend: AI Inference execution time: 0.34 seconds (U-Net + YOLOv8)
+2026-07-18 00:34:41,706 [INFO] backend: Combining NDVI and AI results to compute metrics...
+2026-07-18 00:34:41,717 [INFO] backend: Executing Season-Aware Verification & Forest Knowledge Explorer...
+2026-07-18 00:34:41,720 [INFO] backend: Running Season-Aware False Positive Decision Engine...
+2026-07-18 00:34:41,720 [INFO] backend: Resolved weather parameters: Season=Winter (Cool & Dry), Temp=19.4°C, Rainfall=12.0mm.
+2026-07-18 00:34:41,720 [INFO] backend: Historical NDVI baseline calculated for coordinates (22.334, 80.611) in Month 1: Avg: 0.56, Range: [0.48 - 0.64]
+2026-07-18 00:34:41,720 [INFO] backend: Seasonal Verification Outcome: Result=Natural Seasonal Change, Confidence=80.0%
+2026-07-18 00:34:41,721 [INFO] backend: Resolving forest knowledge for coordinates (22.3340, 80.6110)...
+2026-07-18 00:34:41,721 [INFO] backend: Spatial match found in database: kanha (Kanha Tiger Reserve).
+2026-07-18 00:34:41,721 [INFO] backend: Forest knowledge resolved in 0.0000s.
+2026-07-18 00:34:41,721 [INFO] backend: Generating heatmap and visual dashboard overlays...
+2026-07-18 00:34:41,768 [INFO] backend: Visual outputs and report generated in 0.56 seconds.
+2026-07-18 00:34:41,768 [INFO] backend: API /analyze run completed in 16.98 seconds.
+2026-07-18 00:34:41,768 [INFO] backend: Executing AI Prediction Engine after report outputs are written...
+2026-07-18 00:34:41,775 [INFO] backend: Starting Multi-Index Forest Health Score computation...
+2026-07-18 00:34:41,803 [INFO] backend: Successfully loaded forest loss and detection metrics from severity.json
+2026-07-18 00:34:41,838 [INFO] backend: Successfully loaded ndvi_after.tif
+2026-07-18 00:34:41,848 [INFO] backend: Successfully loaded change_mask.png
+2026-07-18 00:34:41,849 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:34:41,855 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:34:41,878 [INFO] backend: Successfully loaded B3 and B8 bands from after.tif (SWIR missing)
+2026-07-18 00:34:41,890 [INFO] backend: Forest Health Score calculation completed. Score: 57.61, Category: Moderate
+2026-07-18 00:34:41,894 [INFO] backend: Prediction Service: Running unified pipeline analysis...
+2026-07-18 00:34:41,894 [INFO] backend: Rule Engine: Evaluating classification and severity...
+2026-07-18 00:34:41,895 [INFO] backend: Recommendation Engine: Resolving action checklist for 'Natural Seasonal Vegetation Change'...
+2026-07-18 00:34:41,895 [INFO] backend: Explanation Generator: Formatting reason details...
+2026-07-18 00:34:41,895 [INFO] backend: Trend Engine: Calculating forest trend direction and future prediction...
+2026-07-18 00:34:41,904 [INFO] backend: Prediction Service: Completed. Result = Natural Seasonal Vegetation Change (Low)
+2026-07-18 00:35:38,955 [INFO] backend: Fetching all historical records
+2026-07-18 00:35:44,497 [INFO] backend: Compiling historical trends
+2026-07-18 00:36:55,944 [INFO] backend: Fetching all historical records
+2026-07-18 00:36:55,948 [INFO] backend: Compiling historical trends
+2026-07-18 00:36:55,959 [INFO] backend: Compiling historical trends
+2026-07-18 00:36:55,979 [INFO] backend: Fetching all historical records
+2026-07-18 00:36:56,983 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:36:57,018 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:37:05,658 [INFO] backend: ==================================================
+2026-07-18 00:37:05,659 [INFO] backend: API EXECUTION: POST /analyze request received
+2026-07-18 00:37:05,659 [INFO] backend: ROI Parameters: Coordinates (Center: Lat 22.334, Lon 80.611, Buffer: 0.02)
+2026-07-18 00:37:05,659 [INFO] backend: Before Date Range: 2022-01-01 to 2022-03-31
+2026-07-18 00:37:05,660 [INFO] backend: After Date Range: 2026-01-01 to 2026-03-31
+2026-07-18 00:37:05,661 [INFO] backend: ==================================================
+2026-07-18 00:37:21,695 [INFO] backend: GEE Download status: SUCCESS (Time taken: 16.03 seconds)
+2026-07-18 00:37:21,697 [INFO] backend: Running preprocessing on downloaded GeoTIFFs...
+2026-07-18 00:37:21,742 [WARNING] rasterio._env: CPLE_AppDefined in before.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:37:21,748 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:37:21,811 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:37:21,813 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:37:21,860 [INFO] backend: Running Monsoon Cloud Filter...
+2026-07-18 00:37:21,862 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:37:21,867 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:37:21,869 [INFO] backend: Detected Cloud Coverage - Before: 0.00%, After: 0.00%
+2026-07-18 00:37:21,869 [INFO] backend: Executing Cloud Removal & Image Enhancement Pipeline...
+2026-07-18 00:37:21,876 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:37:21,876 [INFO] backend: Original image cloud cover: 0.00%
+2026-07-18 00:37:21,878 [INFO] backend: Gap filling and pixel reconstruction completed.
+2026-07-18 00:37:21,903 [INFO] backend: Atmospheric correction, noise reduction, and CLAHE enhancement completed successfully.
+2026-07-18 00:37:21,905 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:37:21,906 [INFO] backend: Enhanced image remaining cloud cover: 0.00%
+2026-07-18 00:37:21,907 [INFO] backend: Cloud removal pipeline completed in 0.0383s. Quality Score: Excellent
+2026-07-18 00:37:21,907 [INFO] backend: Executing Cloud Removal & Image Enhancement Pipeline...
+2026-07-18 00:37:21,911 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:37:21,915 [INFO] backend: Original image cloud cover: 0.00%
+2026-07-18 00:37:21,915 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:37:21,921 [INFO] backend: No pixels could be filled using historical imagery (historical also cloudy or no overlaps).
+2026-07-18 00:37:21,922 [INFO] backend: Gap filling and pixel reconstruction completed.
+2026-07-18 00:37:21,946 [INFO] backend: Atmospheric correction, noise reduction, and CLAHE enhancement completed successfully.
+2026-07-18 00:37:21,949 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:37:21,951 [INFO] backend: Enhanced image remaining cloud cover: 0.00%
+2026-07-18 00:37:21,951 [INFO] backend: Cloud removal pipeline completed in 0.0442s. Quality Score: Excellent
+2026-07-18 00:37:21,954 [INFO] backend: Cloud removal and image enhancement finished successfully.
+2026-07-18 00:37:21,995 [INFO] backend: Calculating NDVI maps...
+2026-07-18 00:37:22,172 [INFO] backend: Running AI Model Inference...
+2026-07-18 00:37:22,566 [INFO] backend: AI Inference execution time: 0.39 seconds (U-Net + YOLOv8)
+2026-07-18 00:37:22,567 [INFO] backend: Combining NDVI and AI results to compute metrics...
+2026-07-18 00:37:22,568 [INFO] backend: Executing Season-Aware Verification & Forest Knowledge Explorer...
+2026-07-18 00:37:22,568 [INFO] backend: Running Season-Aware False Positive Decision Engine...
+2026-07-18 00:37:22,568 [INFO] backend: Resolved weather parameters: Season=Winter (Cool & Dry), Temp=19.4°C, Rainfall=12.0mm.
+2026-07-18 00:37:22,569 [INFO] backend: Historical NDVI baseline calculated for coordinates (22.334, 80.611) in Month 1: Avg: 0.56, Range: [0.48 - 0.64]
+2026-07-18 00:37:22,570 [INFO] backend: Seasonal Verification Outcome: Result=Natural Seasonal Change, Confidence=80.0%
+2026-07-18 00:37:22,570 [INFO] backend: Resolving forest knowledge for coordinates (22.3340, 80.6110)...
+2026-07-18 00:37:22,570 [INFO] backend: Spatial match found in database: kanha (Kanha Tiger Reserve).
+2026-07-18 00:37:22,570 [INFO] backend: Forest knowledge resolved in 0.0000s.
+2026-07-18 00:37:22,570 [INFO] backend: Generating heatmap and visual dashboard overlays...
+2026-07-18 00:37:22,612 [INFO] backend: Visual outputs and report generated in 0.55 seconds.
+2026-07-18 00:37:22,615 [INFO] backend: API /analyze run completed in 16.97 seconds.
+2026-07-18 00:37:22,621 [INFO] backend: Executing AI Prediction Engine after report outputs are written...
+2026-07-18 00:37:22,622 [INFO] backend: Starting Multi-Index Forest Health Score computation...
+2026-07-18 00:37:22,660 [INFO] backend: Successfully loaded forest loss and detection metrics from severity.json
+2026-07-18 00:37:22,686 [INFO] backend: Successfully loaded ndvi_after.tif
+2026-07-18 00:37:22,695 [INFO] backend: Successfully loaded change_mask.png
+2026-07-18 00:37:22,701 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:37:22,705 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:37:22,730 [INFO] backend: Successfully loaded B3 and B8 bands from after.tif (SWIR missing)
+2026-07-18 00:37:22,736 [INFO] backend: Forest Health Score calculation completed. Score: 57.61, Category: Moderate
+2026-07-18 00:37:22,736 [INFO] backend: Prediction Service: Running unified pipeline analysis...
+2026-07-18 00:37:22,736 [INFO] backend: Rule Engine: Evaluating classification and severity...
+2026-07-18 00:37:22,736 [INFO] backend: Recommendation Engine: Resolving action checklist for 'Natural Seasonal Vegetation Change'...
+2026-07-18 00:37:22,736 [INFO] backend: Explanation Generator: Formatting reason details...
+2026-07-18 00:37:22,736 [INFO] backend: Trend Engine: Calculating forest trend direction and future prediction...
+2026-07-18 00:37:22,749 [INFO] backend: Prediction Service: Completed. Result = Natural Seasonal Vegetation Change (Low)
+2026-07-18 00:37:28,895 [INFO] backend: Fetching all historical records
+2026-07-18 00:37:28,908 [INFO] backend: Compiling historical trends
+2026-07-18 00:37:28,918 [INFO] backend: Fetching all historical records
+2026-07-18 00:37:28,929 [INFO] backend: Compiling historical trends
+2026-07-18 00:37:50,304 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:37:50,339 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:39:30,955 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:40:00,766 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:40:00,784 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:40:02,255 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:40:02,272 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:40:07,416 [INFO] backend: ==================================================
+2026-07-18 00:40:07,416 [INFO] backend: API EXECUTION: POST /analyze request received
+2026-07-18 00:40:07,416 [INFO] backend: ROI Parameters: Coordinates (Center: Lat 22.334, Lon 80.611, Buffer: 0.02)
+2026-07-18 00:40:07,417 [INFO] backend: Before Date Range: 2022-01-01 to 2022-03-31
+2026-07-18 00:40:07,417 [INFO] backend: After Date Range: 2026-01-01 to 2026-03-31
+2026-07-18 00:40:07,417 [INFO] backend: ==================================================
+2026-07-18 00:40:20,004 [INFO] backend: GEE Download status: SUCCESS (Time taken: 12.58 seconds)
+2026-07-18 00:40:20,005 [INFO] backend: Running preprocessing on downloaded GeoTIFFs...
+2026-07-18 00:40:20,032 [WARNING] rasterio._env: CPLE_AppDefined in before.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:40:20,039 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:40:20,102 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:40:20,106 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:40:20,150 [INFO] backend: Running Monsoon Cloud Filter...
+2026-07-18 00:40:20,157 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:40:20,161 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:40:20,164 [INFO] backend: Detected Cloud Coverage - Before: 0.00%, After: 0.00%
+2026-07-18 00:40:20,164 [INFO] backend: Executing Cloud Removal & Image Enhancement Pipeline...
+2026-07-18 00:40:20,172 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:40:20,173 [INFO] backend: Original image cloud cover: 0.00%
+2026-07-18 00:40:20,173 [INFO] backend: Gap filling and pixel reconstruction completed.
+2026-07-18 00:40:20,195 [INFO] backend: Atmospheric correction, noise reduction, and CLAHE enhancement completed successfully.
+2026-07-18 00:40:20,199 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:40:20,199 [INFO] backend: Enhanced image remaining cloud cover: 0.00%
+2026-07-18 00:40:20,200 [INFO] backend: Cloud removal pipeline completed in 0.0352s. Quality Score: Excellent
+2026-07-18 00:40:20,200 [INFO] backend: Executing Cloud Removal & Image Enhancement Pipeline...
+2026-07-18 00:40:20,200 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:40:20,206 [INFO] backend: Original image cloud cover: 0.00%
+2026-07-18 00:40:20,207 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:40:20,214 [INFO] backend: No pixels could be filled using historical imagery (historical also cloudy or no overlaps).
+2026-07-18 00:40:20,214 [INFO] backend: Gap filling and pixel reconstruction completed.
+2026-07-18 00:40:20,234 [INFO] backend: Atmospheric correction, noise reduction, and CLAHE enhancement completed successfully.
+2026-07-18 00:40:20,237 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:40:20,237 [INFO] backend: Enhanced image remaining cloud cover: 0.00%
+2026-07-18 00:40:20,237 [INFO] backend: Cloud removal pipeline completed in 0.0369s. Quality Score: Excellent
+2026-07-18 00:40:20,241 [INFO] backend: Cloud removal and image enhancement finished successfully.
+2026-07-18 00:40:20,277 [INFO] backend: Calculating NDVI maps...
+2026-07-18 00:40:20,583 [INFO] backend: Running AI Model Inference...
+2026-07-18 00:40:20,928 [INFO] backend: AI Inference execution time: 0.34 seconds (U-Net + YOLOv8)
+2026-07-18 00:40:20,928 [INFO] backend: Combining NDVI and AI results to compute metrics...
+2026-07-18 00:40:20,931 [INFO] backend: Executing Season-Aware Verification & Forest Knowledge Explorer...
+2026-07-18 00:40:20,932 [INFO] backend: Running Season-Aware False Positive Decision Engine...
+2026-07-18 00:40:20,933 [INFO] backend: Resolved weather parameters: Season=Winter (Cool & Dry), Temp=19.4°C, Rainfall=12.0mm.
+2026-07-18 00:40:20,933 [INFO] backend: Historical NDVI baseline calculated for coordinates (22.334, 80.611) in Month 1: Avg: 0.56, Range: [0.48 - 0.64]
+2026-07-18 00:40:20,933 [INFO] backend: Seasonal Verification Outcome: Result=Natural Seasonal Change, Confidence=80.0%
+2026-07-18 00:40:20,934 [INFO] backend: Resolving forest knowledge for coordinates (22.3340, 80.6110)...
+2026-07-18 00:40:20,934 [INFO] backend: Spatial match found in database: kanha (Kanha Tiger Reserve).
+2026-07-18 00:40:20,934 [INFO] backend: Forest knowledge resolved in 0.0004s.
+2026-07-18 00:40:20,934 [INFO] backend: Generating heatmap and visual dashboard overlays...
+2026-07-18 00:40:20,977 [INFO] backend: Visual outputs and report generated in 0.67 seconds.
+2026-07-18 00:40:20,977 [INFO] backend: API /analyze run completed in 13.59 seconds.
+2026-07-18 00:40:20,987 [INFO] backend: Executing AI Prediction Engine after report outputs are written...
+2026-07-18 00:40:20,988 [INFO] backend: Starting Multi-Index Forest Health Score computation...
+2026-07-18 00:40:21,019 [INFO] backend: Successfully loaded forest loss and detection metrics from severity.json
+2026-07-18 00:40:21,046 [INFO] backend: Successfully loaded ndvi_after.tif
+2026-07-18 00:40:21,061 [INFO] backend: Successfully loaded change_mask.png
+2026-07-18 00:40:21,063 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:40:21,068 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:40:21,095 [INFO] backend: Successfully loaded B3 and B8 bands from after.tif (SWIR missing)
+2026-07-18 00:40:21,103 [INFO] backend: Forest Health Score calculation completed. Score: 57.61, Category: Moderate
+2026-07-18 00:40:21,103 [INFO] backend: Prediction Service: Running unified pipeline analysis...
+2026-07-18 00:40:21,103 [INFO] backend: Rule Engine: Evaluating classification and severity...
+2026-07-18 00:40:21,103 [INFO] backend: Recommendation Engine: Resolving action checklist for 'Natural Seasonal Vegetation Change'...
+2026-07-18 00:40:21,103 [INFO] backend: Explanation Generator: Formatting reason details...
+2026-07-18 00:40:21,103 [INFO] backend: Trend Engine: Calculating forest trend direction and future prediction...
+2026-07-18 00:40:21,114 [INFO] backend: Prediction Service: Completed. Result = Natural Seasonal Vegetation Change (Low)
+2026-07-18 00:40:44,693 [INFO] backend: Generated new PDF report: AS_REPORT_20260718_004042 with lang: hi
+2026-07-18 00:41:13,048 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:41:13,060 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:43:09,066 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:43:35,207 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:43:35,239 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:43:42,890 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:43:42,909 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:43:57,562 [INFO] backend: Generated new PDF report: AS_REPORT_20260718_004356 with lang: en
+2026-07-18 00:46:27,729 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:46:27,754 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:46:27,774 [INFO] backend: Retrieving severity.json metrics.
+2026-07-18 00:46:27,785 [INFO] backend: Retrieving severity.json metrics.
+2026-07-18 00:46:27,794 [INFO] backend: Retrieving plain-text summary report.
+2026-07-18 00:46:27,808 [INFO] backend: Retrieving plain-text summary report.
+2026-07-18 00:46:27,816 [INFO] backend: API EXECUTION: GET /forest-health request received
+2026-07-18 00:46:27,816 [INFO] backend: Starting Multi-Index Forest Health Score computation...
+2026-07-18 00:46:27,832 [INFO] backend: Successfully loaded forest loss and detection metrics from severity.json
+2026-07-18 00:46:27,841 [INFO] backend: Successfully loaded ndvi_after.tif
+2026-07-18 00:46:27,847 [INFO] backend: Successfully loaded change_mask.png
+2026-07-18 00:46:27,850 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:46:27,853 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:46:27,889 [INFO] backend: Successfully loaded B3 and B8 bands from after.tif (SWIR missing)
+2026-07-18 00:46:27,893 [INFO] backend: Forest Health Score calculation completed. Score: 57.61, Category: Moderate
+2026-07-18 00:46:27,924 [INFO] backend: API EXECUTION: GET /forest-health request received
+2026-07-18 00:46:27,924 [INFO] backend: Starting Multi-Index Forest Health Score computation...
+2026-07-18 00:46:27,944 [INFO] backend: Successfully loaded forest loss and detection metrics from severity.json
+2026-07-18 00:46:27,961 [INFO] backend: Successfully loaded ndvi_after.tif
+2026-07-18 00:46:27,971 [INFO] backend: Successfully loaded change_mask.png
+2026-07-18 00:46:27,974 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:46:27,984 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:46:28,020 [INFO] backend: Successfully loaded B3 and B8 bands from after.tif (SWIR missing)
+2026-07-18 00:46:28,028 [INFO] backend: Forest Health Score calculation completed. Score: 57.61, Category: Moderate
+2026-07-18 00:46:29,644 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:46:29,661 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:48:29,110 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:48:29,127 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:48:33,578 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:48:33,618 [INFO] backend: Retrieving severity.json metrics.
+2026-07-18 00:48:33,625 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:48:33,647 [INFO] backend: Retrieving plain-text summary report.
+2026-07-18 00:48:33,677 [INFO] backend: Retrieving severity.json metrics.
+2026-07-18 00:48:33,690 [INFO] backend: API EXECUTION: GET /forest-health request received
+2026-07-18 00:48:33,690 [INFO] backend: Starting Multi-Index Forest Health Score computation...
+2026-07-18 00:48:33,699 [INFO] backend: Successfully loaded forest loss and detection metrics from severity.json
+2026-07-18 00:48:33,711 [INFO] backend: Successfully loaded ndvi_after.tif
+2026-07-18 00:48:33,714 [INFO] backend: Successfully loaded change_mask.png
+2026-07-18 00:48:33,716 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:48:33,722 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:48:33,749 [INFO] backend: Successfully loaded B3 and B8 bands from after.tif (SWIR missing)
+2026-07-18 00:48:33,752 [INFO] backend: Forest Health Score calculation completed. Score: 57.61, Category: Moderate
+2026-07-18 00:48:33,772 [INFO] backend: Retrieving plain-text summary report.
+2026-07-18 00:48:33,883 [INFO] backend: API EXECUTION: GET /forest-health request received
+2026-07-18 00:48:33,883 [INFO] backend: Starting Multi-Index Forest Health Score computation...
+2026-07-18 00:48:33,897 [INFO] backend: Successfully loaded forest loss and detection metrics from severity.json
+2026-07-18 00:48:33,910 [INFO] backend: Successfully loaded ndvi_after.tif
+2026-07-18 00:48:33,911 [INFO] backend: Successfully loaded change_mask.png
+2026-07-18 00:48:33,913 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:48:33,922 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:48:33,955 [INFO] backend: Successfully loaded B3 and B8 bands from after.tif (SWIR missing)
+2026-07-18 00:48:33,961 [INFO] backend: Forest Health Score calculation completed. Score: 57.61, Category: Moderate
+2026-07-18 00:48:35,550 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:48:35,577 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:50:36,478 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:50:36,505 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:51:52,566 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:51:52,599 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:52:00,947 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:52:00,973 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:52:12,637 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:52:12,666 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:52:33,020 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:52:33,035 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:52:33,051 [INFO] backend: Retrieving severity.json metrics.
+2026-07-18 00:52:33,067 [INFO] backend: Retrieving severity.json metrics.
+2026-07-18 00:52:33,071 [INFO] backend: Retrieving plain-text summary report.
+2026-07-18 00:52:33,085 [INFO] backend: Retrieving plain-text summary report.
+2026-07-18 00:52:33,094 [INFO] backend: API EXECUTION: GET /forest-health request received
+2026-07-18 00:52:33,095 [INFO] backend: Starting Multi-Index Forest Health Score computation...
+2026-07-18 00:52:33,105 [INFO] backend: Successfully loaded forest loss and detection metrics from severity.json
+2026-07-18 00:52:33,111 [INFO] backend: Successfully loaded ndvi_after.tif
+2026-07-18 00:52:33,113 [INFO] backend: Successfully loaded change_mask.png
+2026-07-18 00:52:33,117 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:52:33,119 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:52:33,152 [INFO] backend: Successfully loaded B3 and B8 bands from after.tif (SWIR missing)
+2026-07-18 00:52:33,159 [INFO] backend: Forest Health Score calculation completed. Score: 57.61, Category: Moderate
+2026-07-18 00:52:33,169 [INFO] backend: API EXECUTION: GET /forest-health request received
+2026-07-18 00:52:33,169 [INFO] backend: Starting Multi-Index Forest Health Score computation...
+2026-07-18 00:52:33,187 [INFO] backend: Successfully loaded forest loss and detection metrics from severity.json
+2026-07-18 00:52:33,218 [INFO] backend: Successfully loaded ndvi_after.tif
+2026-07-18 00:52:33,218 [INFO] backend: Successfully loaded change_mask.png
+2026-07-18 00:52:33,224 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:52:33,230 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:52:33,261 [INFO] backend: Successfully loaded B3 and B8 bands from after.tif (SWIR missing)
+2026-07-18 00:52:33,267 [INFO] backend: Forest Health Score calculation completed. Score: 57.61, Category: Moderate
+2026-07-18 00:52:50,697 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:52:50,715 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:53:00,520 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:53:00,533 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:53:00,543 [INFO] backend: Retrieving severity.json metrics.
+2026-07-18 00:53:00,556 [INFO] backend: Retrieving severity.json metrics.
+2026-07-18 00:53:00,563 [INFO] backend: Retrieving plain-text summary report.
+2026-07-18 00:53:00,596 [INFO] backend: Retrieving plain-text summary report.
+2026-07-18 00:53:00,599 [INFO] backend: API EXECUTION: GET /forest-health request received
+2026-07-18 00:53:00,599 [INFO] backend: Starting Multi-Index Forest Health Score computation...
+2026-07-18 00:53:00,618 [INFO] backend: Successfully loaded forest loss and detection metrics from severity.json
+2026-07-18 00:53:00,628 [INFO] backend: Successfully loaded ndvi_after.tif
+2026-07-18 00:53:00,630 [INFO] backend: Successfully loaded change_mask.png
+2026-07-18 00:53:00,632 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:53:00,644 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:53:00,672 [INFO] backend: Successfully loaded B3 and B8 bands from after.tif (SWIR missing)
+2026-07-18 00:53:00,681 [INFO] backend: Forest Health Score calculation completed. Score: 57.61, Category: Moderate
+2026-07-18 00:53:00,691 [INFO] backend: API EXECUTION: GET /forest-health request received
+2026-07-18 00:53:00,691 [INFO] backend: Starting Multi-Index Forest Health Score computation...
+2026-07-18 00:53:00,713 [INFO] backend: Successfully loaded forest loss and detection metrics from severity.json
+2026-07-18 00:53:00,735 [INFO] backend: Successfully loaded ndvi_after.tif
+2026-07-18 00:53:00,735 [INFO] backend: Successfully loaded change_mask.png
+2026-07-18 00:53:00,735 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:53:00,751 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:53:00,792 [INFO] backend: Successfully loaded B3 and B8 bands from after.tif (SWIR missing)
+2026-07-18 00:53:00,801 [INFO] backend: Forest Health Score calculation completed. Score: 57.61, Category: Moderate
+2026-07-18 00:53:29,694 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:53:29,718 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:53:39,822 [INFO] backend: ==================================================
+2026-07-18 00:53:39,822 [INFO] backend: API EXECUTION: POST /analyze request received
+2026-07-18 00:53:39,823 [INFO] backend: ROI Parameters: Coordinates (Center: Lat 22.334, Lon 80.611, Buffer: 0.02)
+2026-07-18 00:53:39,823 [INFO] backend: Before Date Range: 2022-01-01 to 2022-03-31
+2026-07-18 00:53:39,823 [INFO] backend: After Date Range: 2026-01-01 to 2026-03-31
+2026-07-18 00:53:39,823 [INFO] backend: ==================================================
+2026-07-18 00:54:05,835 [INFO] backend: GEE Download status: SUCCESS (Time taken: 26.01 seconds)
+2026-07-18 00:54:05,837 [INFO] backend: Running preprocessing on downloaded GeoTIFFs...
+2026-07-18 00:54:05,889 [WARNING] rasterio._env: CPLE_AppDefined in before.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:54:05,899 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:54:05,958 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:54:05,963 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:54:06,005 [INFO] backend: Running Monsoon Cloud Filter...
+2026-07-18 00:54:06,010 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:54:06,015 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:54:06,015 [INFO] backend: Detected Cloud Coverage - Before: 0.00%, After: 0.00%
+2026-07-18 00:54:06,021 [INFO] backend: Executing Cloud Removal & Image Enhancement Pipeline...
+2026-07-18 00:54:06,024 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:54:06,026 [INFO] backend: Original image cloud cover: 0.00%
+2026-07-18 00:54:06,026 [INFO] backend: Gap filling and pixel reconstruction completed.
+2026-07-18 00:54:06,054 [INFO] backend: Atmospheric correction, noise reduction, and CLAHE enhancement completed successfully.
+2026-07-18 00:54:06,058 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:54:06,059 [INFO] backend: Enhanced image remaining cloud cover: 0.00%
+2026-07-18 00:54:06,059 [INFO] backend: Cloud removal pipeline completed in 0.0384s. Quality Score: Excellent
+2026-07-18 00:54:06,059 [INFO] backend: Executing Cloud Removal & Image Enhancement Pipeline...
+2026-07-18 00:54:06,065 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:54:06,065 [INFO] backend: Original image cloud cover: 0.00%
+2026-07-18 00:54:06,068 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:54:06,068 [INFO] backend: No pixels could be filled using historical imagery (historical also cloudy or no overlaps).
+2026-07-18 00:54:06,071 [INFO] backend: Gap filling and pixel reconstruction completed.
+2026-07-18 00:54:06,096 [INFO] backend: Atmospheric correction, noise reduction, and CLAHE enhancement completed successfully.
+2026-07-18 00:54:06,103 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 00:54:06,103 [INFO] backend: Enhanced image remaining cloud cover: 0.00%
+2026-07-18 00:54:06,103 [INFO] backend: Cloud removal pipeline completed in 0.0440s. Quality Score: Excellent
+2026-07-18 00:54:06,114 [INFO] backend: Cloud removal and image enhancement finished successfully.
+2026-07-18 00:54:06,157 [INFO] backend: Calculating NDVI maps...
+2026-07-18 00:54:06,332 [INFO] backend: Running AI Model Inference...
+2026-07-18 00:54:06,700 [INFO] backend: AI Inference execution time: 0.37 seconds (U-Net + YOLOv8)
+2026-07-18 00:54:06,700 [INFO] backend: Combining NDVI and AI results to compute metrics...
+2026-07-18 00:54:06,701 [INFO] backend: Executing Season-Aware Verification & Forest Knowledge Explorer...
+2026-07-18 00:54:06,701 [INFO] backend: Running Season-Aware False Positive Decision Engine...
+2026-07-18 00:54:06,702 [INFO] backend: Resolved weather parameters: Season=Winter (Cool & Dry), Temp=19.4°C, Rainfall=12.0mm.
+2026-07-18 00:54:06,702 [INFO] backend: Historical NDVI baseline calculated for coordinates (22.334, 80.611) in Month 1: Avg: 0.56, Range: [0.48 - 0.64]
+2026-07-18 00:54:06,703 [INFO] backend: Seasonal Verification Outcome: Result=Natural Seasonal Change, Confidence=80.0%
+2026-07-18 00:54:06,703 [INFO] backend: Resolving forest knowledge for coordinates (22.3340, 80.6110)...
+2026-07-18 00:54:06,703 [INFO] backend: Spatial match found in database: kanha (Kanha Tiger Reserve).
+2026-07-18 00:54:06,703 [INFO] backend: Forest knowledge resolved in 0.0000s.
+2026-07-18 00:54:06,703 [INFO] backend: Generating heatmap and visual dashboard overlays...
+2026-07-18 00:54:06,783 [INFO] backend: Visual outputs and report generated in 0.61 seconds.
+2026-07-18 00:54:06,784 [INFO] backend: API /analyze run completed in 26.98 seconds.
+2026-07-18 00:54:06,787 [INFO] backend: Executing AI Prediction Engine after report outputs are written...
+2026-07-18 00:54:06,787 [INFO] backend: Starting Multi-Index Forest Health Score computation...
+2026-07-18 00:54:06,818 [INFO] backend: Successfully loaded forest loss and detection metrics from severity.json
+2026-07-18 00:54:06,852 [INFO] backend: Successfully loaded ndvi_after.tif
+2026-07-18 00:54:06,857 [INFO] backend: Successfully loaded change_mask.png
+2026-07-18 00:54:06,860 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:54:06,868 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:54:06,905 [INFO] backend: Successfully loaded B3 and B8 bands from after.tif (SWIR missing)
+2026-07-18 00:54:06,908 [INFO] backend: Forest Health Score calculation completed. Score: 57.61, Category: Moderate
+2026-07-18 00:54:06,908 [INFO] backend: Prediction Service: Running unified pipeline analysis...
+2026-07-18 00:54:06,915 [INFO] backend: Rule Engine: Evaluating classification and severity...
+2026-07-18 00:54:06,915 [INFO] backend: Recommendation Engine: Resolving action checklist for 'Natural Seasonal Vegetation Change'...
+2026-07-18 00:54:06,915 [INFO] backend: Explanation Generator: Formatting reason details...
+2026-07-18 00:54:06,915 [INFO] backend: Trend Engine: Calculating forest trend direction and future prediction...
+2026-07-18 00:54:06,930 [INFO] backend: Prediction Service: Completed. Result = Natural Seasonal Vegetation Change (Low)
+2026-07-18 00:54:29,154 [INFO] backend: Fetching all historical records
+2026-07-18 00:54:29,160 [INFO] backend: Compiling historical trends
+2026-07-18 00:54:29,169 [INFO] backend: Fetching all historical records
+2026-07-18 00:54:29,175 [INFO] backend: Compiling historical trends
+2026-07-18 00:54:40,100 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:54:40,118 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:54:40,138 [INFO] backend: Retrieving severity.json metrics.
+2026-07-18 00:54:40,140 [INFO] backend: Retrieving severity.json metrics.
+2026-07-18 00:54:40,153 [INFO] backend: Retrieving plain-text summary report.
+2026-07-18 00:54:40,183 [INFO] backend: Retrieving plain-text summary report.
+2026-07-18 00:54:40,197 [INFO] backend: API EXECUTION: GET /forest-health request received
+2026-07-18 00:54:40,198 [INFO] backend: Starting Multi-Index Forest Health Score computation...
+2026-07-18 00:54:40,210 [INFO] backend: Successfully loaded forest loss and detection metrics from severity.json
+2026-07-18 00:54:40,222 [INFO] backend: Successfully loaded ndvi_after.tif
+2026-07-18 00:54:40,224 [INFO] backend: Successfully loaded change_mask.png
+2026-07-18 00:54:40,226 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:54:40,227 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:54:40,256 [INFO] backend: Successfully loaded B3 and B8 bands from after.tif (SWIR missing)
+2026-07-18 00:54:40,266 [INFO] backend: Forest Health Score calculation completed. Score: 57.61, Category: Moderate
+2026-07-18 00:54:40,319 [INFO] backend: API EXECUTION: GET /forest-health request received
+2026-07-18 00:54:40,319 [INFO] backend: Starting Multi-Index Forest Health Score computation...
+2026-07-18 00:54:40,339 [INFO] backend: Successfully loaded forest loss and detection metrics from severity.json
+2026-07-18 00:54:40,349 [INFO] backend: Successfully loaded ndvi_after.tif
+2026-07-18 00:54:40,353 [INFO] backend: Successfully loaded change_mask.png
+2026-07-18 00:54:40,354 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:54:40,357 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:54:40,390 [INFO] backend: Successfully loaded B3 and B8 bands from after.tif (SWIR missing)
+2026-07-18 00:54:40,396 [INFO] backend: Forest Health Score calculation completed. Score: 57.61, Category: Moderate
+2026-07-18 00:56:15,956 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:56:15,973 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:56:18,085 [INFO] backend: Fetching all historical records
+2026-07-18 00:56:18,089 [INFO] backend: Compiling historical trends
+2026-07-18 00:56:18,093 [INFO] backend: Compiling historical trends
+2026-07-18 00:56:18,097 [INFO] backend: Fetching all historical records
+2026-07-18 00:56:30,844 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:56:30,861 [INFO] backend: Retrieving configuration settings.
+2026-07-18 00:56:30,878 [INFO] backend: Retrieving severity.json metrics.
+2026-07-18 00:56:30,883 [INFO] backend: Retrieving severity.json metrics.
+2026-07-18 00:56:30,893 [INFO] backend: Retrieving plain-text summary report.
+2026-07-18 00:56:30,901 [INFO] backend: Retrieving plain-text summary report.
+2026-07-18 00:56:30,905 [INFO] backend: API EXECUTION: GET /forest-health request received
+2026-07-18 00:56:30,905 [INFO] backend: Starting Multi-Index Forest Health Score computation...
+2026-07-18 00:56:30,919 [INFO] backend: Successfully loaded forest loss and detection metrics from severity.json
+2026-07-18 00:56:30,929 [INFO] backend: Successfully loaded ndvi_after.tif
+2026-07-18 00:56:30,931 [INFO] backend: Successfully loaded change_mask.png
+2026-07-18 00:56:30,931 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:56:30,941 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:56:30,968 [INFO] backend: Successfully loaded B3 and B8 bands from after.tif (SWIR missing)
+2026-07-18 00:56:30,975 [INFO] backend: Forest Health Score calculation completed. Score: 57.61, Category: Moderate
+2026-07-18 00:56:31,021 [INFO] backend: API EXECUTION: GET /forest-health request received
+2026-07-18 00:56:31,021 [INFO] backend: Starting Multi-Index Forest Health Score computation...
+2026-07-18 00:56:31,049 [INFO] backend: Successfully loaded forest loss and detection metrics from severity.json
+2026-07-18 00:56:31,063 [INFO] backend: Successfully loaded ndvi_after.tif
+2026-07-18 00:56:31,066 [INFO] backend: Successfully loaded change_mask.png
+2026-07-18 00:56:31,072 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:56:31,078 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 00:56:31,112 [INFO] backend: Successfully loaded B3 and B8 bands from after.tif (SWIR missing)
+2026-07-18 00:56:31,124 [INFO] backend: Forest Health Score calculation completed. Score: 57.61, Category: Moderate
+2026-07-18 01:06:35,019 [INFO] backend: Lifespan shutdown: Cleaning up resources...
+2026-07-18 01:06:35,019 [INFO] backend: Server stopped successfully.
+2026-07-18 01:07:16,233 [INFO] backend: Initializing FastAPI Backend server...
+2026-07-18 01:07:16,234 [INFO] backend: Mounted static outputs route at: /static (pointing to D:\Projects\AS\outputs)
+2026-07-18 01:07:16,813 [INFO] backend: Registered API routes successfully.
+2026-07-18 01:07:16,816 [INFO] backend: Lifespan startup: Initializing Earth Engine and loading model weights...
+2026-07-18 01:07:16,816 [INFO] backend: Cleaning outputs directory of stale files...
+2026-07-18 01:07:22,530 [INFO] backend: Inference device: cuda
+2026-07-18 01:07:22,530 [INFO] backend: Loading U-Net weights from: D:\Projects\AS\weights\unet_forest_loss.pth
+2026-07-18 01:07:22,683 [INFO] backend: Loading YOLOv8 weights from: D:\Projects\AS\weights\yolov8_encroachment.pt
+2026-07-18 01:07:22,753 [INFO] backend: AI models pre-loaded in memory successfully!
+2026-07-18 01:15:04,374 [INFO] backend: Retrieving configuration settings.
+2026-07-18 01:15:04,388 [INFO] backend: Retrieving configuration settings.
+2026-07-18 03:28:59,371 [INFO] backend: Retrieving configuration settings.
+2026-07-18 03:28:59,396 [INFO] backend: Retrieving configuration settings.
+2026-07-18 03:31:31,204 [INFO] backend: Retrieving configuration settings.
+2026-07-18 03:31:31,281 [INFO] backend: Retrieving configuration settings.
+2026-07-18 03:31:34,472 [INFO] backend: ==================================================
+2026-07-18 03:31:34,472 [INFO] backend: API EXECUTION: POST /analyze request received
+2026-07-18 03:31:34,478 [INFO] backend: ROI Parameters: Coordinates (Center: Lat 22.334, Lon 80.611, Buffer: 0.02)
+2026-07-18 03:31:34,478 [INFO] backend: Before Date Range: 2022-01-01 to 2022-03-31
+2026-07-18 03:31:34,478 [INFO] backend: After Date Range: 2026-01-01 to 2026-03-31
+2026-07-18 03:31:34,478 [INFO] backend: ==================================================
+2026-07-18 03:32:58,163 [WARNING] rasterio._env: CPLE_AppDefined in before.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 03:32:58,709 [INFO] backend: GEE Download status: SUCCESS (Time taken: 84.23 seconds)
+2026-07-18 03:32:58,709 [INFO] backend: Running preprocessing on downloaded GeoTIFFs...
+2026-07-18 03:32:58,882 [INFO] backend: Running Monsoon Cloud Filter...
+2026-07-18 03:32:58,979 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 03:32:59,022 [INFO] backend: Cloud detection complete: 1.37% cloud cover detected.
+2026-07-18 03:32:59,028 [INFO] backend: Detected Cloud Coverage - Before: 0.00%, After: 1.37%
+2026-07-18 03:32:59,028 [INFO] backend: Executing Cloud Removal & Image Enhancement Pipeline...
+2026-07-18 03:32:59,050 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 03:32:59,059 [INFO] backend: Original image cloud cover: 0.00%
+2026-07-18 03:32:59,059 [INFO] backend: Gap filling and pixel reconstruction completed.
+2026-07-18 03:32:59,264 [INFO] backend: Atmospheric correction, noise reduction, and CLAHE enhancement completed successfully.
+2026-07-18 03:32:59,281 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 03:32:59,287 [INFO] backend: Enhanced image remaining cloud cover: 0.00%
+2026-07-18 03:32:59,287 [INFO] backend: Cloud removal pipeline completed in 0.2597s. Quality Score: Excellent
+2026-07-18 03:32:59,287 [INFO] backend: Executing Cloud Removal & Image Enhancement Pipeline...
+2026-07-18 03:32:59,303 [INFO] backend: Cloud detection complete: 1.37% cloud cover detected.
+2026-07-18 03:32:59,308 [INFO] backend: Original image cloud cover: 1.37%
+2026-07-18 03:32:59,322 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 03:32:59,322 [INFO] backend: Filling 898 pixels using historical reference imagery.
+2026-07-18 03:32:59,329 [INFO] backend: Gap filling and pixel reconstruction completed.
+2026-07-18 03:32:59,424 [INFO] backend: Atmospheric correction, noise reduction, and CLAHE enhancement completed successfully.
+2026-07-18 03:32:59,434 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 03:32:59,438 [INFO] backend: Enhanced image remaining cloud cover: 0.00%
+2026-07-18 03:32:59,438 [INFO] backend: Cloud removal pipeline completed in 0.1501s. Quality Score: Excellent
+2026-07-18 03:32:59,506 [INFO] backend: Cloud removal and image enhancement finished successfully.
+2026-07-18 03:32:59,743 [INFO] backend: Calculating NDVI maps...
+2026-07-18 03:32:59,855 [INFO] backend: Running AI Model Inference...
+2026-07-18 03:33:17,319 [INFO] backend: AI Inference execution time: 17.46 seconds (U-Net + YOLOv8)
+2026-07-18 03:33:17,319 [INFO] backend: Combining NDVI and AI results to compute metrics...
+2026-07-18 03:33:17,325 [INFO] backend: Executing Season-Aware Verification & Forest Knowledge Explorer...
+2026-07-18 03:33:17,328 [INFO] backend: Running Season-Aware False Positive Decision Engine...
+2026-07-18 03:33:17,328 [INFO] backend: Resolved weather parameters: Season=Winter (Cool & Dry), Temp=19.4°C, Rainfall=12.0mm.
+2026-07-18 03:33:17,330 [INFO] backend: Historical NDVI baseline calculated for coordinates (22.334, 80.611) in Month 1: Avg: 0.56, Range: [0.48 - 0.64]
+2026-07-18 03:33:17,330 [INFO] backend: Seasonal Verification Outcome: Result=Natural Seasonal Change, Confidence=80.0%
+2026-07-18 03:33:17,330 [INFO] backend: Resolving forest knowledge for coordinates (22.3340, 80.6110)...
+2026-07-18 03:33:17,330 [INFO] backend: Spatial match found in database: kanha (Kanha Tiger Reserve).
+2026-07-18 03:33:17,334 [INFO] backend: Forest knowledge resolved in 0.0035s.
+2026-07-18 03:33:17,334 [INFO] backend: Generating heatmap and visual dashboard overlays...
+2026-07-18 03:33:17,704 [INFO] backend: Visual outputs and report generated in 1.56 seconds.
+2026-07-18 03:33:17,704 [INFO] backend: API /analyze run completed in 103.25 seconds.
+2026-07-18 03:33:17,713 [INFO] backend: Executing AI Prediction Engine after report outputs are written...
+2026-07-18 03:33:17,713 [INFO] backend: Starting Multi-Index Forest Health Score computation...
+2026-07-18 03:33:17,781 [INFO] backend: Successfully loaded forest loss and detection metrics from severity.json
+2026-07-18 03:33:17,827 [INFO] backend: Successfully loaded ndvi_after.tif
+2026-07-18 03:33:17,872 [INFO] backend: Successfully loaded change_mask.png
+2026-07-18 03:33:17,888 [INFO] backend: Successfully loaded B3 and B8 bands from after.tif (SWIR missing)
+2026-07-18 03:33:17,902 [INFO] backend: Forest Health Score calculation completed. Score: 63.97, Category: Moderate
+2026-07-18 03:33:17,904 [INFO] backend: Prediction Service: Running unified pipeline analysis...
+2026-07-18 03:33:17,904 [INFO] backend: Rule Engine: Evaluating classification and severity...
+2026-07-18 03:33:17,904 [INFO] backend: Recommendation Engine: Resolving action checklist for 'Natural Seasonal Vegetation Change'...
+2026-07-18 03:33:17,905 [INFO] backend: Explanation Generator: Formatting reason details...
+2026-07-18 03:33:17,905 [INFO] backend: Trend Engine: Calculating forest trend direction and future prediction...
+2026-07-18 03:33:17,978 [INFO] backend: Prediction Service: Completed. Result = Natural Seasonal Vegetation Change (Low)
+2026-07-18 03:44:38,576 [INFO] backend: Retrieving configuration settings.
+2026-07-18 03:44:38,613 [INFO] backend: Retrieving configuration settings.
+2026-07-18 03:44:42,409 [INFO] backend: ==================================================
+2026-07-18 03:44:42,409 [INFO] backend: API EXECUTION: POST /analyze request received
+2026-07-18 03:44:42,409 [INFO] backend: ROI Parameters: Coordinates (Center: Lat 22.334, Lon 80.611, Buffer: 0.02)
+2026-07-18 03:44:42,409 [INFO] backend: Before Date Range: 2022-01-01 to 2022-03-31
+2026-07-18 03:44:42,409 [INFO] backend: After Date Range: 2026-01-01 to 2026-03-31
+2026-07-18 03:44:42,409 [INFO] backend: ==================================================
+2026-07-18 03:45:19,855 [INFO] backend: GEE Download status: SUCCESS (Time taken: 37.44 seconds)
+2026-07-18 03:45:19,855 [INFO] backend: Running preprocessing on downloaded GeoTIFFs...
+2026-07-18 03:45:19,870 [WARNING] rasterio._env: CPLE_AppDefined in before.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 03:45:19,873 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 03:45:19,927 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 03:45:19,932 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 03:45:19,954 [INFO] backend: Running Monsoon Cloud Filter...
+2026-07-18 03:45:19,957 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 03:45:19,959 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 03:45:19,959 [INFO] backend: Detected Cloud Coverage - Before: 0.00%, After: 0.00%
+2026-07-18 03:45:19,959 [INFO] backend: Executing Cloud Removal & Image Enhancement Pipeline...
+2026-07-18 03:45:19,961 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 03:45:19,961 [INFO] backend: Original image cloud cover: 0.00%
+2026-07-18 03:45:19,961 [INFO] backend: Gap filling and pixel reconstruction completed.
+2026-07-18 03:45:19,968 [INFO] backend: Atmospheric correction, noise reduction, and CLAHE enhancement completed successfully.
+2026-07-18 03:45:19,969 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 03:45:19,969 [INFO] backend: Enhanced image remaining cloud cover: 0.00%
+2026-07-18 03:45:19,970 [INFO] backend: Cloud removal pipeline completed in 0.0103s. Quality Score: Excellent
+2026-07-18 03:45:19,970 [INFO] backend: Executing Cloud Removal & Image Enhancement Pipeline...
+2026-07-18 03:45:19,970 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 03:45:19,970 [INFO] backend: Original image cloud cover: 0.00%
+2026-07-18 03:45:19,972 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 03:45:19,972 [INFO] backend: No pixels could be filled using historical imagery (historical also cloudy or no overlaps).
+2026-07-18 03:45:19,972 [INFO] backend: Gap filling and pixel reconstruction completed.
+2026-07-18 03:45:19,978 [INFO] backend: Atmospheric correction, noise reduction, and CLAHE enhancement completed successfully.
+2026-07-18 03:45:19,979 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 03:45:19,980 [INFO] backend: Enhanced image remaining cloud cover: 0.00%
+2026-07-18 03:45:19,980 [INFO] backend: Cloud removal pipeline completed in 0.0098s. Quality Score: Excellent
+2026-07-18 03:45:19,981 [INFO] backend: Cloud removal and image enhancement finished successfully.
+2026-07-18 03:45:19,996 [INFO] backend: Calculating NDVI maps...
+2026-07-18 03:45:20,131 [INFO] backend: Running AI Model Inference...
+2026-07-18 03:45:21,569 [INFO] backend: AI Inference execution time: 1.44 seconds (U-Net + YOLOv8)
+2026-07-18 03:45:21,569 [INFO] backend: Combining NDVI and AI results to compute metrics...
+2026-07-18 03:45:21,571 [INFO] backend: Executing Season-Aware Verification & Forest Knowledge Explorer...
+2026-07-18 03:45:21,571 [INFO] backend: Running Season-Aware False Positive Decision Engine...
+2026-07-18 03:45:21,571 [INFO] backend: Resolved weather parameters: Season=Winter (Cool & Dry), Temp=19.4°C, Rainfall=12.0mm.
+2026-07-18 03:45:21,571 [INFO] backend: Historical NDVI baseline calculated for coordinates (22.334, 80.611) in Month 1: Avg: 0.56, Range: [0.48 - 0.64]
+2026-07-18 03:45:21,572 [INFO] backend: Seasonal Verification Outcome: Result=Natural Seasonal Change, Confidence=80.0%
+2026-07-18 03:45:21,572 [INFO] backend: Resolving forest knowledge for coordinates (22.3340, 80.6110)...
+2026-07-18 03:45:21,572 [INFO] backend: Spatial match found in database: kanha (Kanha Tiger Reserve).
+2026-07-18 03:45:21,572 [INFO] backend: Forest knowledge resolved in 0.0000s.
+2026-07-18 03:45:21,572 [INFO] backend: Generating heatmap and visual dashboard overlays...
+2026-07-18 03:45:21,597 [INFO] backend: Visual outputs and report generated in 0.33 seconds.
+2026-07-18 03:45:21,597 [INFO] backend: API /analyze run completed in 39.21 seconds.
+2026-07-18 03:45:21,605 [INFO] backend: Executing AI Prediction Engine after report outputs are written...
+2026-07-18 03:45:21,605 [INFO] backend: Starting Multi-Index Forest Health Score computation...
+2026-07-18 03:45:21,632 [INFO] backend: Successfully loaded forest loss and detection metrics from severity.json
+2026-07-18 03:45:21,653 [INFO] backend: Successfully loaded ndvi_after.tif
+2026-07-18 03:45:21,671 [INFO] backend: Successfully loaded change_mask.png
+2026-07-18 03:45:21,674 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 03:45:21,677 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 03:45:21,688 [INFO] backend: Successfully loaded B3 and B8 bands from after.tif (SWIR missing)
+2026-07-18 03:45:21,697 [INFO] backend: Forest Health Score calculation completed. Score: 57.61, Category: Moderate
+2026-07-18 03:45:21,697 [INFO] backend: Prediction Service: Running unified pipeline analysis...
+2026-07-18 03:45:21,698 [INFO] backend: Rule Engine: Evaluating classification and severity...
+2026-07-18 03:45:21,698 [INFO] backend: Recommendation Engine: Resolving action checklist for 'Natural Seasonal Vegetation Change'...
+2026-07-18 03:45:21,698 [INFO] backend: Explanation Generator: Formatting reason details...
+2026-07-18 03:45:21,698 [INFO] backend: Trend Engine: Calculating forest trend direction and future prediction...
+2026-07-18 03:45:21,700 [INFO] backend: Prediction Service: Completed. Result = Natural Seasonal Vegetation Change (Low)
+2026-07-18 03:46:36,209 [INFO] backend: Retrieving configuration settings.
+2026-07-18 03:46:36,279 [INFO] backend: Retrieving configuration settings.
+2026-07-18 03:52:46,945 [INFO] backend: Retrieving configuration settings.
+2026-07-18 03:52:46,985 [INFO] backend: Retrieving configuration settings.
+2026-07-18 03:52:59,745 [INFO] backend: Retrieving configuration settings.
+2026-07-18 03:52:59,780 [INFO] backend: Retrieving configuration settings.
+2026-07-18 03:53:19,334 [INFO] backend: Retrieving configuration settings.
+2026-07-18 03:53:19,378 [INFO] backend: Retrieving configuration settings.
+2026-07-18 03:53:31,866 [INFO] backend: Retrieving configuration settings.
+2026-07-18 03:53:31,924 [INFO] backend: Retrieving configuration settings.
+2026-07-18 03:58:22,319 [INFO] backend: Retrieving configuration settings.
+2026-07-18 03:58:22,337 [INFO] backend: Retrieving configuration settings.

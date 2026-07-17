@@ -96,7 +96,7 @@ export default function CloudRemoval() {
 
       {error && (
         <div className="bg-red-950/40 border border-red-500/30 text-red-300 p-5 rounded-2xl text-sm font-semibold">
-          ⚠️ {error}
+           {error}
         </div>
       )}
 
@@ -196,7 +196,7 @@ export default function CloudRemoval() {
 
             {data.warning ? (
               <div className="bg-amber-950/40 p-4 rounded-xl text-xs text-amber-300 border border-amber-500/20 leading-relaxed font-semibold">
-                ⚠️ {data.warning}
+                 {data.warning}
               </div>
             ) : (
               <div className="bg-forest-950/40 p-4 rounded-xl text-xs text-slate-400 border border-forest-900/20 leading-relaxed">

@@ -9,6 +9,9 @@ import HistoryTimeline from "../components/History/HistoryTimeline";
 import Comparison from "../components/History/Comparison";
 import TrendSummary from "../components/History/TrendSummary";
 
+import { Link } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
+
 const API_BASE = "http://127.0.0.1:8000";
 
 export default function History() {
@@ -68,8 +71,12 @@ export default function History() {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-forest-900/30 pb-4 gap-4">
         <div>
+          <Link to="/analyze" className="inline-flex items-center space-x-2 text-forest-400 hover:text-emerald-400 mb-4 transition-colors">
+            <ArrowLeft size={16} />
+            <span className="text-sm font-semibold uppercase tracking-wider">Back to Analysis</span>
+          </Link>
           <h1 className="text-3xl font-extrabold text-white tracking-tight uppercase flex items-center gap-3">
-            <span className="text-4xl">⏳</span> Historical Trend Analysis
+            <span className="text-4xl"></span> Historical Trend Analysis
           </h1>
           <p className="text-slate-400 text-sm mt-2 font-mono">
             Compare forest loss, NDVI shifts, and severity over time.

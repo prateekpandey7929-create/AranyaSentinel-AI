@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 
 const API_BASE = "http://127.0.0.1:8000";
 
@@ -49,6 +51,10 @@ export default function Reports() {
         {/* Header Section */}
         <div className="flex justify-between items-end mb-10 pb-6 border-b border-forest-900/30">
           <div>
+            <Link to="/analyze" className="inline-flex items-center space-x-2 text-forest-400 hover:text-emerald-400 mb-4 transition-colors">
+              <ArrowLeft size={16} />
+              <span className="text-sm font-semibold uppercase tracking-wider">Back to Analysis</span>
+            </Link>
             <h1 className="text-4xl font-extrabold text-white tracking-tight mb-2">
               {t('reports_title')}
             </h1>

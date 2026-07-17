@@ -72,7 +72,7 @@ export default function Knowledge({ knowledgeData }) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
             {activeData.highlights.map((hl, idx) => (
               <div key={idx} className="bg-slate-950/50 p-2.5 rounded-lg border border-forest-900/10 text-slate-300 font-semibold flex items-center space-x-2">
-                <span>🟢</span>
+                <span></span>
                 <span>{hl}</span>
               </div>
             ))}

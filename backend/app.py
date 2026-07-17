@@ -48,6 +48,8 @@ async def lifespan(app: FastAPI):
     # Clear old outputs to guarantee fresh startup state
     logger.info("Cleaning outputs directory of stale files...")
     for filename in os.listdir(OUTPUTS_DIR):
+        if filename == "reports":
+            continue
         file_path = os.path.join(OUTPUTS_DIR, filename)
         try:
             if os.path.isfile(file_path) or os.path.islink(file_path):
@@ -126,18 +128,18 @@ logger.info(f"Mounted static outputs route at: /static (pointing to {OUTPUTS_DIR
 # Register routes
 sys.path.append(os.path.join(BASE_DIR, 'backend'))
 from api.routes import router as main_router
-from api.routes import router as api_router # Partner's original export
+from services.reports.report_router import router as report_router
 from services.history.history_router import router as history_router
 from services.knowledge.knowledge_router import router as knowledge_router
-from services.reports.report_router import router as report_router
+from services.dashboard.dashboard_router import router as dashboard_router
 from localization.translation_router import router as translation_router
 from notifications.notification_router import router as notification_router
 
 app.include_router(main_router)
-app.include_router(api_router) # Include both just in case they differ in api/routes.py
-app.include_router(notification_router, prefix="/api", tags=["notifications"])
+app.include_router(report_router, prefix="/report", tags=["Reports"])
 app.include_router(history_router, prefix="/history", tags=["History"])
 app.include_router(knowledge_router, prefix="/knowledge", tags=["Knowledge"])
-app.include_router(report_router, prefix="/report", tags=["Reports"])
+app.include_router(dashboard_router, prefix="/dashboard", tags=["Dashboard"])
+app.include_router(notification_router, prefix="/api", tags=["notifications"])
 app.include_router(translation_router, prefix="/localization", tags=["Localization"])
 logger.info("Registered API routes successfully.")

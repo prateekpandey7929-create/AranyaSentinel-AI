@@ -33,7 +33,7 @@ function Sidebar() {
   const { t } = useTranslation();
 
   return (
-    <div className="w-64 glass-panel border-r border-forest-900/30 flex flex-col h-screen sticky top-0 p-6">
+    <div className="w-64 glass-panel border-r border-forest-900/30 flex flex-col fixed inset-y-0 left-0 z-50 p-6">
       {/* Brand Header */}
       <div className="flex items-center space-x-3 mb-8 pb-6 border-b border-forest-900/20">
         <svg
@@ -78,16 +78,7 @@ function Sidebar() {
         >
           {t('live_analysis')}
         </NavLink>
-        <NavLink
-          to="/history"
-          icon={
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          }
-        >
-          {t('nav_history')}
-        </NavLink>
+
         <NavLink
           to="/knowledge"
           icon={
@@ -137,20 +128,20 @@ function Sidebar() {
 export default function App() {
   return (
     <Router>
-      <div className="flex min-h-screen bg-slate-950 font-sans text-slate-200 selection:bg-forest-500/30 overflow-hidden">
+      <div className="flex min-h-screen bg-slate-950 font-sans text-slate-200 selection:bg-forest-500/30">
         {/* Persistent Sidebar Navigation */}
         <Sidebar />
         
         {/* Dynamic Pages Area */}
-        <div className="flex-1 overflow-y-auto p-8 lg:p-12 relative z-0">
+        <div className="flex-1 ml-64 p-8 lg:p-12 relative z-0 min-h-screen">
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/analyze" element={<Analysis />} />
-            <Route path="/trend-analysis" element={<History />} />
+            <Route path="/history" element={<History />} />
+            <Route path="/reports" element={<Reports />} />
             <Route path="/knowledge" element={<Knowledge />} />
             <Route path="/cloud-removal" element={<CloudRemoval />} />
-            <Route path="/history" element={<Reports />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/notifications" element={<NotificationCenter />} />
           </Routes>

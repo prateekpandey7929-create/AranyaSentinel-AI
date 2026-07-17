@@ -42,7 +42,7 @@ export default function SummaryCards({ metrics, loading, healthScore }) {
         <div className="flex justify-between items-start">
           <span className="text-slate-400 text-xs font-bold uppercase tracking-wider">Forest Health</span>
           <div className="p-2 bg-emerald-950/40 border border-emerald-900/30 rounded-xl group-hover:scale-110 transition duration-300">
-            🌳
+            
           </div>
         </div>
         <div className="mt-4">
@@ -60,7 +60,7 @@ export default function SummaryCards({ metrics, loading, healthScore }) {
         <div className="flex justify-between items-start">
           <span className="text-slate-400 text-xs font-bold uppercase tracking-wider">Forest Loss</span>
           <div className="p-2 bg-red-950/40 border border-red-900/30 rounded-xl group-hover:scale-110 transition duration-300">
-            🍂
+            
           </div>
         </div>
         <div className="mt-4">
@@ -78,7 +78,7 @@ export default function SummaryCards({ metrics, loading, healthScore }) {
         <div className="flex justify-between items-start">
           <span className="text-slate-400 text-xs font-bold uppercase tracking-wider">Severity Status</span>
           <div className="p-2 bg-amber-950/40 border border-amber-900/30 rounded-xl group-hover:scale-110 transition duration-300">
-            ⚠️
+            
           </div>
         </div>
         <div className="mt-4">
@@ -99,7 +99,7 @@ export default function SummaryCards({ metrics, loading, healthScore }) {
         <div className="flex justify-between items-start">
           <span className="text-slate-400 text-xs font-bold uppercase tracking-wider">Illegal Structures</span>
           <div className="p-2 bg-blue-950/40 border border-blue-900/30 rounded-xl group-hover:scale-110 transition duration-300">
-            🏠
+            
           </div>
         </div>
         <div className="mt-4">

@@ -1,30 +1,72 @@
 @import "tailwindcss";
 
 @theme {
-  --color-forest-50: #f2faf4;
-  --color-forest-100: #e2f3e7;
-  --color-forest-200: #c5e7d0;
-  --color-forest-300: #97d2ab;
-  --color-forest-400: #64b680;
-  --color-forest-500: #3e995f;
-  --color-forest-600: #2f7c4b;
-  --color-forest-700: #27633e;
-  --color-forest-800: #214f33;
-  --color-forest-900: #1b412b;
-  --color-forest-950: #0e2417;
+  /* Map forest to inverted Blue for light theme backgrounds */
+  --color-forest-950: #eff6ff;
+  --color-forest-900: #dbeafe;
+  --color-forest-800: #bfdbfe;
+  --color-forest-700: #93c5fd;
+  --color-forest-600: #2563eb; /* Active nav link, solid blue */
+  --color-forest-500: #3b82f6;
+  --color-forest-400: #60a5fa;
+  --color-forest-300: #1d4ed8;
+  --color-forest-200: #1e40af;
+  --color-forest-100: #1e3a8a;
+  --color-forest-50: #172554;
+
+  /* Map emerald to standard Blue to kill AI neon vibe */
+  --color-emerald-50: #eff6ff;
+  --color-emerald-100: #dbeafe;
+  --color-emerald-200: #bfdbfe;
+  --color-emerald-300: #93c5fd;
+  --color-emerald-400: #60a5fa;
+  --color-emerald-500: #3b82f6;
+  --color-emerald-600: #2563eb;
+  --color-emerald-700: #1d4ed8;
+  --color-emerald-800: #1e40af;
+  --color-emerald-900: #1e3a8a;
+  --color-emerald-950: #172554;
+
+  --color-white: #0f172a;
+  --color-black: #ffffff;
+  
+  --color-slate-950: #f1f5f9;
+  --color-slate-900: #ffffff;
+  --color-slate-800: #e2e8f0;
+  --color-slate-700: #cbd5e1;
+  --color-slate-600: #94a3b8;
+  --color-slate-500: #64748b;
+  --color-slate-400: #64748b;
+  --color-slate-300: #334155;
+  --color-slate-200: #1e293b;
+  --color-slate-100: #0f172a;
+  --color-slate-50: #020617;
 }
 
 body {
   @apply bg-slate-950 text-slate-100 min-h-screen font-sans overflow-x-hidden;
 }
 
+/* Force primary buttons and active elements to have white text despite global text-white inversion */
+.bg-emerald-600, .bg-emerald-500, .bg-forest-600, .bg-forest-500 {
+  color: #ffffff !important;
+}
+.bg-emerald-600 \*, .bg-emerald-500 \*, .bg-forest-600 \*, .bg-forest-500 \* {
+  color: #ffffff !important;
+}
+
+/* Neutralize AI glowing shadows globally */
+[class*="shadow-[0_0_"] {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+}
+
 /* Glassmorphism Classes */
 .glass-panel {
-  background: rgba(15, 36, 23, 0.4);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(62, 153, 95, 0.25);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.04);
 }
 
 .glass-panel-hover {
@@ -32,9 +74,9 @@ body {
 }
 
 .glass-panel-hover:hover {
-  background: rgba(15, 36, 23, 0.6);
-  border-color: rgba(62, 153, 95, 0.45);
-  box-shadow: 0 12px 40px 0 rgba(62, 153, 95, 0.15);
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(62, 153, 95, 0.3);
+  box-shadow: 0 12px 40px 0 rgba(62, 153, 95, 0.1);
   transform: translateY(-2px);
 }
 
@@ -53,7 +95,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #090d16;
+  background: #f1f5f9;
 }
 
 ::-webkit-scrollbar-thumb {

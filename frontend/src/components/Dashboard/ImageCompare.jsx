@@ -41,7 +41,7 @@ export default function ImageCompare({ beforeUrl, afterUrl, loading }) {
   if (!beforeUrl || !afterUrl) {
     return (
       <div className="glass-panel p-6 rounded-3xl text-center flex flex-col justify-center items-center h-[350px] text-slate-400">
-        <span>📸 No imagery outputs found. Run an analysis run first.</span>
+        <span> No imagery outputs found. Run an analysis run first.</span>
       </div>
     );
   }
@@ -65,7 +65,7 @@ export default function ImageCompare({ beforeUrl, afterUrl, loading }) {
             className="p-2 bg-slate-900 hover:bg-slate-800 border border-forest-900/30 rounded-lg text-slate-300 text-xs transition font-bold"
             title="Zoom Out"
           >
-            ➖
+            
           </button>
           <span className="text-[10px] text-slate-400 font-mono w-10 text-center">{Math.round(zoomScale * 100)}%</span>
           <button
@@ -73,7 +73,7 @@ export default function ImageCompare({ beforeUrl, afterUrl, loading }) {
             className="p-2 bg-slate-900 hover:bg-slate-800 border border-forest-900/30 rounded-lg text-slate-300 text-xs transition font-bold"
             title="Zoom In"
           >
-            ➕
+            
           </button>
 
           {/* Fullscreen Trigger */}
@@ -82,7 +82,7 @@ export default function ImageCompare({ beforeUrl, afterUrl, loading }) {
             className="p-2 bg-slate-900 hover:bg-slate-800 border border-forest-900/30 rounded-lg text-slate-300 text-xs transition"
             title="Toggle Fullscreen"
           >
-            {isFullscreen ? "📴 Exit" : "📺 Fullscreen"}
+            {isFullscreen ? " Exit" : " Fullscreen"}
           </button>
 
           {/* Download Menu */}
@@ -130,7 +130,7 @@ export default function ImageCompare({ beforeUrl, afterUrl, loading }) {
             style={{ left: `${sliderPosition}%` }}
           >
             <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-8 h-8 bg-forest-600 rounded-full border-2 border-white flex items-center justify-center text-white text-[10px] font-extrabold shadow-md">
-              ↔
+              
             </div>
           </div>
         </div>

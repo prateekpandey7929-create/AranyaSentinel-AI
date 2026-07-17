@@ -95,7 +95,7 @@ export default function MapSection({ center, bounds, analysisResult, loading }) 
             onClick={toggleFullscreen}
             className="p-2 bg-slate-900 hover:bg-slate-800 border border-forest-900/30 rounded-lg text-slate-300 text-xs transition"
           >
-            {isFullscreen ? "📴 Exit" : "📺 Fullscreen"}
+            {isFullscreen ? " Exit" : " Fullscreen"}
           </button>
         </div>
       </div>
@@ -121,7 +121,7 @@ export default function MapSection({ center, bounds, analysisResult, loading }) 
         {/* Floating Readouts */}
         {hoverCoords && (
           <div className="absolute bottom-4 left-4 z-[99] bg-slate-950/90 border border-forest-900/50 p-2.5 rounded-lg text-[10px] text-slate-300 font-mono shadow-md">
-            🌐 Lat: {hoverCoords.lat.toFixed(5)}, Lon: {hoverCoords.lng.toFixed(5)}
+             Lat: {hoverCoords.lat.toFixed(5)}, Lon: {hoverCoords.lng.toFixed(5)}
           </div>
         )}
 

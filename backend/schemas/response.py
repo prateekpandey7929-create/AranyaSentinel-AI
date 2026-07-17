@@ -40,7 +40,7 @@ class AIPredictionDetail(BaseModel):
     confidence_score: float = Field(..., description="System confidence score percentage")
     suggested_actions: List[str] = Field(..., description="Actionable checklist of recommendations")
     ai_summary: str = Field(..., description="Comprehensive natural language summary")
-    trend_direction: Optional[str] = Field(None, description="Forest trend direction (Improving 📈, Stable ➡️, Degrading 📉)")
+    trend_direction: Optional[str] = Field(None, description="Forest trend direction (Improving , Stable , Degrading )")
     future_prediction: Optional[str] = Field(None, description="Rule-based expectation of forest condition in the next cycle")
     recovery_probability: Optional[float] = Field(None, description="Probability percentage of natural recovery (0 to 100)")
     trend_summary: Optional[str] = Field(None, description="Human-readable trend history and future expectation details")
