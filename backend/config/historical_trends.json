@@ -1,0 +1,249 @@
+[
+    {
+        "id": "d465e3c2",
+        "date": "2026-07-17",
+        "forest_name": "Kanha Sanctuary",
+        "forest_loss_percentage": 7.18,
+        "forest_health_score": 82,
+        "ndvi": 0.454,
+        "severity": "Medium",
+        "illegal_structures": 0,
+        "human_activity_score": 14,
+        "output_files": {
+            "heatmap": "/static/heatmap.png",
+            "change_mask": "/static/change_mask.png",
+            "combined_result": "/static/combined_result.png",
+            "before_rgb": "/static/before_rgb.png",
+            "after_rgb": "/static/after_rgb.png"
+        },
+        "status": "Completed"
+    },
+    {
+        "id": "c05fc639",
+        "date": "2026-06-17",
+        "forest_name": "Satpura Tiger Reserve",
+        "forest_loss_percentage": 7.56,
+        "forest_health_score": 69,
+        "ndvi": 0.434,
+        "severity": "Medium",
+        "illegal_structures": 4,
+        "human_activity_score": 43,
+        "output_files": {
+            "heatmap": "/static/heatmap.png",
+            "change_mask": "/static/change_mask.png",
+            "combined_result": "/static/combined_result.png",
+            "before_rgb": "/static/before_rgb.png",
+            "after_rgb": "/static/after_rgb.png"
+        },
+        "status": "Completed"
+    },
+    {
+        "id": "3f5e99a1",
+        "date": "2026-05-18",
+        "forest_name": "Satpura Tiger Reserve",
+        "forest_loss_percentage": 7.28,
+        "forest_health_score": 78,
+        "ndvi": 0.49,
+        "severity": "Medium",
+        "illegal_structures": 1,
+        "human_activity_score": 20,
+        "output_files": {
+            "heatmap": "/static/heatmap.png",
+            "change_mask": "/static/change_mask.png",
+            "combined_result": "/static/combined_result.png",
+            "before_rgb": "/static/before_rgb.png",
+            "after_rgb": "/static/after_rgb.png"
+        },
+        "status": "Completed"
+    },
+    {
+        "id": "9b4a30dd",
+        "date": "2026-04-18",
+        "forest_name": "Pench National Park",
+        "forest_loss_percentage": 8.34,
+        "forest_health_score": 70,
+        "ndvi": 0.447,
+        "severity": "Medium",
+        "illegal_structures": 3,
+        "human_activity_score": 31,
+        "output_files": {
+            "heatmap": "/static/heatmap.png",
+            "change_mask": "/static/change_mask.png",
+            "combined_result": "/static/combined_result.png",
+            "before_rgb": "/static/before_rgb.png",
+            "after_rgb": "/static/after_rgb.png"
+        },
+        "status": "Completed"
+    },
+    {
+        "id": "e48f55e5",
+        "date": "2026-03-19",
+        "forest_name": "Kanha Sanctuary",
+        "forest_loss_percentage": 8.35,
+        "forest_health_score": 61,
+        "ndvi": 0.409,
+        "severity": "Medium",
+        "illegal_structures": 6,
+        "human_activity_score": 56,
+        "output_files": {
+            "heatmap": "/static/heatmap.png",
+            "change_mask": "/static/change_mask.png",
+            "combined_result": "/static/combined_result.png",
+            "before_rgb": "/static/before_rgb.png",
+            "after_rgb": "/static/after_rgb.png"
+        },
+        "status": "Completed"
+    },
+    {
+        "id": "55348db1",
+        "date": "2026-02-17",
+        "forest_name": "Kanha Sanctuary",
+        "forest_loss_percentage": 9.32,
+        "forest_health_score": 70,
+        "ndvi": 0.332,
+        "severity": "Medium",
+        "illegal_structures": 2,
+        "human_activity_score": 26,
+        "output_files": {
+            "heatmap": "/static/heatmap.png",
+            "change_mask": "/static/change_mask.png",
+            "combined_result": "/static/combined_result.png",
+            "before_rgb": "/static/before_rgb.png",
+            "after_rgb": "/static/after_rgb.png"
+        },
+        "status": "Completed"
+    },
+    {
+        "id": "e3cffb27",
+        "date": "2026-01-18",
+        "forest_name": "Kanha Sanctuary",
+        "forest_loss_percentage": 9.69,
+        "forest_health_score": 63,
+        "ndvi": 0.437,
+        "severity": "Medium",
+        "illegal_structures": 4,
+        "human_activity_score": 37,
+        "output_files": {
+            "heatmap": "/static/heatmap.png",
+            "change_mask": "/static/change_mask.png",
+            "combined_result": "/static/combined_result.png",
+            "before_rgb": "/static/before_rgb.png",
+            "after_rgb": "/static/after_rgb.png"
+        },
+        "status": "Completed"
+    },
+    {
+        "id": "06abf432",
+        "date": "2025-12-19",
+        "forest_name": "Kanha Sanctuary",
+        "forest_loss_percentage": 11.66,
+        "forest_health_score": 58,
+        "ndvi": 0.414,
+        "severity": "High",
+        "illegal_structures": 4,
+        "human_activity_score": 41,
+        "output_files": {
+            "heatmap": "/static/heatmap.png",
+            "change_mask": "/static/change_mask.png",
+            "combined_result": "/static/combined_result.png",
+            "before_rgb": "/static/before_rgb.png",
+            "after_rgb": "/static/after_rgb.png"
+        },
+        "status": "Completed"
+    },
+    {
+        "id": "bc5e4e71",
+        "date": "2025-11-19",
+        "forest_name": "Pench National Park",
+        "forest_loss_percentage": 11.03,
+        "forest_health_score": 63,
+        "ndvi": 0.268,
+        "severity": "High",
+        "illegal_structures": 3,
+        "human_activity_score": 35,
+        "output_files": {
+            "heatmap": "/static/heatmap.png",
+            "change_mask": "/static/change_mask.png",
+            "combined_result": "/static/combined_result.png",
+            "before_rgb": "/static/before_rgb.png",
+            "after_rgb": "/static/after_rgb.png"
+        },
+        "status": "Completed"
+    },
+    {
+        "id": "72f9c07b",
+        "date": "2025-10-20",
+        "forest_name": "Satpura Tiger Reserve",
+        "forest_loss_percentage": 11.65,
+        "forest_health_score": 58,
+        "ndvi": 0.247,
+        "severity": "High",
+        "illegal_structures": 4,
+        "human_activity_score": 39,
+        "output_files": {
+            "heatmap": "/static/heatmap.png",
+            "change_mask": "/static/change_mask.png",
+            "combined_result": "/static/combined_result.png",
+            "before_rgb": "/static/before_rgb.png",
+            "after_rgb": "/static/after_rgb.png"
+        },
+        "status": "Completed"
+    },
+    {
+        "id": "caea765d",
+        "date": "2025-09-20",
+        "forest_name": "Kanha Sanctuary",
+        "forest_loss_percentage": 12.68,
+        "forest_health_score": 62,
+        "ndvi": 0.346,
+        "severity": "High",
+        "illegal_structures": 2,
+        "human_activity_score": 23,
+        "output_files": {
+            "heatmap": "/static/heatmap.png",
+            "change_mask": "/static/change_mask.png",
+            "combined_result": "/static/combined_result.png",
+            "before_rgb": "/static/before_rgb.png",
+            "after_rgb": "/static/after_rgb.png"
+        },
+        "status": "Completed"
+    },
+    {
+        "id": "b61ecdc7",
+        "date": "2025-08-21",
+        "forest_name": "Kanha Sanctuary",
+        "forest_loss_percentage": 14.02,
+        "forest_health_score": 55,
+        "ndvi": 0.342,
+        "severity": "High",
+        "illegal_structures": 3,
+        "human_activity_score": 30,
+        "output_files": {
+            "heatmap": "/static/heatmap.png",
+            "change_mask": "/static/change_mask.png",
+            "combined_result": "/static/combined_result.png",
+            "before_rgb": "/static/before_rgb.png",
+            "after_rgb": "/static/after_rgb.png"
+        },
+        "status": "Completed"
+    },
+    {
+        "id": "754964e6",
+        "date": "2025-07-22",
+        "forest_name": "Kanha Sanctuary",
+        "forest_loss_percentage": 13.16,
+        "forest_health_score": 46,
+        "ndvi": 0.389,
+        "severity": "High",
+        "illegal_structures": 7,
+        "human_activity_score": 64,
+        "output_files": {
+            "heatmap": "/static/heatmap.png",
+            "change_mask": "/static/change_mask.png",
+            "combined_result": "/static/combined_result.png",
+            "before_rgb": "/static/before_rgb.png",
+            "after_rgb": "/static/after_rgb.png"
+        },
+        "status": "Completed"
+    }
+]

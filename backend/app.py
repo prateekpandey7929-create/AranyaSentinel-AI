@@ -126,6 +126,17 @@ logger.info(f"Mounted static outputs route at: /static (pointing to {OUTPUTS_DIR
 
 # Register routes
 sys.path.append(os.path.join(BASE_DIR, 'backend'))
-from api.routes import router as api_router
-app.include_router(api_router)
+from api.routes import router as main_router
+from services.history.history_router import router as history_router
+from services.knowledge.knowledge_router import router as knowledge_router
+from services.reports.report_router import router as report_router
+from localization.translation_router import router as translation_router
+from notifications.notification_router import router as notification_router
+
+app.include_router(main_router)
+app.include_router(notification_router, prefix="/api", tags=["notifications"])
+app.include_router(history_router, prefix="/history", tags=["History"])
+app.include_router(knowledge_router, prefix="/knowledge", tags=["Knowledge"])
+app.include_router(report_router, prefix="/report", tags=["Reports"])
+app.include_router(translation_router, prefix="/localization", tags=["Localization"])
 logger.info("Registered API routes successfully.")

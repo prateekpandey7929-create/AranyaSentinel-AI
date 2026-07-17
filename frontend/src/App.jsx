@@ -1,9 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 import Dashboard from "./pages/Dashboard";
 import Analysis from "./pages/Analysis";
 import Reports from "./pages/Reports";
 import Settings from "./pages/Settings";
+import History from "./pages/History";
+import Knowledge from "./pages/Knowledge";
+import NotificationCenter from "./pages/NotificationCenter";
+import LanguageSwitcher from "./components/LanguageSwitcher";
 
 function NavLink({ to, icon, children }) {
   const location = useLocation();
@@ -24,6 +29,8 @@ function NavLink({ to, icon, children }) {
 }
 
 function Sidebar() {
+  const { t } = useTranslation();
+
   return (
     <div className="w-64 glass-panel border-r border-forest-900/30 flex flex-col h-screen sticky top-0 p-6">
       {/* Brand Header */}
@@ -43,7 +50,7 @@ function Sidebar() {
           />
         </svg>
         <div>
-          <h1 className="text-xl font-bold tracking-tight text-white">AranyaSentinel</h1>
+          <h1 className="text-xl font-bold tracking-tight text-white">{t('app_name')}</h1>
           <span className="text-xs text-forest-400 font-semibold tracking-widest uppercase">AI platform</span>
         </div>
       </div>
@@ -58,7 +65,7 @@ function Sidebar() {
             </svg>
           }
         >
-          Dashboard
+          {t('nav_dashboard')}
         </NavLink>
         <NavLink
           to="/analyze"
@@ -68,7 +75,27 @@ function Sidebar() {
             </svg>
           }
         >
-          Analysis
+          {t('live_analysis')}
+        </NavLink>
+        <NavLink
+          to="/history"
+          icon={
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          }
+        >
+          {t('nav_history')}
+        </NavLink>
+        <NavLink
+          to="/knowledge"
+          icon={
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+          }
+        >
+          {t('nav_knowledge')}
         </NavLink>
         <NavLink
           to="/reports"
@@ -78,8 +105,19 @@ function Sidebar() {
             </svg>
           }
         >
-          Reports
+          {t('nav_reports')}
         </NavLink>
+        <NavLink
+          to="/notifications"
+          icon={
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+            </svg>
+          }
+        >
+          Notifications
+        </NavLink>
+        <div className="pt-4 mt-4 border-t border-slate-700/50">
         <NavLink
           to="/settings"
           icon={
@@ -89,9 +127,12 @@ function Sidebar() {
             </svg>
           }
         >
-          Settings
+          {t('nav_settings')}
         </NavLink>
+        </div>
       </nav>
+
+      <LanguageSwitcher />
 
       {/* Footer Info */}
       <div className="pt-6 border-t border-forest-900/20 text-center">
@@ -102,25 +143,25 @@ function Sidebar() {
   );
 }
 
-function App() {
+export default function App() {
   return (
     <Router>
-      <div className="flex min-h-screen bg-slate-950">
-        {/* Persistent Sidebar Navigation */}
+      <div className="flex h-screen bg-slate-950 font-sans text-slate-200 selection:bg-forest-500/30 overflow-hidden">
         <Sidebar />
-
-        {/* Dynamic Pages Area */}
-        <main className="flex-1 p-8 overflow-y-auto">
+        
+        {/* Main Content Area */}
+        <div className="flex-1 overflow-y-auto p-8 lg:p-12 relative z-0">
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/analyze" element={<Analysis />} />
+            <Route path="/history" element={<History />} />
+            <Route path="/knowledge" element={<Knowledge />} />
             <Route path="/reports" element={<Reports />} />
             <Route path="/settings" element={<Settings />} />
+            <Route path="/notifications" element={<NotificationCenter />} />
           </Routes>
-        </main>
+        </div>
       </div>
     </Router>
   );
 }
-
-export default App;

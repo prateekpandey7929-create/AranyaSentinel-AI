@@ -518,3 +518,747 @@
 2026-07-16 16:05:52,209 [INFO] backend: Retrieving plain-text summary report.
 2026-07-16 16:09:45,112 [INFO] backend: Lifespan shutdown: Cleaning up resources...
 2026-07-16 16:09:45,112 [INFO] backend: Server stopped successfully.
+2026-07-17 12:22:39,742 [INFO] backend: Initializing FastAPI Backend server...
+2026-07-17 12:22:39,743 [INFO] backend: Mounted static outputs route at: /static (pointing to D:\Projects\AS\outputs)
+2026-07-17 12:22:41,271 [INFO] backend: Registered API routes successfully.
+2026-07-17 12:22:41,275 [INFO] backend: Lifespan startup: Initializing Earth Engine and loading model weights...
+2026-07-17 12:22:41,275 [INFO] backend: Cleaning outputs directory of stale files...
+2026-07-17 12:22:56,574 [INFO] backend: Inference device: cuda
+2026-07-17 12:22:56,576 [INFO] backend: Loading U-Net weights from: D:\Projects\AS\weights\unet_forest_loss.pth
+2026-07-17 12:22:56,852 [INFO] backend: Loading YOLOv8 weights from: D:\Projects\AS\weights\yolov8_encroachment.pt
+2026-07-17 12:22:56,901 [INFO] backend: AI models pre-loaded in memory successfully!
+2026-07-17 12:23:07,295 [INFO] backend: Health check endpoint hit.
+2026-07-17 12:23:07,301 [INFO] backend: Retrieving configuration settings.
+2026-07-17 12:23:07,312 [INFO] backend: Received configuration update: {'thresholds': {'morphology_kernel_size': 5}}
+2026-07-17 12:23:07,316 [INFO] backend: Configuration updated successfully.
+2026-07-17 12:23:07,319 [INFO] backend: Retrieving configuration settings.
+2026-07-17 12:23:07,341 [INFO] backend: ==================================================
+2026-07-17 12:23:07,341 [INFO] backend: API EXECUTION: POST /analyze request received
+2026-07-17 12:23:07,341 [INFO] backend: ROI Parameters: Default Bounding Box (Center: Lat 22.334, Lon 80.611)
+2026-07-17 12:23:07,341 [INFO] backend: Before Date Range: 2022-01-01 to 2022-03-31
+2026-07-17 12:23:07,341 [INFO] backend: After Date Range: 2026-01-01 to 2026-03-31
+2026-07-17 12:23:07,341 [INFO] backend: ==================================================
+2026-07-17 12:23:44,205 [INFO] backend: GEE Download status: SUCCESS (Time taken: 36.86 seconds)
+2026-07-17 12:23:44,205 [INFO] backend: Running preprocessing on downloaded GeoTIFFs...
+2026-07-17 12:23:44,311 [WARNING] rasterio._env: CPLE_AppDefined in before.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 12:23:44,375 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 12:23:44,417 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 12:23:44,418 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 12:23:44,455 [INFO] backend: Calculating NDVI maps...
+2026-07-17 12:23:44,528 [INFO] backend: Running AI Model Inference...
+2026-07-17 12:23:48,578 [INFO] backend: AI Inference execution time: 4.05 seconds (U-Net + YOLOv8)
+2026-07-17 12:23:48,578 [INFO] backend: Combining NDVI and AI results to compute metrics...
+2026-07-17 12:23:48,583 [INFO] backend: Generating heatmap and visual dashboard overlays...
+2026-07-17 12:23:48,650 [INFO] backend: Visual outputs and report generated in 0.40 seconds.
+2026-07-17 12:23:48,650 [INFO] backend: API /analyze run completed in 41.31 seconds.
+2026-07-17 12:23:48,666 [INFO] backend: Listing output file URLs.
+2026-07-17 12:23:48,670 [INFO] backend: Retrieving plain-text summary report.
+2026-07-17 12:23:48,684 [INFO] backend: Retrieving severity.json metrics.
+2026-07-17 12:25:26,441 [INFO] backend: Retrieving configuration settings.
+2026-07-17 12:25:26,452 [INFO] backend: Retrieving configuration settings.
+2026-07-17 12:25:33,191 [INFO] backend: Retrieving configuration settings.
+2026-07-17 12:25:33,205 [INFO] backend: Retrieving configuration settings.
+2026-07-17 12:25:34,764 [INFO] backend: Retrieving configuration settings.
+2026-07-17 12:25:34,811 [INFO] backend: Retrieving configuration settings.
+2026-07-17 12:25:49,579 [INFO] backend: ==================================================
+2026-07-17 12:25:49,579 [INFO] backend: API EXECUTION: POST /analyze request received
+2026-07-17 12:25:49,579 [INFO] backend: ROI Parameters: Coordinates (Center: Lat 22.334008, Lon 80.610815, Buffer: 0.02)
+2026-07-17 12:25:49,584 [INFO] backend: Before Date Range: 2022-01-01 to 2022-03-31
+2026-07-17 12:25:49,584 [INFO] backend: After Date Range: 2026-01-01 to 2026-03-31
+2026-07-17 12:25:49,584 [INFO] backend: ==================================================
+2026-07-17 12:25:50,318 [WARNING] googleapiclient.http: Sleeping 1.51 seconds before retry 1 of 5 for request: POST https://earthengine.googleapis.com/v1/projects/aranyasentinel/value:compute?prettyPrint=false&alt=json, after ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-07-17 12:26:35,645 [INFO] backend: GEE Download status: SUCCESS (Time taken: 46.05 seconds)
+2026-07-17 12:26:35,646 [INFO] backend: Running preprocessing on downloaded GeoTIFFs...
+2026-07-17 12:26:35,703 [WARNING] rasterio._env: CPLE_AppDefined in before.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 12:26:35,707 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 12:26:35,779 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 12:26:35,782 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 12:26:35,851 [INFO] backend: Calculating NDVI maps...
+2026-07-17 12:26:36,014 [INFO] backend: Running AI Model Inference...
+2026-07-17 12:26:36,373 [INFO] backend: AI Inference execution time: 0.36 seconds (U-Net + YOLOv8)
+2026-07-17 12:26:36,373 [INFO] backend: Combining NDVI and AI results to compute metrics...
+2026-07-17 12:26:36,374 [INFO] backend: Generating heatmap and visual dashboard overlays...
+2026-07-17 12:26:36,425 [INFO] backend: Visual outputs and report generated in 0.44 seconds.
+2026-07-17 12:26:36,425 [INFO] backend: API /analyze run completed in 46.85 seconds.
+2026-07-17 12:26:41,909 [INFO] backend: Retrieving plain-text summary report.
+2026-07-17 12:26:41,953 [INFO] backend: Retrieving severity.json metrics.
+2026-07-17 12:26:41,977 [INFO] backend: Retrieving severity.json metrics.
+2026-07-17 12:26:41,982 [INFO] backend: Retrieving plain-text summary report.
+2026-07-17 12:26:52,698 [INFO] backend: Retrieving configuration settings.
+2026-07-17 12:26:52,728 [INFO] backend: Retrieving configuration settings.
+2026-07-17 13:37:15,429 [INFO] backend: Retrieving configuration settings.
+2026-07-17 13:37:15,446 [INFO] backend: Retrieving configuration settings.
+2026-07-17 14:02:40,283 [INFO] backend: Initializing FastAPI Backend server...
+2026-07-17 14:02:40,288 [INFO] backend: Mounted static outputs route at: /static (pointing to D:\Projects\AS\outputs)
+2026-07-17 14:02:40,500 [INFO] backend: Registered API routes successfully.
+2026-07-17 14:02:40,501 [INFO] backend: Lifespan startup: Initializing Earth Engine and loading model weights...
+2026-07-17 14:02:40,501 [INFO] backend: Cleaning outputs directory of stale files...
+2026-07-17 14:02:46,568 [INFO] backend: Inference device: cuda
+2026-07-17 14:02:46,568 [INFO] backend: Loading U-Net weights from: D:\Projects\AS\weights\unet_forest_loss.pth
+2026-07-17 14:02:46,842 [INFO] backend: Loading YOLOv8 weights from: D:\Projects\AS\weights\yolov8_encroachment.pt
+2026-07-17 14:02:46,956 [INFO] backend: AI models pre-loaded in memory successfully!
+2026-07-17 14:03:00,943 [INFO] backend: Health check endpoint hit.
+2026-07-17 14:03:00,950 [INFO] backend: Retrieving configuration settings.
+2026-07-17 14:03:00,962 [INFO] backend: Received configuration update: {'thresholds': {'morphology_kernel_size': 5}}
+2026-07-17 14:03:00,971 [INFO] backend: Configuration updated successfully.
+2026-07-17 14:03:00,975 [INFO] backend: Retrieving configuration settings.
+2026-07-17 14:03:00,989 [INFO] backend: ==================================================
+2026-07-17 14:03:00,989 [INFO] backend: API EXECUTION: POST /analyze request received
+2026-07-17 14:03:00,989 [INFO] backend: ROI Parameters: Default Bounding Box (Center: Lat 22.334, Lon 80.611)
+2026-07-17 14:03:00,989 [INFO] backend: Before Date Range: 2022-01-01 to 2022-03-31
+2026-07-17 14:03:00,989 [INFO] backend: After Date Range: 2026-01-01 to 2026-03-31
+2026-07-17 14:03:00,989 [INFO] backend: ==================================================
+2026-07-17 14:03:21,561 [INFO] backend: GEE Download status: SUCCESS (Time taken: 20.57 seconds)
+2026-07-17 14:03:21,561 [INFO] backend: Running preprocessing on downloaded GeoTIFFs...
+2026-07-17 14:03:21,591 [WARNING] rasterio._env: CPLE_AppDefined in before.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 14:03:21,601 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 14:03:21,668 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 14:03:21,673 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 14:03:21,736 [INFO] backend: Calculating NDVI maps...
+2026-07-17 14:03:21,814 [INFO] backend: Running AI Model Inference...
+2026-07-17 14:03:23,222 [INFO] backend: AI Inference execution time: 1.41 seconds (U-Net + YOLOv8)
+2026-07-17 14:03:23,222 [INFO] backend: Combining NDVI and AI results to compute metrics...
+2026-07-17 14:03:23,225 [INFO] backend: Generating heatmap and visual dashboard overlays...
+2026-07-17 14:03:23,249 [INFO] backend: Visual outputs and report generated in 0.28 seconds.
+2026-07-17 14:03:23,249 [INFO] backend: API /analyze run completed in 22.26 seconds.
+2026-07-17 14:03:23,257 [INFO] backend: Listing output file URLs.
+2026-07-17 14:03:23,262 [INFO] backend: Retrieving plain-text summary report.
+2026-07-17 14:03:23,278 [INFO] backend: Retrieving severity.json metrics.
+2026-07-17 14:13:15,697 [INFO] backend: Retrieving configuration settings.
+2026-07-17 14:13:15,716 [INFO] backend: Retrieving configuration settings.
+2026-07-17 14:13:15,768 [INFO] backend: Retrieving severity.json metrics.
+2026-07-17 14:13:15,783 [INFO] backend: Retrieving severity.json metrics.
+2026-07-17 14:13:15,808 [INFO] backend: Retrieving plain-text summary report.
+2026-07-17 14:13:15,819 [INFO] backend: Retrieving plain-text summary report.
+2026-07-17 14:13:32,139 [INFO] backend: Retrieving configuration settings.
+2026-07-17 14:13:32,166 [INFO] backend: Retrieving configuration settings.
+2026-07-17 14:13:32,194 [INFO] backend: Retrieving severity.json metrics.
+2026-07-17 14:13:32,202 [INFO] backend: Retrieving severity.json metrics.
+2026-07-17 14:13:32,215 [INFO] backend: Retrieving plain-text summary report.
+2026-07-17 14:13:32,226 [INFO] backend: Retrieving plain-text summary report.
+2026-07-17 14:13:35,779 [INFO] backend: Retrieving configuration settings.
+2026-07-17 14:13:35,794 [INFO] backend: Retrieving configuration settings.
+2026-07-17 14:13:35,814 [INFO] backend: Retrieving severity.json metrics.
+2026-07-17 14:13:35,832 [INFO] backend: Retrieving severity.json metrics.
+2026-07-17 14:13:35,840 [INFO] backend: Retrieving plain-text summary report.
+2026-07-17 14:13:35,853 [INFO] backend: Retrieving plain-text summary report.
+2026-07-17 14:13:53,646 [INFO] backend: Retrieving configuration settings.
+2026-07-17 14:13:53,665 [INFO] backend: Retrieving configuration settings.
+2026-07-17 14:13:53,683 [INFO] backend: Retrieving severity.json metrics.
+2026-07-17 14:13:53,691 [INFO] backend: Retrieving severity.json metrics.
+2026-07-17 14:13:53,733 [INFO] backend: Retrieving plain-text summary report.
+2026-07-17 14:13:53,748 [INFO] backend: Retrieving plain-text summary report.
+2026-07-17 14:14:57,775 [INFO] backend: Retrieving configuration settings.
+2026-07-17 14:14:57,835 [INFO] backend: Retrieving configuration settings.
+2026-07-17 14:14:57,942 [INFO] backend: Retrieving severity.json metrics.
+2026-07-17 14:14:57,974 [INFO] backend: Retrieving severity.json metrics.
+2026-07-17 14:14:58,005 [INFO] backend: Retrieving plain-text summary report.
+2026-07-17 14:14:58,023 [INFO] backend: Retrieving plain-text summary report.
+2026-07-17 14:15:22,575 [INFO] backend: Retrieving configuration settings.
+2026-07-17 14:15:22,594 [INFO] backend: Retrieving configuration settings.
+2026-07-17 14:15:22,621 [INFO] backend: Retrieving severity.json metrics.
+2026-07-17 14:15:22,635 [INFO] backend: Retrieving severity.json metrics.
+2026-07-17 14:15:22,662 [INFO] backend: Retrieving plain-text summary report.
+2026-07-17 14:15:22,676 [INFO] backend: Retrieving plain-text summary report.
+2026-07-17 14:17:21,740 [INFO] backend: Lifespan shutdown: Cleaning up resources...
+2026-07-17 14:17:21,740 [INFO] backend: Server stopped successfully.
+2026-07-17 14:17:21,744 [INFO] backend: Lifespan shutdown: Cleaning up resources...
+2026-07-17 14:17:21,745 [INFO] backend: Server stopped successfully.
+2026-07-17 14:21:37,149 [INFO] backend: Initializing FastAPI Backend server...
+2026-07-17 14:21:37,154 [INFO] backend: Mounted static outputs route at: /static (pointing to D:\Projects\AS\outputs)
+2026-07-17 14:21:37,431 [INFO] backend: Registered API routes successfully.
+2026-07-17 14:21:37,433 [INFO] backend: Lifespan startup: Initializing Earth Engine and loading model weights...
+2026-07-17 14:21:37,433 [INFO] backend: Cleaning outputs directory of stale files...
+2026-07-17 14:21:43,567 [INFO] backend: Inference device: cuda
+2026-07-17 14:21:43,567 [INFO] backend: Loading U-Net weights from: D:\Projects\AS\weights\unet_forest_loss.pth
+2026-07-17 14:21:43,851 [INFO] backend: Loading YOLOv8 weights from: D:\Projects\AS\weights\yolov8_encroachment.pt
+2026-07-17 14:21:43,966 [INFO] backend: AI models pre-loaded in memory successfully!
+2026-07-17 14:21:52,790 [INFO] backend: Health check endpoint hit.
+2026-07-17 14:21:52,803 [INFO] backend: Retrieving configuration settings.
+2026-07-17 14:21:52,819 [INFO] backend: Received configuration update: {'thresholds': {'morphology_kernel_size': 5}}
+2026-07-17 14:21:52,829 [INFO] backend: Configuration updated successfully.
+2026-07-17 14:21:52,839 [INFO] backend: Retrieving configuration settings.
+2026-07-17 14:21:52,875 [INFO] backend: ==================================================
+2026-07-17 14:21:52,875 [INFO] backend: API EXECUTION: POST /analyze request received
+2026-07-17 14:21:52,875 [INFO] backend: ROI Parameters: Default Bounding Box (Center: Lat 22.334, Lon 80.611)
+2026-07-17 14:21:52,875 [INFO] backend: Before Date Range: 2022-01-01 to 2022-03-31
+2026-07-17 14:21:52,875 [INFO] backend: After Date Range: 2026-01-01 to 2026-03-31
+2026-07-17 14:21:52,875 [INFO] backend: ==================================================
+2026-07-17 14:22:05,881 [INFO] backend: GEE Download status: SUCCESS (Time taken: 13.01 seconds)
+2026-07-17 14:22:05,881 [INFO] backend: Running preprocessing on downloaded GeoTIFFs...
+2026-07-17 14:22:05,926 [WARNING] rasterio._env: CPLE_AppDefined in before.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 14:22:05,975 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 14:22:06,075 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 14:22:06,077 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 14:22:06,116 [INFO] backend: Calculating NDVI maps...
+2026-07-17 14:22:06,187 [INFO] backend: Running AI Model Inference...
+2026-07-17 14:22:13,038 [INFO] backend: AI Inference execution time: 6.85 seconds (U-Net + YOLOv8)
+2026-07-17 14:22:13,038 [INFO] backend: Combining NDVI and AI results to compute metrics...
+2026-07-17 14:22:13,040 [INFO] backend: Generating heatmap and visual dashboard overlays...
+2026-07-17 14:22:13,189 [INFO] backend: Visual outputs and report generated in 0.46 seconds.
+2026-07-17 14:22:13,189 [INFO] backend: API /analyze run completed in 20.32 seconds.
+2026-07-17 14:22:13,208 [INFO] backend: Listing output file URLs.
+2026-07-17 14:22:13,216 [INFO] backend: Retrieving plain-text summary report.
+2026-07-17 14:22:13,246 [INFO] backend: Retrieving severity.json metrics.
+2026-07-17 14:28:55,205 [INFO] backend: Retrieving configuration settings.
+2026-07-17 14:28:55,244 [INFO] backend: Retrieving configuration settings.
+2026-07-17 14:28:55,281 [INFO] backend: Retrieving severity.json metrics.
+2026-07-17 14:28:55,296 [INFO] backend: Retrieving severity.json metrics.
+2026-07-17 14:28:55,323 [INFO] backend: Retrieving plain-text summary report.
+2026-07-17 14:28:55,339 [INFO] backend: Retrieving plain-text summary report.
+2026-07-17 14:32:24,688 [INFO] backend: Lifespan shutdown: Cleaning up resources...
+2026-07-17 14:32:24,688 [INFO] backend: Server stopped successfully.
+2026-07-17 15:16:10,412 [INFO] backend: Initializing FastAPI Backend server...
+2026-07-17 15:16:10,416 [INFO] backend: Mounted static outputs route at: /static (pointing to D:\Projects\AS\outputs)
+2026-07-17 15:16:10,733 [INFO] backend: Registered API routes successfully.
+2026-07-17 15:16:10,739 [INFO] backend: Lifespan startup: Initializing Earth Engine and loading model weights...
+2026-07-17 15:16:10,740 [INFO] backend: Cleaning outputs directory of stale files...
+2026-07-17 15:16:16,910 [INFO] backend: Inference device: cuda
+2026-07-17 15:16:16,912 [INFO] backend: Loading U-Net weights from: D:\Projects\AS\weights\unet_forest_loss.pth
+2026-07-17 15:16:17,338 [INFO] backend: Loading YOLOv8 weights from: D:\Projects\AS\weights\yolov8_encroachment.pt
+2026-07-17 15:16:17,497 [INFO] backend: AI models pre-loaded in memory successfully!
+2026-07-17 15:16:29,324 [INFO] backend: Fetching all historical records
+2026-07-17 15:16:29,352 [INFO] backend: Fetching latest historical record
+2026-07-17 15:16:29,381 [INFO] backend: Fetching historical record ID: d465e3c2
+2026-07-17 15:16:29,390 [INFO] backend: Compiling historical trends
+2026-07-17 15:17:22,397 [INFO] backend: Fetching all historical records
+2026-07-17 15:17:22,419 [INFO] backend: Compiling historical trends
+2026-07-17 15:17:22,425 [INFO] backend: Fetching all historical records
+2026-07-17 15:17:22,439 [INFO] backend: Compiling historical trends
+2026-07-17 15:21:44,674 [INFO] backend: Lifespan shutdown: Cleaning up resources...
+2026-07-17 15:21:44,675 [INFO] backend: Server stopped successfully.
+2026-07-17 15:26:47,090 [INFO] backend: Initializing FastAPI Backend server...
+2026-07-17 15:26:47,095 [INFO] backend: Mounted static outputs route at: /static (pointing to D:\Projects\AS\outputs)
+2026-07-17 15:26:47,513 [INFO] backend: Registered API routes successfully.
+2026-07-17 15:26:47,516 [INFO] backend: Lifespan startup: Initializing Earth Engine and loading model weights...
+2026-07-17 15:26:47,516 [INFO] backend: Cleaning outputs directory of stale files...
+2026-07-17 15:26:56,609 [INFO] backend: Inference device: cuda
+2026-07-17 15:26:56,609 [INFO] backend: Loading U-Net weights from: D:\Projects\AS\weights\unet_forest_loss.pth
+2026-07-17 15:26:56,829 [INFO] backend: Loading YOLOv8 weights from: D:\Projects\AS\weights\yolov8_encroachment.pt
+2026-07-17 15:26:56,960 [INFO] backend: AI models pre-loaded in memory successfully!
+2026-07-17 15:26:57,149 [INFO] backend: Retrieving configuration settings.
+2026-07-17 15:26:57,173 [INFO] backend: Retrieving configuration settings.
+2026-07-17 15:26:57,209 [INFO] backend: Retrieving severity.json metrics.
+2026-07-17 15:26:57,209 [ERROR] backend: Severity metrics not found: Severity metrics file not found at: D:\Projects\AS\outputs\severity.json. Run /analyze first.
+2026-07-17 15:26:57,230 [INFO] backend: Retrieving severity.json metrics.
+2026-07-17 15:26:57,232 [ERROR] backend: Severity metrics not found: Severity metrics file not found at: D:\Projects\AS\outputs\severity.json. Run /analyze first.
+2026-07-17 15:26:57,244 [INFO] backend: Retrieving plain-text summary report.
+2026-07-17 15:26:57,244 [ERROR] backend: Summary not found: Summary report file not found at: D:\Projects\AS\outputs\summary.txt. Run /analyze first.
+2026-07-17 15:26:57,253 [INFO] backend: Retrieving plain-text summary report.
+2026-07-17 15:26:57,254 [ERROR] backend: Summary not found: Summary report file not found at: D:\Projects\AS\outputs\summary.txt. Run /analyze first.
+2026-07-17 15:28:33,023 [INFO] backend: Retrieving configuration settings.
+2026-07-17 15:28:33,049 [INFO] backend: Retrieving configuration settings.
+2026-07-17 15:28:33,083 [INFO] backend: Retrieving severity.json metrics.
+2026-07-17 15:28:33,085 [ERROR] backend: Severity metrics not found: Severity metrics file not found at: D:\Projects\AS\outputs\severity.json. Run /analyze first.
+2026-07-17 15:28:33,096 [INFO] backend: Retrieving severity.json metrics.
+2026-07-17 15:28:33,096 [ERROR] backend: Severity metrics not found: Severity metrics file not found at: D:\Projects\AS\outputs\severity.json. Run /analyze first.
+2026-07-17 15:28:33,114 [INFO] backend: Retrieving plain-text summary report.
+2026-07-17 15:28:33,114 [ERROR] backend: Summary not found: Summary report file not found at: D:\Projects\AS\outputs\summary.txt. Run /analyze first.
+2026-07-17 15:28:33,130 [INFO] backend: Retrieving plain-text summary report.
+2026-07-17 15:28:33,137 [ERROR] backend: Summary not found: Summary report file not found at: D:\Projects\AS\outputs\summary.txt. Run /analyze first.
+2026-07-17 15:36:17,831 [INFO] backend: Lifespan shutdown: Cleaning up resources...
+2026-07-17 15:36:17,831 [INFO] backend: Server stopped successfully.
+2026-07-17 15:39:09,675 [INFO] backend: Initializing FastAPI Backend server...
+2026-07-17 15:39:09,677 [INFO] backend: Mounted static outputs route at: /static (pointing to D:\Projects\AS\outputs)
+2026-07-17 15:39:10,251 [INFO] backend: Registered API routes successfully.
+2026-07-17 15:39:10,255 [INFO] backend: Lifespan startup: Initializing Earth Engine and loading model weights...
+2026-07-17 15:39:10,255 [INFO] backend: Cleaning outputs directory of stale files...
+2026-07-17 15:39:21,766 [INFO] backend: Inference device: cuda
+2026-07-17 15:39:21,771 [INFO] backend: Loading U-Net weights from: D:\Projects\AS\weights\unet_forest_loss.pth
+2026-07-17 15:39:21,999 [INFO] backend: Loading YOLOv8 weights from: D:\Projects\AS\weights\yolov8_encroachment.pt
+2026-07-17 15:39:22,205 [INFO] backend: AI models pre-loaded in memory successfully!
+2026-07-17 15:40:27,580 [INFO] backend: Generated new PDF report: AS_REPORT_20260717_154027
+2026-07-17 15:49:07,215 [INFO] backend: Initializing FastAPI Backend server...
+2026-07-17 15:49:07,216 [INFO] backend: Mounted static outputs route at: /static (pointing to D:\Projects\AS\outputs)
+2026-07-17 15:49:08,649 [INFO] backend: Registered API routes successfully.
+2026-07-17 15:49:08,650 [INFO] backend: Lifespan startup: Initializing Earth Engine and loading model weights...
+2026-07-17 15:49:08,650 [INFO] backend: Cleaning outputs directory of stale files...
+2026-07-17 15:49:20,733 [INFO] backend: Inference device: cuda
+2026-07-17 15:49:20,738 [INFO] backend: Loading U-Net weights from: D:\Projects\AS\weights\unet_forest_loss.pth
+2026-07-17 15:49:20,961 [INFO] backend: Loading YOLOv8 weights from: D:\Projects\AS\weights\yolov8_encroachment.pt
+2026-07-17 15:49:21,082 [INFO] backend: AI models pre-loaded in memory successfully!
+2026-07-17 15:55:38,363 [INFO] backend: Lifespan shutdown: Cleaning up resources...
+2026-07-17 15:55:38,363 [INFO] backend: Server stopped successfully.
+2026-07-17 15:58:45,825 [INFO] backend: Initializing FastAPI Backend server...
+2026-07-17 15:58:45,827 [INFO] backend: Mounted static outputs route at: /static (pointing to D:\Projects\AS\outputs)
+2026-07-17 15:58:46,147 [INFO] backend: Registered API routes successfully.
+2026-07-17 15:58:46,152 [INFO] backend: Lifespan startup: Initializing Earth Engine and loading model weights...
+2026-07-17 15:58:46,152 [INFO] backend: Cleaning outputs directory of stale files...
+2026-07-17 15:59:01,779 [INFO] backend: Inference device: cuda
+2026-07-17 15:59:01,779 [INFO] backend: Loading U-Net weights from: D:\Projects\AS\weights\unet_forest_loss.pth
+2026-07-17 15:59:01,978 [INFO] backend: Loading YOLOv8 weights from: D:\Projects\AS\weights\yolov8_encroachment.pt
+2026-07-17 15:59:02,115 [INFO] backend: AI models pre-loaded in memory successfully!
+2026-07-17 15:59:48,524 [INFO] backend: Retrieving configuration settings.
+2026-07-17 15:59:48,543 [INFO] backend: Retrieving configuration settings.
+2026-07-17 15:59:48,605 [INFO] backend: Retrieving severity.json metrics.
+2026-07-17 15:59:48,606 [ERROR] backend: Severity metrics not found: Severity metrics file not found at: D:\Projects\AS\outputs\severity.json. Run /analyze first.
+2026-07-17 15:59:48,611 [INFO] backend: Retrieving severity.json metrics.
+2026-07-17 15:59:48,614 [ERROR] backend: Severity metrics not found: Severity metrics file not found at: D:\Projects\AS\outputs\severity.json. Run /analyze first.
+2026-07-17 15:59:48,626 [INFO] backend: Retrieving plain-text summary report.
+2026-07-17 15:59:48,626 [ERROR] backend: Summary not found: Summary report file not found at: D:\Projects\AS\outputs\summary.txt. Run /analyze first.
+2026-07-17 15:59:48,639 [INFO] backend: Retrieving plain-text summary report.
+2026-07-17 15:59:48,639 [ERROR] backend: Summary not found: Summary report file not found at: D:\Projects\AS\outputs\summary.txt. Run /analyze first.
+2026-07-17 16:03:11,337 [INFO] backend: Initializing FastAPI Backend server...
+2026-07-17 16:03:11,337 [INFO] backend: Mounted static outputs route at: /static (pointing to D:\Projects\AS\outputs)
+2026-07-17 16:03:12,095 [INFO] backend: Registered API routes successfully.
+2026-07-17 16:03:12,098 [INFO] backend: Lifespan startup: Initializing Earth Engine and loading model weights...
+2026-07-17 16:03:12,098 [INFO] backend: Cleaning outputs directory of stale files...
+2026-07-17 16:03:22,145 [INFO] backend: Inference device: cuda
+2026-07-17 16:03:22,145 [INFO] backend: Loading U-Net weights from: D:\Projects\AS\weights\unet_forest_loss.pth
+2026-07-17 16:03:23,064 [INFO] backend: Loading YOLOv8 weights from: D:\Projects\AS\weights\yolov8_encroachment.pt
+2026-07-17 16:03:23,322 [INFO] backend: AI models pre-loaded in memory successfully!
+2026-07-17 16:03:36,823 [INFO] backend: Retrieving configuration settings.
+2026-07-17 16:03:36,845 [INFO] backend: Retrieving configuration settings.
+2026-07-17 16:07:54,608 [INFO] backend: Generated new PDF report: AS_REPORT_20260717_160754
+2026-07-17 16:09:59,284 [INFO] backend: Retrieving configuration settings.
+2026-07-17 16:09:59,296 [INFO] backend: Retrieving configuration settings.
+2026-07-17 16:10:00,887 [INFO] backend: Fetching all historical records
+2026-07-17 16:10:00,931 [INFO] backend: Compiling historical trends
+2026-07-17 16:10:00,938 [INFO] backend: Fetching all historical records
+2026-07-17 16:10:00,945 [INFO] backend: Compiling historical trends
+2026-07-17 16:11:47,810 [INFO] backend: Generated new PDF report: AS_REPORT_20260717_161147
+2026-07-17 16:12:52,997 [INFO] backend: Retrieving configuration settings.
+2026-07-17 16:12:53,020 [INFO] backend: Retrieving configuration settings.
+2026-07-17 16:13:03,155 [INFO] backend: ==================================================
+2026-07-17 16:13:03,155 [INFO] backend: API EXECUTION: POST /analyze request received
+2026-07-17 16:13:03,155 [INFO] backend: ROI Parameters: Coordinates (Center: Lat 22.334, Lon 80.611, Buffer: 0.02)
+2026-07-17 16:13:03,155 [INFO] backend: Before Date Range: 2022-01-01 to 2022-03-31
+2026-07-17 16:13:03,155 [INFO] backend: After Date Range: 2026-01-01 to 2026-03-31
+2026-07-17 16:13:03,157 [INFO] backend: ==================================================
+2026-07-17 16:13:54,365 [INFO] backend: GEE Download status: SUCCESS (Time taken: 51.21 seconds)
+2026-07-17 16:13:54,371 [INFO] backend: Running preprocessing on downloaded GeoTIFFs...
+2026-07-17 16:13:54,607 [WARNING] rasterio._env: CPLE_AppDefined in before.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 16:13:54,801 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 16:13:54,899 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 16:13:54,907 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 16:13:55,078 [INFO] backend: Calculating NDVI maps...
+2026-07-17 16:13:55,406 [INFO] backend: Running AI Model Inference...
+2026-07-17 16:14:08,809 [INFO] backend: AI Inference execution time: 13.40 seconds (U-Net + YOLOv8)
+2026-07-17 16:14:08,809 [INFO] backend: Combining NDVI and AI results to compute metrics...
+2026-07-17 16:14:08,815 [INFO] backend: Generating heatmap and visual dashboard overlays...
+2026-07-17 16:14:09,052 [INFO] backend: Visual outputs and report generated in 1.30 seconds.
+2026-07-17 16:14:09,052 [INFO] backend: API /analyze run completed in 65.91 seconds.
+2026-07-17 16:14:17,456 [INFO] backend: Generated new PDF report: AS_REPORT_20260717_161417
+2026-07-17 16:17:27,784 [INFO] backend: Lifespan shutdown: Cleaning up resources...
+2026-07-17 16:17:27,784 [INFO] backend: Server stopped successfully.
+2026-07-17 16:19:52,308 [INFO] backend: Initializing FastAPI Backend server...
+2026-07-17 16:19:52,312 [INFO] backend: Mounted static outputs route at: /static (pointing to D:\Projects\AS\outputs)
+2026-07-17 16:19:52,678 [INFO] backend: Registered API routes successfully.
+2026-07-17 16:19:52,679 [INFO] backend: Lifespan startup: Initializing Earth Engine and loading model weights...
+2026-07-17 16:19:52,679 [INFO] backend: Cleaning outputs directory of stale files...
+2026-07-17 16:19:58,291 [INFO] backend: Inference device: cuda
+2026-07-17 16:19:58,291 [INFO] backend: Loading U-Net weights from: D:\Projects\AS\weights\unet_forest_loss.pth
+2026-07-17 16:19:58,432 [INFO] backend: Loading YOLOv8 weights from: D:\Projects\AS\weights\yolov8_encroachment.pt
+2026-07-17 16:19:58,573 [INFO] backend: AI models pre-loaded in memory successfully!
+2026-07-17 16:20:12,505 [INFO] backend: Retrieving configuration settings.
+2026-07-17 16:20:12,556 [INFO] backend: Retrieving configuration settings.
+2026-07-17 16:20:17,343 [INFO] backend: ==================================================
+2026-07-17 16:20:17,343 [INFO] backend: API EXECUTION: POST /analyze request received
+2026-07-17 16:20:17,343 [INFO] backend: ROI Parameters: Coordinates (Center: Lat 22.334, Lon 80.611, Buffer: 0.02)
+2026-07-17 16:20:17,355 [INFO] backend: Before Date Range: 2022-01-01 to 2022-03-31
+2026-07-17 16:20:17,355 [INFO] backend: After Date Range: 2026-01-01 to 2026-03-31
+2026-07-17 16:20:17,355 [INFO] backend: ==================================================
+2026-07-17 16:20:29,920 [INFO] backend: GEE Download status: SUCCESS (Time taken: 12.57 seconds)
+2026-07-17 16:20:29,920 [INFO] backend: Running preprocessing on downloaded GeoTIFFs...
+2026-07-17 16:20:30,018 [WARNING] rasterio._env: CPLE_AppDefined in before.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 16:20:30,052 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 16:20:30,111 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 16:20:30,123 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 16:20:30,206 [INFO] backend: Calculating NDVI maps...
+2026-07-17 16:20:30,336 [INFO] backend: Running AI Model Inference...
+2026-07-17 16:20:38,197 [INFO] backend: AI Inference execution time: 7.85 seconds (U-Net + YOLOv8)
+2026-07-17 16:20:38,197 [INFO] backend: Combining NDVI and AI results to compute metrics...
+2026-07-17 16:20:38,201 [INFO] backend: Generating heatmap and visual dashboard overlays...
+2026-07-17 16:20:38,463 [INFO] backend: Visual outputs and report generated in 0.70 seconds.
+2026-07-17 16:20:38,463 [INFO] backend: API /analyze run completed in 21.12 seconds.
+2026-07-17 16:21:01,684 [INFO] backend: Generated new PDF report: AS_REPORT_20260717_162101
+2026-07-17 16:23:25,437 [INFO] backend: Lifespan shutdown: Cleaning up resources...
+2026-07-17 16:23:25,437 [INFO] backend: Server stopped successfully.
+2026-07-17 16:23:29,993 [INFO] backend: Initializing FastAPI Backend server...
+2026-07-17 16:23:29,997 [INFO] backend: Mounted static outputs route at: /static (pointing to D:\Projects\AS\outputs)
+2026-07-17 16:23:30,263 [INFO] backend: Registered API routes successfully.
+2026-07-17 16:23:30,265 [INFO] backend: Lifespan startup: Initializing Earth Engine and loading model weights...
+2026-07-17 16:23:30,265 [INFO] backend: Cleaning outputs directory of stale files...
+2026-07-17 16:25:14,571 [INFO] backend: Initializing FastAPI Backend server...
+2026-07-17 16:25:14,571 [INFO] backend: Mounted static outputs route at: /static (pointing to D:\Projects\AS\outputs)
+2026-07-17 16:25:14,835 [INFO] backend: Registered API routes successfully.
+2026-07-17 16:25:14,837 [INFO] backend: Lifespan startup: Initializing Earth Engine and loading model weights...
+2026-07-17 16:25:14,837 [INFO] backend: Cleaning outputs directory of stale files...
+2026-07-17 16:25:20,616 [INFO] backend: Inference device: cuda
+2026-07-17 16:25:20,616 [INFO] backend: Loading U-Net weights from: D:\Projects\AS\weights\unet_forest_loss.pth
+2026-07-17 16:25:20,757 [INFO] backend: Loading YOLOv8 weights from: D:\Projects\AS\weights\yolov8_encroachment.pt
+2026-07-17 16:25:20,858 [INFO] backend: AI models pre-loaded in memory successfully!
+2026-07-17 16:25:57,942 [INFO] backend: Generated new PDF report: AS_REPORT_20260717_162557
+2026-07-17 16:26:15,444 [INFO] backend: Retrieving configuration settings.
+2026-07-17 16:26:15,464 [INFO] backend: Retrieving configuration settings.
+2026-07-17 16:26:19,421 [INFO] backend: ==================================================
+2026-07-17 16:26:19,421 [INFO] backend: API EXECUTION: POST /analyze request received
+2026-07-17 16:26:19,421 [INFO] backend: ROI Parameters: Coordinates (Center: Lat 22.334, Lon 80.611, Buffer: 0.02)
+2026-07-17 16:26:19,423 [INFO] backend: Before Date Range: 2022-01-01 to 2022-03-31
+2026-07-17 16:26:19,423 [INFO] backend: After Date Range: 2026-01-01 to 2026-03-31
+2026-07-17 16:26:19,423 [INFO] backend: ==================================================
+2026-07-17 16:26:39,221 [INFO] backend: GEE Download status: SUCCESS (Time taken: 19.80 seconds)
+2026-07-17 16:26:39,226 [INFO] backend: Running preprocessing on downloaded GeoTIFFs...
+2026-07-17 16:26:39,309 [WARNING] rasterio._env: CPLE_AppDefined in before.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 16:26:39,344 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 16:26:39,407 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 16:26:39,409 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 16:26:39,484 [INFO] backend: Calculating NDVI maps...
+2026-07-17 16:26:39,624 [INFO] backend: Running AI Model Inference...
+2026-07-17 16:26:46,032 [INFO] backend: AI Inference execution time: 6.41 seconds (U-Net + YOLOv8)
+2026-07-17 16:26:46,032 [INFO] backend: Combining NDVI and AI results to compute metrics...
+2026-07-17 16:26:46,034 [INFO] backend: Generating heatmap and visual dashboard overlays...
+2026-07-17 16:26:46,128 [INFO] backend: Visual outputs and report generated in 0.52 seconds.
+2026-07-17 16:26:46,128 [INFO] backend: API /analyze run completed in 26.72 seconds.
+2026-07-17 16:26:48,409 [INFO] backend: ==================================================
+2026-07-17 16:26:48,409 [INFO] backend: API EXECUTION: POST /analyze request received
+2026-07-17 16:26:48,409 [INFO] backend: ROI Parameters: Coordinates (Center: Lat 22.334, Lon 80.611, Buffer: 0.02)
+2026-07-17 16:26:48,409 [INFO] backend: Before Date Range: 2022-01-01 to 2022-03-31
+2026-07-17 16:26:48,409 [INFO] backend: After Date Range: 2026-01-01 to 2026-03-31
+2026-07-17 16:26:48,409 [INFO] backend: ==================================================
+2026-07-17 16:27:20,573 [INFO] backend: GEE Download status: SUCCESS (Time taken: 32.15 seconds)
+2026-07-17 16:27:20,573 [INFO] backend: Running preprocessing on downloaded GeoTIFFs...
+2026-07-17 16:27:20,642 [WARNING] rasterio._env: CPLE_AppDefined in before.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 16:27:20,649 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 16:27:20,711 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 16:27:20,721 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 16:27:20,795 [INFO] backend: Calculating NDVI maps...
+2026-07-17 16:27:21,004 [INFO] backend: Running AI Model Inference...
+2026-07-17 16:27:21,524 [INFO] backend: AI Inference execution time: 0.52 seconds (U-Net + YOLOv8)
+2026-07-17 16:27:21,524 [INFO] backend: Combining NDVI and AI results to compute metrics...
+2026-07-17 16:27:21,526 [INFO] backend: Generating heatmap and visual dashboard overlays...
+2026-07-17 16:27:21,572 [INFO] backend: Visual outputs and report generated in 0.49 seconds.
+2026-07-17 16:27:21,572 [INFO] backend: API /analyze run completed in 33.17 seconds.
+2026-07-17 16:27:22,843 [INFO] backend: Generated new PDF report: AS_REPORT_20260717_162721
+2026-07-17 16:27:22,854 [INFO] backend: Compiling historical trends
+2026-07-17 16:27:22,871 [INFO] backend: Fetching all historical records
+2026-07-17 16:27:22,892 [INFO] backend: Retrieving configuration settings.
+2026-07-17 16:27:22,911 [INFO] backend: Retrieving configuration settings.
+2026-07-17 16:27:22,938 [INFO] backend: Fetching all historical records
+2026-07-17 16:27:22,950 [INFO] backend: Compiling historical trends
+2026-07-17 16:27:22,964 [INFO] backend: Retrieving configuration settings.
+2026-07-17 16:27:22,987 [INFO] backend: Retrieving configuration settings.
+2026-07-17 16:30:11,018 [INFO] backend: Retrieving configuration settings.
+2026-07-17 16:30:11,042 [INFO] backend: Retrieving configuration settings.
+2026-07-17 16:34:30,887 [INFO] backend: Lifespan shutdown: Cleaning up resources...
+2026-07-17 16:34:30,887 [INFO] backend: Server stopped successfully.
+2026-07-17 16:44:50,950 [INFO] backend: Initializing FastAPI Backend server...
+2026-07-17 16:44:50,951 [INFO] backend: Mounted static outputs route at: /static (pointing to D:\Projects\AS\outputs)
+2026-07-17 16:44:51,386 [INFO] backend: Registered API routes successfully.
+2026-07-17 16:44:51,388 [INFO] backend: Lifespan startup: Initializing Earth Engine and loading model weights...
+2026-07-17 16:44:51,388 [INFO] backend: Cleaning outputs directory of stale files...
+2026-07-17 16:45:04,386 [INFO] backend: Inference device: cuda
+2026-07-17 16:45:04,386 [INFO] backend: Loading U-Net weights from: D:\Projects\AS\weights\unet_forest_loss.pth
+2026-07-17 16:45:04,532 [INFO] backend: Loading YOLOv8 weights from: D:\Projects\AS\weights\yolov8_encroachment.pt
+2026-07-17 16:45:04,665 [INFO] backend: AI models pre-loaded in memory successfully!
+2026-07-17 16:51:02,770 [INFO] backend: Lifespan shutdown: Cleaning up resources...
+2026-07-17 16:51:02,770 [INFO] backend: Server stopped successfully.
+2026-07-17 16:51:06,954 [INFO] backend: Initializing FastAPI Backend server...
+2026-07-17 16:51:06,962 [INFO] backend: Mounted static outputs route at: /static (pointing to D:\Projects\AS\outputs)
+2026-07-17 16:51:07,341 [INFO] backend: Registered API routes successfully.
+2026-07-17 16:51:07,341 [INFO] backend: Lifespan startup: Initializing Earth Engine and loading model weights...
+2026-07-17 16:51:07,341 [INFO] backend: Cleaning outputs directory of stale files...
+2026-07-17 16:52:47,283 [INFO] backend: Initializing FastAPI Backend server...
+2026-07-17 16:52:47,285 [INFO] backend: Mounted static outputs route at: /static (pointing to D:\Projects\AS\outputs)
+2026-07-17 16:52:47,625 [INFO] backend: Registered API routes successfully.
+2026-07-17 16:52:47,625 [INFO] backend: Lifespan startup: Initializing Earth Engine and loading model weights...
+2026-07-17 16:52:47,625 [INFO] backend: Cleaning outputs directory of stale files...
+2026-07-17 16:53:03,789 [INFO] backend: Inference device: cuda
+2026-07-17 16:53:03,789 [INFO] backend: Loading U-Net weights from: D:\Projects\AS\weights\unet_forest_loss.pth
+2026-07-17 16:53:03,916 [INFO] backend: Loading YOLOv8 weights from: D:\Projects\AS\weights\yolov8_encroachment.pt
+2026-07-17 16:53:04,013 [INFO] backend: AI models pre-loaded in memory successfully!
+2026-07-17 17:00:18,629 [INFO] backend: Retrieving configuration settings.
+2026-07-17 17:00:18,659 [INFO] backend: Retrieving configuration settings.
+2026-07-17 17:00:23,467 [INFO] backend: ==================================================
+2026-07-17 17:00:23,467 [INFO] backend: API EXECUTION: POST /analyze request received
+2026-07-17 17:00:23,469 [INFO] backend: ROI Parameters: Coordinates (Center: Lat 22.334, Lon 80.611, Buffer: 0.02)
+2026-07-17 17:00:23,469 [INFO] backend: Before Date Range: 2022-01-01 to 2022-03-31
+2026-07-17 17:00:23,469 [INFO] backend: After Date Range: 2026-01-01 to 2026-03-31
+2026-07-17 17:00:23,472 [INFO] backend: ==================================================
+2026-07-17 17:00:46,754 [INFO] backend: GEE Download status: SUCCESS (Time taken: 23.28 seconds)
+2026-07-17 17:00:46,755 [INFO] backend: Running preprocessing on downloaded GeoTIFFs...
+2026-07-17 17:00:46,846 [WARNING] rasterio._env: CPLE_AppDefined in before.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 17:00:46,965 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 17:00:47,083 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 17:00:47,091 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 17:00:47,264 [INFO] backend: Calculating NDVI maps...
+2026-07-17 17:00:47,575 [INFO] backend: Running AI Model Inference...
+2026-07-17 17:01:00,098 [INFO] backend: AI Inference execution time: 12.52 seconds (U-Net + YOLOv8)
+2026-07-17 17:01:00,100 [INFO] backend: Combining NDVI and AI results to compute metrics...
+2026-07-17 17:01:00,101 [INFO] backend: Generating heatmap and visual dashboard overlays...
+2026-07-17 17:01:00,321 [INFO] backend: Visual outputs and report generated in 1.06 seconds.
+2026-07-17 17:01:00,321 [INFO] backend: API /analyze run completed in 36.87 seconds.
+2026-07-17 17:01:08,188 [INFO] backend: Retrieving configuration settings.
+2026-07-17 17:01:08,224 [INFO] backend: Retrieving configuration settings.
+2026-07-17 17:12:55,521 [ERROR] backend.localization: Dynamic translation failed for 'Forest health remain...': Response ended prematurely
+2026-07-17 17:12:55,892 [ERROR] backend.localization: Dynamic translation failed for 'AI Summary...': HTTPSConnectionPool(host='translate.google.com', port=443): Max retries exceeded with url: /m?tl=hi&sl=auto&q=AI+Summary (Caused by NameResolutionError("HTTPSConnection(host='translate.google.com', port=443): Failed to resolve 'translate.google.com' ([Errno 11001] getaddrinfo failed)"))
+2026-07-17 17:12:55,949 [ERROR] backend.localization: Dynamic translation failed for '====================...': HTTPSConnectionPool(host='translate.google.com', port=443): Max retries exceeded with url: /m?tl=hi&sl=auto&q=%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%0AAI+FOREST+LOSS+MONITORING+SYSTEM+-+SUMMARY+REPORT%0A%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%0ARegion+of+Interest%3A+Custom+Coordinate+Bounds%0ALatitude%3A+22.334+%7C+Longitude%3A+80.611%0A%0ADate+Range%3A%0A-+Before%3A+2022-01-01+to+2022-03-31%0A-+After%3A++2026-01-01+to+2026-03-31%0A%0A--------------------------------------------------%0AANALYSIS+METRICS%3A%0A--------------------------------------------------%0A-+Deforested+Area%3A++++++++++31.81+Hectares%0A-+Forest+Loss+Percentage%3A++++4.85%25%0A-+Encroachments+Detected%3A++++0%0A-+Total+Buildings+Detected%3A++0%0A-+Severity+Classification%3A+++LOW%0A%0A--------------------------------------------------%0APROCESSING+PERFORMANCE%3A%0A--------------------------------------------------%0A-+GEE+Download+Time%3A++++++++23.28+seconds%0A-+AI+Inference+Time%3A++++++++12.52+seconds%0A-+Visual+Output+Gen+Time%3A+++1.06+seconds%0A-+Total+Run+Duration%3A+++++++36.87+seconds%0A%0A--------------------------------------------------%0AAI+MODEL+CONFIDENCE+SCORES%3A%0A--------------------------------------------------%0A-+Average+U-Net+Confidence%3A++0.8775%0A-+Average+YOLOv8+Confidence%3A+0.0%0A%0A--------------------------------------------------%0ASeverity+Thresholds%3A%0A-+LOW%3A++++%3C+5%25%0A-+MEDIUM%3A+5%25+-+15%25%0A-+HIGH%3A+++%3E+15%25%0A%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D (Caused by NameResolutionError("HTTPSConnection(host='translate.google.com', port=443): Failed to resolve 'translate.google.com' ([Errno 11001] getaddrinfo failed)"))
+2026-07-17 17:12:55,994 [ERROR] backend.localization: Dynamic translation failed for 'AI Recommendations...': HTTPSConnectionPool(host='translate.google.com', port=443): Max retries exceeded with url: /m?tl=hi&sl=auto&q=AI+Recommendations (Caused by NameResolutionError("HTTPSConnection(host='translate.google.com', port=443): Failed to resolve 'translate.google.com' ([Errno 11001] getaddrinfo failed)"))
+2026-07-17 17:12:56,023 [ERROR] backend.localization: Dynamic translation failed for 'Increase perimeter m...': HTTPSConnectionPool(host='translate.google.com', port=443): Max retries exceeded with url: /m?tl=hi&sl=auto&q=Increase+perimeter+monitoring+in+high-severity+zones. (Caused by NameResolutionError("HTTPSConnection(host='translate.google.com', port=443): Failed to resolve 'translate.google.com' ([Errno 11001] getaddrinfo failed)"))
+2026-07-17 17:12:56,068 [ERROR] backend.localization: Dynamic translation failed for 'Deploy drone surveil...': HTTPSConnectionPool(host='translate.google.com', port=443): Max retries exceeded with url: /m?tl=hi&sl=auto&q=Deploy+drone+surveillance+over+affected+canopy+areas. (Caused by NameResolutionError("HTTPSConnection(host='translate.google.com', port=443): Failed to resolve 'translate.google.com' ([Errno 11001] getaddrinfo failed)"))
+2026-07-17 17:12:56,097 [ERROR] backend.localization: Dynamic translation failed for 'Cross-reference with...': HTTPSConnectionPool(host='translate.google.com', port=443): Max retries exceeded with url: /m?tl=hi&sl=auto&q=Cross-reference+with+ground+patrol+logs+for+illegal+logging. (Caused by NameResolutionError("HTTPSConnection(host='translate.google.com', port=443): Failed to resolve 'translate.google.com' ([Errno 11001] getaddrinfo failed)"))
+2026-07-17 17:12:56,188 [ERROR] backend.localization: Dynamic translation failed for 'Conclusion...': HTTPSConnectionPool(host='translate.google.com', port=443): Max retries exceeded with url: /m?tl=hi&sl=auto&q=Conclusion (Caused by NameResolutionError("HTTPSConnection(host='translate.google.com', port=443): Failed to resolve 'translate.google.com' ([Errno 11001] getaddrinfo failed)"))
+2026-07-17 17:12:56,202 [ERROR] backend.localization: Dynamic translation failed for 'The monitored area d...': HTTPSConnectionPool(host='translate.google.com', port=443): Max retries exceeded with url: /m?tl=hi&sl=auto&q=The+monitored+area+demonstrates+manageable+resilience.+The+predictive+models+forecast+continued+stabilization+if+immediate+remediation+actions+are+targeted+within+the+heatmap+hotspots.+Ongoing+monitoring+via+Sentinel-2+optical+analysis+is+recommended+bi-weekly. (Caused by NameResolutionError("HTTPSConnection(host='translate.google.com', port=443): Failed to resolve 'translate.google.com' ([Errno 11001] getaddrinfo failed)"))
+2026-07-17 17:12:56,225 [ERROR] backend.localization: Dynamic translation failed for 'Report Generated...': HTTPSConnectionPool(host='translate.google.com', port=443): Max retries exceeded with url: /m?tl=hi&sl=auto&q=Report+Generated (Caused by NameResolutionError("HTTPSConnection(host='translate.google.com', port=443): Failed to resolve 'translate.google.com' ([Errno 11001] getaddrinfo failed)"))
+2026-07-17 17:12:56,235 [ERROR] backend.localization: Dynamic translation failed for 'Page...': HTTPSConnectionPool(host='translate.google.com', port=443): Max retries exceeded with url: /m?tl=hi&sl=auto&q=Page (Caused by NameResolutionError("HTTPSConnection(host='translate.google.com', port=443): Failed to resolve 'translate.google.com' ([Errno 11001] getaddrinfo failed)"))
+2026-07-17 17:12:56,271 [ERROR] backend.localization: Dynamic translation failed for 'Report Generated...': HTTPSConnectionPool(host='translate.google.com', port=443): Max retries exceeded with url: /m?tl=hi&sl=auto&q=Report+Generated (Caused by NameResolutionError("HTTPSConnection(host='translate.google.com', port=443): Failed to resolve 'translate.google.com' ([Errno 11001] getaddrinfo failed)"))
+2026-07-17 17:12:56,287 [ERROR] backend.localization: Dynamic translation failed for 'Page...': HTTPSConnectionPool(host='translate.google.com', port=443): Max retries exceeded with url: /m?tl=hi&sl=auto&q=Page (Caused by NameResolutionError("HTTPSConnection(host='translate.google.com', port=443): Failed to resolve 'translate.google.com' ([Errno 11001] getaddrinfo failed)"))
+2026-07-17 17:12:56,477 [ERROR] backend.localization: Dynamic translation failed for 'Report Generated...': HTTPSConnectionPool(host='translate.google.com', port=443): Max retries exceeded with url: /m?tl=hi&sl=auto&q=Report+Generated (Caused by NameResolutionError("HTTPSConnection(host='translate.google.com', port=443): Failed to resolve 'translate.google.com' ([Errno 11001] getaddrinfo failed)"))
+2026-07-17 17:12:56,583 [ERROR] backend.localization: Dynamic translation failed for 'Page...': HTTPSConnectionPool(host='translate.google.com', port=443): Max retries exceeded with url: /m?tl=hi&sl=auto&q=Page (Caused by NameResolutionError("HTTPSConnection(host='translate.google.com', port=443): Failed to resolve 'translate.google.com' ([Errno 11001] getaddrinfo failed)"))
+2026-07-17 17:12:58,972 [ERROR] backend.localization: Dynamic translation failed for 'Report Generated...': HTTPSConnectionPool(host='translate.google.com', port=443): Max retries exceeded with url: /m?tl=hi&sl=auto&q=Report+Generated (Caused by NameResolutionError("HTTPSConnection(host='translate.google.com', port=443): Failed to resolve 'translate.google.com' ([Errno 11001] getaddrinfo failed)"))
+2026-07-17 17:12:58,980 [ERROR] backend.localization: Dynamic translation failed for 'Page...': HTTPSConnectionPool(host='translate.google.com', port=443): Max retries exceeded with url: /m?tl=hi&sl=auto&q=Page (Caused by NameResolutionError("HTTPSConnection(host='translate.google.com', port=443): Failed to resolve 'translate.google.com' ([Errno 11001] getaddrinfo failed)"))
+2026-07-17 17:12:59,391 [ERROR] backend.localization: Dynamic translation failed for 'Report Generated...': HTTPSConnectionPool(host='translate.google.com', port=443): Max retries exceeded with url: /m?tl=hi&sl=auto&q=Report+Generated (Caused by NameResolutionError("HTTPSConnection(host='translate.google.com', port=443): Failed to resolve 'translate.google.com' ([Errno 11001] getaddrinfo failed)"))
+2026-07-17 17:12:59,404 [ERROR] backend.localization: Dynamic translation failed for 'Page...': HTTPSConnectionPool(host='translate.google.com', port=443): Max retries exceeded with url: /m?tl=hi&sl=auto&q=Page (Caused by NameResolutionError("HTTPSConnection(host='translate.google.com', port=443): Failed to resolve 'translate.google.com' ([Errno 11001] getaddrinfo failed)"))
+2026-07-17 17:13:00,870 [ERROR] backend.localization: Dynamic translation failed for 'Report Generated...': HTTPSConnectionPool(host='translate.google.com', port=443): Max retries exceeded with url: /m?tl=hi&sl=auto&q=Report+Generated (Caused by NameResolutionError("HTTPSConnection(host='translate.google.com', port=443): Failed to resolve 'translate.google.com' ([Errno 11001] getaddrinfo failed)"))
+2026-07-17 17:13:00,883 [ERROR] backend.localization: Dynamic translation failed for 'Page...': HTTPSConnectionPool(host='translate.google.com', port=443): Max retries exceeded with url: /m?tl=hi&sl=auto&q=Page (Caused by NameResolutionError("HTTPSConnection(host='translate.google.com', port=443): Failed to resolve 'translate.google.com' ([Errno 11001] getaddrinfo failed)"))
+2026-07-17 17:27:16,176 [INFO] backend: Fetching all historical records
+2026-07-17 17:27:16,190 [INFO] backend: Compiling historical trends
+2026-07-17 17:27:16,198 [INFO] backend: Fetching all historical records
+2026-07-17 17:27:16,209 [INFO] backend: Compiling historical trends
+2026-07-17 17:31:53,229 [INFO] backend: Lifespan shutdown: Cleaning up resources...
+2026-07-17 17:31:53,230 [INFO] backend: Server stopped successfully.
+2026-07-17 17:33:19,598 [INFO] backend: Initializing FastAPI Backend server...
+2026-07-17 17:33:19,599 [INFO] backend: Mounted static outputs route at: /static (pointing to D:\Projects\AS\outputs)
+2026-07-17 17:33:20,144 [INFO] backend: Registered API routes successfully.
+2026-07-17 17:33:20,146 [INFO] backend: Lifespan startup: Initializing Earth Engine and loading model weights...
+2026-07-17 17:33:20,146 [INFO] backend: Cleaning outputs directory of stale files...
+2026-07-17 17:33:25,706 [INFO] backend: Inference device: cuda
+2026-07-17 17:33:25,706 [INFO] backend: Loading U-Net weights from: D:\Projects\AS\weights\unet_forest_loss.pth
+2026-07-17 17:33:25,864 [INFO] backend: Loading YOLOv8 weights from: D:\Projects\AS\weights\yolov8_encroachment.pt
+2026-07-17 17:33:26,020 [INFO] backend: AI models pre-loaded in memory successfully!
+2026-07-17 17:38:13,200 [INFO] backend: Lifespan shutdown: Cleaning up resources...
+2026-07-17 17:38:13,200 [INFO] backend: Server stopped successfully.
+2026-07-17 17:42:12,886 [INFO] backend: Initializing FastAPI Backend server...
+2026-07-17 17:42:12,891 [INFO] backend: Mounted static outputs route at: /static (pointing to D:\Projects\AS\outputs)
+2026-07-17 17:42:13,233 [INFO] backend: Registered API routes successfully.
+2026-07-17 17:42:13,241 [INFO] backend: Lifespan startup: Initializing Earth Engine and loading model weights...
+2026-07-17 17:42:13,241 [INFO] backend: Cleaning outputs directory of stale files...
+2026-07-17 17:42:18,783 [INFO] backend: Inference device: cuda
+2026-07-17 17:42:18,783 [INFO] backend: Loading U-Net weights from: D:\Projects\AS\weights\unet_forest_loss.pth
+2026-07-17 17:42:18,932 [INFO] backend: Loading YOLOv8 weights from: D:\Projects\AS\weights\yolov8_encroachment.pt
+2026-07-17 17:42:19,025 [INFO] backend: AI models pre-loaded in memory successfully!
+2026-07-17 17:43:52,231 [INFO] backend: Retrieving configuration settings.
+2026-07-17 17:43:52,241 [INFO] backend: Retrieving configuration settings.
+2026-07-17 17:43:52,253 [INFO] backend: Retrieving severity.json metrics.
+2026-07-17 17:43:52,253 [ERROR] backend: Severity metrics not found: Severity metrics file not found at: D:\Projects\AS\outputs\severity.json. Run /analyze first.
+2026-07-17 17:43:52,254 [INFO] backend: Retrieving configuration settings.
+2026-07-17 17:43:52,265 [INFO] backend: Retrieving severity.json metrics.
+2026-07-17 17:43:52,266 [ERROR] backend: Severity metrics not found: Severity metrics file not found at: D:\Projects\AS\outputs\severity.json. Run /analyze first.
+2026-07-17 17:43:52,270 [INFO] backend: Retrieving plain-text summary report.
+2026-07-17 17:43:52,270 [ERROR] backend: Summary not found: Summary report file not found at: D:\Projects\AS\outputs\summary.txt. Run /analyze first.
+2026-07-17 17:43:52,272 [INFO] backend: Retrieving configuration settings.
+2026-07-17 17:43:52,307 [INFO] backend: Retrieving plain-text summary report.
+2026-07-17 17:43:52,307 [ERROR] backend: Summary not found: Summary report file not found at: D:\Projects\AS\outputs\summary.txt. Run /analyze first.
+2026-07-17 17:43:54,633 [INFO] backend: ==================================================
+2026-07-17 17:43:54,633 [INFO] backend: API EXECUTION: POST /analyze request received
+2026-07-17 17:43:54,633 [INFO] backend: ROI Parameters: Coordinates (Center: Lat 22.334, Lon 80.611, Buffer: 0.02)
+2026-07-17 17:43:54,635 [INFO] backend: Before Date Range: 2022-01-01 to 2022-03-31
+2026-07-17 17:43:54,635 [INFO] backend: After Date Range: 2026-01-01 to 2026-03-31
+2026-07-17 17:43:54,635 [INFO] backend: ==================================================
+2026-07-17 17:44:12,299 [INFO] backend: GEE Download status: SUCCESS (Time taken: 17.66 seconds)
+2026-07-17 17:44:12,299 [INFO] backend: Running preprocessing on downloaded GeoTIFFs...
+2026-07-17 17:44:12,390 [WARNING] rasterio._env: CPLE_AppDefined in before.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 17:44:12,449 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 17:44:12,514 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 17:44:12,519 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 17:44:12,588 [INFO] backend: Calculating NDVI maps...
+2026-07-17 17:44:12,723 [INFO] backend: Running AI Model Inference...
+2026-07-17 17:44:20,414 [INFO] backend: AI Inference execution time: 7.69 seconds (U-Net + YOLOv8)
+2026-07-17 17:44:20,414 [INFO] backend: Combining NDVI and AI results to compute metrics...
+2026-07-17 17:44:20,418 [INFO] backend: Generating heatmap and visual dashboard overlays...
+2026-07-17 17:44:20,525 [INFO] backend: Visual outputs and report generated in 0.55 seconds.
+2026-07-17 17:44:20,525 [INFO] backend: API /analyze run completed in 25.91 seconds.
+2026-07-17 17:49:17,349 [INFO] backend: Initializing FastAPI Backend server...
+2026-07-17 17:49:17,351 [INFO] backend: Mounted static outputs route at: /static (pointing to D:\Projects\AS\outputs)
+2026-07-17 17:49:17,689 [INFO] backend: Registered API routes successfully.
+2026-07-17 17:49:17,697 [INFO] backend: Lifespan startup: Initializing Earth Engine and loading model weights...
+2026-07-17 17:49:17,697 [INFO] backend: Cleaning outputs directory of stale files...
+2026-07-17 17:49:25,538 [INFO] backend: Inference device: cuda
+2026-07-17 17:49:25,538 [INFO] backend: Loading U-Net weights from: D:\Projects\AS\weights\unet_forest_loss.pth
+2026-07-17 17:49:25,662 [INFO] backend: Loading YOLOv8 weights from: D:\Projects\AS\weights\yolov8_encroachment.pt
+2026-07-17 17:49:25,762 [INFO] backend: AI models pre-loaded in memory successfully!
+2026-07-17 17:49:44,042 [INFO] backend: Retrieving configuration settings.
+2026-07-17 17:49:44,061 [INFO] backend: Retrieving configuration settings.
+2026-07-17 17:49:48,158 [INFO] backend: ==================================================
+2026-07-17 17:49:48,158 [INFO] backend: API EXECUTION: POST /analyze request received
+2026-07-17 17:49:48,159 [INFO] backend: ROI Parameters: Coordinates (Center: Lat 22.334, Lon 80.611, Buffer: 0.02)
+2026-07-17 17:49:48,159 [INFO] backend: Before Date Range: 2022-01-01 to 2022-03-31
+2026-07-17 17:49:48,159 [INFO] backend: After Date Range: 2026-01-01 to 2026-03-31
+2026-07-17 17:49:48,159 [INFO] backend: ==================================================
+2026-07-17 17:50:13,649 [INFO] backend: GEE Download status: SUCCESS (Time taken: 25.49 seconds)
+2026-07-17 17:50:13,649 [INFO] backend: Running preprocessing on downloaded GeoTIFFs...
+2026-07-17 17:50:13,745 [WARNING] rasterio._env: CPLE_AppDefined in before.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 17:50:13,773 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 17:50:13,835 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 17:50:13,838 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 17:50:13,905 [INFO] backend: Calculating NDVI maps...
+2026-07-17 17:50:14,022 [INFO] backend: Running AI Model Inference...
+2026-07-17 17:50:20,601 [INFO] backend: AI Inference execution time: 6.58 seconds (U-Net + YOLOv8)
+2026-07-17 17:50:20,601 [INFO] backend: Combining NDVI and AI results to compute metrics...
+2026-07-17 17:50:20,603 [INFO] backend: Generating heatmap and visual dashboard overlays...
+2026-07-17 17:50:20,711 [INFO] backend: Visual outputs and report generated in 0.49 seconds.
+2026-07-17 17:50:20,711 [INFO] backend: API /analyze run completed in 32.56 seconds.
+2026-07-17 17:51:51,369 [INFO] backend: Retrieving configuration settings.
+2026-07-17 17:51:51,395 [INFO] backend: Retrieving configuration settings.
+2026-07-17 17:53:44,868 [INFO] backend: Lifespan shutdown: Cleaning up resources...
+2026-07-17 17:53:44,868 [INFO] backend: Server stopped successfully.
+2026-07-17 17:53:49,344 [INFO] backend: Initializing FastAPI Backend server...
+2026-07-17 17:53:49,345 [INFO] backend: Mounted static outputs route at: /static (pointing to D:\Projects\AS\outputs)
+2026-07-17 17:55:20,744 [INFO] backend: Initializing FastAPI Backend server...
+2026-07-17 17:55:20,749 [INFO] backend: Mounted static outputs route at: /static (pointing to D:\Projects\AS\outputs)
+2026-07-17 17:55:21,076 [INFO] backend: Registered API routes successfully.
+2026-07-17 17:55:21,083 [INFO] backend: Lifespan startup: Initializing Earth Engine and loading model weights...
+2026-07-17 17:55:21,083 [INFO] backend: Cleaning outputs directory of stale files...
+2026-07-17 17:55:29,064 [INFO] backend: Inference device: cuda
+2026-07-17 17:55:29,064 [INFO] backend: Loading U-Net weights from: D:\Projects\AS\weights\unet_forest_loss.pth
+2026-07-17 17:55:29,189 [INFO] backend: Loading YOLOv8 weights from: D:\Projects\AS\weights\yolov8_encroachment.pt
+2026-07-17 17:55:29,300 [INFO] backend: AI models pre-loaded in memory successfully!
+2026-07-17 17:55:44,275 [INFO] backend: Retrieving configuration settings.
+2026-07-17 17:55:44,306 [INFO] backend: Retrieving configuration settings.
+2026-07-17 17:55:47,734 [INFO] backend: ==================================================
+2026-07-17 17:55:47,734 [INFO] backend: API EXECUTION: POST /analyze request received
+2026-07-17 17:55:47,738 [INFO] backend: ROI Parameters: Coordinates (Center: Lat 22.334, Lon 80.611, Buffer: 0.02)
+2026-07-17 17:55:47,739 [INFO] backend: Before Date Range: 2022-01-01 to 2022-03-31
+2026-07-17 17:55:47,739 [INFO] backend: After Date Range: 2026-01-01 to 2026-03-31
+2026-07-17 17:55:47,740 [INFO] backend: ==================================================
+2026-07-17 17:56:05,753 [INFO] backend: GEE Download status: SUCCESS (Time taken: 18.01 seconds)
+2026-07-17 17:56:05,753 [INFO] backend: Running preprocessing on downloaded GeoTIFFs...
+2026-07-17 17:56:05,843 [WARNING] rasterio._env: CPLE_AppDefined in before.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 17:56:05,872 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 17:56:05,934 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 17:56:05,942 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 17:56:06,010 [INFO] backend: Calculating NDVI maps...
+2026-07-17 17:56:06,127 [INFO] backend: Running AI Model Inference...
+2026-07-17 17:56:12,726 [INFO] backend: AI Inference execution time: 6.60 seconds (U-Net + YOLOv8)
+2026-07-17 17:56:12,726 [INFO] backend: Combining NDVI and AI results to compute metrics...
+2026-07-17 17:56:12,728 [INFO] backend: Generating heatmap and visual dashboard overlays...
+2026-07-17 17:56:12,823 [INFO] backend: Visual outputs and report generated in 0.49 seconds.
+2026-07-17 17:56:12,823 [INFO] backend: API /analyze run completed in 25.10 seconds.
+2026-07-17 17:56:45,276 [WARNING] backend.localization: Translation timed out for 'Machine Learning Ove...'
+2026-07-17 17:57:03,923 [INFO] backend: Retrieving configuration settings.
+2026-07-17 17:57:03,934 [INFO] backend: Retrieving configuration settings.
+2026-07-17 17:58:55,948 [INFO] backend: Lifespan shutdown: Cleaning up resources...
+2026-07-17 17:58:55,948 [INFO] backend: Server stopped successfully.
+2026-07-17 17:59:00,593 [INFO] backend: Initializing FastAPI Backend server...
+2026-07-17 17:59:00,596 [INFO] backend: Mounted static outputs route at: /static (pointing to D:\Projects\AS\outputs)
+2026-07-17 18:00:18,176 [INFO] backend: Initializing FastAPI Backend server...
+2026-07-17 18:00:18,177 [INFO] backend: Mounted static outputs route at: /static (pointing to D:\Projects\AS\outputs)
+2026-07-17 18:00:18,525 [INFO] backend: Registered API routes successfully.
+2026-07-17 18:00:18,527 [INFO] backend: Lifespan startup: Initializing Earth Engine and loading model weights...
+2026-07-17 18:00:18,527 [INFO] backend: Cleaning outputs directory of stale files...
+2026-07-17 18:00:49,852 [INFO] backend: Inference device: cuda
+2026-07-17 18:00:49,852 [INFO] backend: Loading U-Net weights from: D:\Projects\AS\weights\unet_forest_loss.pth
+2026-07-17 18:00:49,974 [INFO] backend: Loading YOLOv8 weights from: D:\Projects\AS\weights\yolov8_encroachment.pt
+2026-07-17 18:00:50,081 [INFO] backend: AI models pre-loaded in memory successfully!
+2026-07-17 18:01:15,811 [INFO] backend: Retrieving configuration settings.
+2026-07-17 18:01:15,826 [INFO] backend: Retrieving configuration settings.
+2026-07-17 18:01:19,631 [INFO] backend: ==================================================
+2026-07-17 18:01:19,631 [INFO] backend: API EXECUTION: POST /analyze request received
+2026-07-17 18:01:19,631 [INFO] backend: ROI Parameters: Coordinates (Center: Lat 22.334, Lon 80.611, Buffer: 0.02)
+2026-07-17 18:01:19,631 [INFO] backend: Before Date Range: 2022-01-01 to 2022-03-31
+2026-07-17 18:01:19,631 [INFO] backend: After Date Range: 2026-01-01 to 2026-03-31
+2026-07-17 18:01:19,632 [INFO] backend: ==================================================
+2026-07-17 18:02:12,554 [INFO] backend: GEE Download status: SUCCESS (Time taken: 52.92 seconds)
+2026-07-17 18:02:12,559 [INFO] backend: Running preprocessing on downloaded GeoTIFFs...
+2026-07-17 18:02:12,639 [WARNING] rasterio._env: CPLE_AppDefined in before.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 18:02:12,676 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 18:02:12,732 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 18:02:12,736 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-17 18:02:12,802 [INFO] backend: Calculating NDVI maps...
+2026-07-17 18:02:12,943 [INFO] backend: Running AI Model Inference...
+2026-07-17 18:02:19,163 [INFO] backend: AI Inference execution time: 6.22 seconds (U-Net + YOLOv8)
+2026-07-17 18:02:19,163 [INFO] backend: Combining NDVI and AI results to compute metrics...
+2026-07-17 18:02:19,171 [INFO] backend: Generating heatmap and visual dashboard overlays...
+2026-07-17 18:02:19,283 [INFO] backend: Visual outputs and report generated in 0.52 seconds.
+2026-07-17 18:02:19,283 [INFO] backend: API /analyze run completed in 59.66 seconds.
+2026-07-17 18:02:40,065 [WARNING] backend.localization: Translation timed out for 'AranyaSentinel AI Co...'
+2026-07-17 18:02:50,808 [WARNING] backend.localization: Translation timed out for 'Major Species...'
+2026-07-17 18:02:53,933 [WARNING] backend.localization: Translation timed out for 'Geospatial optical r...'
+2026-07-17 18:03:04,045 [WARNING] backend.localization: Translation timed out for 'Forest Loss Percenta...'
+2026-07-17 18:03:14,565 [INFO] backend: Generated new PDF report: AS_REPORT_20260717_180237 with lang: hi
+2026-07-17 18:11:51,607 [INFO] backend: Lifespan shutdown: Cleaning up resources...
+2026-07-17 18:11:51,607 [INFO] backend: Server stopped successfully.
+2026-07-17 18:19:22,127 [INFO] backend: Initializing FastAPI Backend server...
+2026-07-17 18:19:22,129 [INFO] backend: Mounted static outputs route at: /static (pointing to D:\Projects\AS\outputs)
+2026-07-17 18:19:23,957 [INFO] backend: Registered API routes successfully.
+2026-07-17 18:19:23,967 [INFO] backend: Lifespan startup: Initializing Earth Engine and loading model weights...
+2026-07-17 18:19:23,967 [INFO] backend: Cleaning outputs directory of stale files...
+2026-07-17 18:19:29,060 [INFO] backend: Inference device: cuda
+2026-07-17 18:19:29,060 [INFO] backend: Loading U-Net weights from: D:\Projects\AS\weights\unet_forest_loss.pth
+2026-07-17 18:19:29,292 [INFO] backend: Loading YOLOv8 weights from: D:\Projects\AS\weights\yolov8_encroachment.pt
+2026-07-17 18:19:29,354 [INFO] backend: AI models pre-loaded in memory successfully!
+2026-07-17 18:26:39,767 [INFO] backend: Retrieving configuration settings.
+2026-07-17 18:26:39,781 [INFO] backend: Retrieving configuration settings.
+2026-07-17 18:26:39,806 [INFO] backend: Retrieving severity.json metrics.
+2026-07-17 18:26:39,806 [ERROR] backend: Severity metrics not found: Severity metrics file not found at: D:\Projects\AS\outputs\severity.json. Run /analyze first.
+2026-07-17 18:26:39,812 [INFO] backend: Retrieving severity.json metrics.
+2026-07-17 18:26:39,813 [ERROR] backend: Severity metrics not found: Severity metrics file not found at: D:\Projects\AS\outputs\severity.json. Run /analyze first.
+2026-07-17 18:26:39,830 [INFO] backend: Retrieving plain-text summary report.
+2026-07-17 18:26:39,830 [ERROR] backend: Summary not found: Summary report file not found at: D:\Projects\AS\outputs\summary.txt. Run /analyze first.
+2026-07-17 18:26:39,858 [INFO] backend: Retrieving plain-text summary report.
+2026-07-17 18:26:39,858 [ERROR] backend: Summary not found: Summary report file not found at: D:\Projects\AS\outputs\summary.txt. Run /analyze first.
+2026-07-17 18:27:16,496 [INFO] backend: Retrieving configuration settings.
+2026-07-17 18:27:16,515 [INFO] backend: Retrieving configuration settings.
+2026-07-17 18:27:16,529 [INFO] backend: Retrieving severity.json metrics.
+2026-07-17 18:27:16,531 [ERROR] backend: Severity metrics not found: Severity metrics file not found at: D:\Projects\AS\outputs\severity.json. Run /analyze first.
+2026-07-17 18:27:16,556 [INFO] backend: Retrieving severity.json metrics.
+2026-07-17 18:27:16,556 [ERROR] backend: Severity metrics not found: Severity metrics file not found at: D:\Projects\AS\outputs\severity.json. Run /analyze first.
+2026-07-17 18:27:16,563 [INFO] backend: Retrieving plain-text summary report.
+2026-07-17 18:27:16,563 [ERROR] backend: Summary not found: Summary report file not found at: D:\Projects\AS\outputs\summary.txt. Run /analyze first.
+2026-07-17 18:27:16,630 [INFO] backend: Retrieving plain-text summary report.
+2026-07-17 18:27:16,630 [ERROR] backend: Summary not found: Summary report file not found at: D:\Projects\AS\outputs\summary.txt. Run /analyze first.
+2026-07-17 18:27:27,599 [INFO] backend: Fetching all historical records
+2026-07-17 18:27:27,644 [INFO] backend: Compiling historical trends
+2026-07-17 18:27:27,651 [INFO] backend: Fetching all historical records
+2026-07-17 18:27:27,660 [INFO] backend: Compiling historical trends
+2026-07-17 18:27:39,556 [INFO] backend: Fetching all historical records
+2026-07-17 18:27:39,562 [INFO] backend: Compiling historical trends
+2026-07-17 18:27:39,574 [INFO] backend: Fetching all historical records
+2026-07-17 18:27:39,580 [INFO] backend: Compiling historical trends
+2026-07-17 18:27:49,731 [INFO] backend: Fetching all historical records
+2026-07-17 18:27:49,740 [INFO] backend: Compiling historical trends
+2026-07-17 18:27:49,744 [INFO] backend: Fetching all historical records
+2026-07-17 18:27:49,752 [INFO] backend: Compiling historical trends
+2026-07-17 18:28:11,388 [INFO] backend: Retrieving configuration settings.
+2026-07-17 18:28:11,415 [INFO] backend: Retrieving configuration settings.
+2026-07-17 18:28:18,524 [INFO] backend: Fetching all historical records
+2026-07-17 18:28:18,533 [INFO] backend: Compiling historical trends
+2026-07-17 18:28:18,550 [INFO] backend: Compiling historical trends
+2026-07-17 18:28:18,566 [INFO] backend: Fetching all historical records
+2026-07-17 18:29:08,946 [INFO] backend: Retrieving configuration settings.
+2026-07-17 18:29:08,958 [INFO] backend: Retrieving configuration settings.
+2026-07-17 18:29:37,722 [INFO] backend: Retrieving configuration settings.
+2026-07-17 18:29:37,751 [INFO] backend: Retrieving severity.json metrics.
+2026-07-17 18:29:37,752 [ERROR] backend: Severity metrics not found: Severity metrics file not found at: D:\Projects\AS\outputs\severity.json. Run /analyze first.
+2026-07-17 18:29:37,756 [INFO] backend: Retrieving configuration settings.
+2026-07-17 18:29:37,776 [INFO] backend: Retrieving plain-text summary report.
+2026-07-17 18:29:37,780 [ERROR] backend: Summary not found: Summary report file not found at: D:\Projects\AS\outputs\summary.txt. Run /analyze first.
+2026-07-17 18:29:37,782 [INFO] backend: Retrieving severity.json metrics.
+2026-07-17 18:29:37,789 [ERROR] backend: Severity metrics not found: Severity metrics file not found at: D:\Projects\AS\outputs\severity.json. Run /analyze first.
+2026-07-17 18:29:37,850 [INFO] backend: Retrieving plain-text summary report.
+2026-07-17 18:29:37,850 [ERROR] backend: Summary not found: Summary report file not found at: D:\Projects\AS\outputs\summary.txt. Run /analyze first.
+2026-07-17 18:29:39,456 [INFO] backend: Retrieving configuration settings.
+2026-07-17 18:29:39,472 [INFO] backend: Retrieving configuration settings.
+2026-07-17 18:29:40,504 [INFO] backend: Retrieving configuration settings.
+2026-07-17 18:29:40,532 [INFO] backend: Retrieving configuration settings.
+2026-07-17 18:29:40,554 [INFO] backend: Retrieving severity.json metrics.
+2026-07-17 18:29:40,554 [ERROR] backend: Severity metrics not found: Severity metrics file not found at: D:\Projects\AS\outputs\severity.json. Run /analyze first.
+2026-07-17 18:29:40,569 [INFO] backend: Retrieving severity.json metrics.
+2026-07-17 18:29:40,569 [ERROR] backend: Severity metrics not found: Severity metrics file not found at: D:\Projects\AS\outputs\severity.json. Run /analyze first.
+2026-07-17 18:29:40,573 [INFO] backend: Retrieving plain-text summary report.
+2026-07-17 18:29:40,573 [ERROR] backend: Summary not found: Summary report file not found at: D:\Projects\AS\outputs\summary.txt. Run /analyze first.
+2026-07-17 18:29:40,638 [INFO] backend: Retrieving plain-text summary report.
+2026-07-17 18:29:40,641 [ERROR] backend: Summary not found: Summary report file not found at: D:\Projects\AS\outputs\summary.txt. Run /analyze first.
+2026-07-17 18:29:44,162 [INFO] backend: Retrieving configuration settings.
+2026-07-17 18:29:44,192 [INFO] backend: Retrieving configuration settings.
+2026-07-17 18:29:45,906 [INFO] backend: Fetching all historical records
+2026-07-17 18:29:45,910 [INFO] backend: Compiling historical trends
+2026-07-17 18:29:45,916 [INFO] backend: Compiling historical trends
+2026-07-17 18:29:45,924 [INFO] backend: Fetching all historical records
+2026-07-17 18:31:05,487 [INFO] backend: Lifespan shutdown: Cleaning up resources...
+2026-07-17 18:31:05,487 [INFO] backend: Server stopped successfully.
+2026-07-17 18:31:09,701 [INFO] backend: Initializing FastAPI Backend server...
+2026-07-17 18:31:09,705 [INFO] backend: Mounted static outputs route at: /static (pointing to D:\Projects\AS\outputs)
+2026-07-17 18:31:10,041 [INFO] backend: Registered API routes successfully.
+2026-07-17 18:31:10,047 [INFO] backend: Lifespan startup: Initializing Earth Engine and loading model weights...
+2026-07-17 18:31:10,047 [INFO] backend: Cleaning outputs directory of stale files...

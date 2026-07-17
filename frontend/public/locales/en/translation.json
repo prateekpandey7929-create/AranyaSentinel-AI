@@ -1,0 +1,43 @@
+{
+  "app_name": "AranyaSentinel AI",
+  "nav_dashboard": "Dashboard",
+  "nav_reports": "Reports",
+  "nav_history": "History",
+  "nav_knowledge": "Knowledge Base",
+  "nav_settings": "Settings",
+  
+  "dashboard_title": "AI Forest Intelligence",
+  "live_analysis": "Live Analysis",
+  "forest_health": "Forest Health Status",
+  "forest_loss": "Forest Loss Detected",
+  "eco_degradation": "Ecological Degradation",
+  "severity_heatmap": "Severity Heatmap",
+  "unet_segmentation": "U-Net Segmentation",
+  "ndvi_value": "NDVI Value",
+  "run_analysis": "Run Analysis",
+  "generating": "Generating...",
+  "analyze_region": "Analyze Region",
+  
+  "reports_title": "Professional Reports",
+  "generate_report": "Generate New Report",
+  "download_pdf": "Download PDF",
+  "preview": "Preview",
+  
+  "history_title": "Historical Analysis",
+  "compare_dates": "Compare Dates",
+  "trend_analysis": "Trend Analysis",
+  
+  "knowledge_title": "Forest Knowledge Explorer",
+  "select_forest": "Select a forest region to explore",
+  
+  "settings_title": "System Settings",
+  "language": "Language",
+  "english": "English",
+  "hindi": "Hindi",
+  
+  "report_summary": "Executive Summary",
+  "report_analysis": "Satellite Analysis",
+  "report_metrics": "Analytics",
+  "report_ai": "AI Recommendations",
+  "report_conclusion": "Conclusion"
+}

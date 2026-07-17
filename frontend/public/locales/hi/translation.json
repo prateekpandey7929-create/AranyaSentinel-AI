@@ -1,0 +1,43 @@
+{
+  "app_name": "अरण्यसेंटिनल एआई",
+  "nav_dashboard": "डैशबोर्ड",
+  "nav_reports": "रिपोर्ट्स",
+  "nav_history": "इतिहास",
+  "nav_knowledge": "ज्ञानकोश",
+  "nav_settings": "सेटिंग्स",
+  
+  "dashboard_title": "एआई वन बुद्धिमत्ता",
+  "live_analysis": "लाइव विश्लेषण",
+  "forest_health": "वन स्वास्थ्य स्थिति",
+  "forest_loss": "वन हानि का पता चला",
+  "eco_degradation": "पारिस्थितिक गिरावट",
+  "severity_heatmap": "गंभीरता हीटमैप",
+  "unet_segmentation": "यू-नेट विभाजन",
+  "ndvi_value": "एनडीवीआई (NDVI) मान",
+  "run_analysis": "विश्लेषण करें",
+  "generating": "जेनरेट हो रहा है...",
+  "analyze_region": "क्षेत्र का विश्लेषण करें",
+  
+  "reports_title": "पेशेवर रिपोर्ट्स",
+  "generate_report": "नई रिपोर्ट बनाएं",
+  "download_pdf": "पीडीएफ डाउनलोड करें",
+  "preview": "पूर्वावलोकन",
+  
+  "history_title": "ऐतिहासिक विश्लेषण",
+  "compare_dates": "तारीखों की तुलना करें",
+  "trend_analysis": "प्रवृत्ति विश्लेषण",
+  
+  "knowledge_title": "वन ज्ञान अन्वेषक",
+  "select_forest": "अन्वेषण के लिए एक वन क्षेत्र चुनें",
+  
+  "settings_title": "सिस्टम सेटिंग्स",
+  "language": "भाषा",
+  "english": "अंग्रेज़ी",
+  "hindi": "हिंदी",
+  
+  "report_summary": "कार्यकारी सारांश",
+  "report_analysis": "उपग्रह विश्लेषण",
+  "report_metrics": "एनालिटिक्स",
+  "report_ai": "एआई सिफारिशें",
+  "report_conclusion": "निष्कर्ष"
+}

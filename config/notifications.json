@@ -1,0 +1,54 @@
+[
+    {
+        "id": "e2ee72d9-3bd9-4347-a43a-b5a2396357e9",
+        "title": "Analysis Completed",
+        "description": "Forest health scan for Satpura region completed successfully. Severity: Low.",
+        "type": "Analysis",
+        "priority": "Medium",
+        "timestamp": "2026-07-17T18:19:23.942103",
+        "status": "Active",
+        "is_read": false,
+        "related_analysis_id": null,
+        "related_report_id": null,
+        "created_by": "System"
+    },
+    {
+        "id": "f5e319ab-a0e5-4864-abdc-f59d91e2fe58",
+        "title": "Report Generated",
+        "description": "Bilingual PDF Report generated for Satpura region.",
+        "type": "Report",
+        "priority": "Low",
+        "timestamp": "2026-07-17T18:19:23.942103",
+        "status": "Active",
+        "is_read": true,
+        "related_analysis_id": null,
+        "related_report_id": null,
+        "created_by": "System"
+    },
+    {
+        "id": "77a0726a-552b-4c67-9207-cfeb4de810eb",
+        "title": "High Severity Detected",
+        "description": "Warning: High localized canopy loss detected in western sector.",
+        "type": "Alert",
+        "priority": "High",
+        "timestamp": "2026-07-17T18:19:23.942103",
+        "status": "Active",
+        "is_read": false,
+        "related_analysis_id": null,
+        "related_report_id": null,
+        "created_by": "System"
+    },
+    {
+        "id": "44ef86ad-254e-4e93-a683-aabcc0c62fa6",
+        "title": "NDVI Updated",
+        "description": "Latest Sentinel-2 imagery processed for vegetation indices.",
+        "type": "System",
+        "priority": "Low",
+        "timestamp": "2026-07-17T18:19:23.942103",
+        "status": "Active",
+        "is_read": true,
+        "related_analysis_id": null,
+        "related_report_id": null,
+        "created_by": "System"
+    }
+]

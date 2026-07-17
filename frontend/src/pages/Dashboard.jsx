@@ -1,209 +1,203 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-  Filler
-} from "chart.js";
-import { Line, Bar } from "react-chartjs-2";
+import { useTranslation } from "react-i18next";
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-  Filler
-);
+// Import Upgraded Reusable Dashboard Components
+import Header from "../components/Dashboard/Header";
+import SummaryCards from "../components/Dashboard/SummaryCards";
+import ImageCompare from "../components/Dashboard/ImageCompare";
+import MapSection from "../components/Dashboard/MapSection";
+import Analytics from "../components/Dashboard/Analytics";
+import ForestHealth from "../components/Dashboard/ForestHealth";
+import AiSummary from "../components/Dashboard/AiSummary";
+import Prediction from "../components/Dashboard/Prediction";
+import Knowledge from "../components/Dashboard/Knowledge";
+import ReportsSection from "../components/Dashboard/ReportsSection";
+import HistorySection from "../components/Dashboard/HistorySection";
+import { ErrorPanel, LoadingSpinner } from "../components/Dashboard/Common";
 
 const API_BASE = "http://127.0.0.1:8000";
 
 export default function Dashboard() {
-  const [metrics, setMetrics] = useState({
-    forest_loss_percentage: 0.0,
-    changed_area_hectares: 0.0,
-    severity_score: "N/A",
-    encroachment_count: 0,
-    average_unet_confidence: 0.0,
-    average_yolo_confidence: 0.0
-  });
+  const { t } = useTranslation();
+  const [config, setConfig] = useState(null);
+  const [metrics, setMetrics] = useState(null);
+  const [summaryText, setSummaryText] = useState("");
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [lastAnalysisTime, setLastAnalysisTime] = useState("");
 
-  useEffect(() => {
-    axios.get(`${API_BASE}/severity`)
-      .then(res => {
-        setMetrics(res.data);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.warn("Could not load latest severity report, using defaults.");
-        setLoading(false);
-      });
-  }, []);
+  const [forestHealth, setForestHealth] = useState(null);
+  const [aiSummary, setAiSummary] = useState(null);
+  const [prediction, setPrediction] = useState(null);
+  const [knowledge, setKnowledge] = useState(null);
+  const [history, setHistory] = useState(null);
 
-  // Trend data for Satpura forest loss (simulated years)
-  const lineChartData = {
-    labels: ["2022", "2023", "2024", "2025", "2026"],
-    datasets: [
-      {
-        fill: true,
-        label: "Cumulative Forest Loss %",
-        data: [0, 1.8, 3.9, 5.8, metrics.forest_loss_percentage || 7.84],
-        borderColor: "#3e995f",
-        backgroundColor: "rgba(62, 153, 95, 0.15)",
-        tension: 0.4,
+  const fetchData = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      // 1. Fetch current settings config
+      const configRes = await axios.get(`${API_BASE}/config`);
+      setConfig(configRes.data);
+
+      // 2. Fetch latest analysis metrics (from severity.json)
+      try {
+        const severityRes = await axios.get(`${API_BASE}/severity`);
+        setMetrics(severityRes.data);
+        
+        // Calculate dynamic last run time if execution_times is present
+        if (severityRes.data?.execution_times) {
+          const runDate = new Date().toLocaleDateString("en-US", {
+            day: "numeric",
+            month: "short",
+            year: "numeric"
+          });
+          setLastAnalysisTime(`${runDate} (${severityRes.data.execution_times.total_execution_seconds}s run)`);
+        } else {
+          setLastAnalysisTime("Baseline Run Active");
+        }
+      } catch (err) {
+        console.warn("No active severity metrics found on disk. Run analysis first.");
+        setMetrics(null);
       }
-    ]
-  };
 
-  const lineChartOptions = {
-    responsive: true,
-    plugins: {
-      legend: {
-        display: false
-      },
-      title: {
-        display: true,
-        text: "Satpura Tiger Reserve - Deforestation Trend",
-        color: "#94a3b8",
-        font: { size: 14, weight: "bold" }
+      // 3. Fetch summary text preview if available
+      try {
+        const summaryRes = await axios.get(`${API_BASE}/summary`);
+        setSummaryText(summaryRes.data);
+      } catch (err) {
+        console.warn("No summary report text found on disk.");
+        setSummaryText("");
       }
-    },
-    scales: {
-      x: { grid: { color: "rgba(255, 255, 255, 0.05)" }, ticks: { color: "#94a3b8" } },
-      y: { grid: { color: "rgba(255, 255, 255, 0.05)" }, ticks: { color: "#94a3b8" } }
+
+      // 4. Fetch dynamic upgraded endpoints
+      try {
+        const [healthRes, aiRes, predRes, knowRes, histRes] = await Promise.all([
+          axios.get(`${API_BASE}/forest-health`),
+          axios.get(`${API_BASE}/ai-summary`),
+          axios.get(`${API_BASE}/predictions`),
+          axios.get(`${API_BASE}/knowledge-base`),
+          axios.get(`${API_BASE}/activity-log`)
+        ]);
+        setForestHealth(healthRes.data);
+        setAiSummary(aiRes.data);
+        setPrediction(predRes.data);
+        setKnowledge(knowRes.data);
+        setHistory(histRes.data);
+      } catch (err) {
+        console.warn("Could not retrieve some upgraded endpoints, falling back.", err);
+      }
+    } catch (err) {
+      console.error("Dashboard failed to retrieve backend datasets:", err);
+      setError("Unable to connect to FastAPI backend server. Verify the server is running on port 8000.");
+    } finally {
+      setLoading(false);
     }
   };
 
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const downloadTextReport = () => {
+    if (!summaryText) return;
+    const blob = new Blob([summaryText], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "summary_report.txt";
+    link.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const downloadJsonReport = () => {
+    if (!metrics) return;
+    const blob = new Blob([JSON.stringify(metrics, null, 4)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "severity_metrics.json";
+    link.click();
+    URL.revokeObjectURL(url);
+  };
+
+  if (error) {
+    return (
+      <div className="flex items-center justify-center min-h-[60vh]">
+        <ErrorPanel message={error} retryTrigger={fetchData} />
+      </div>
+    );
+  }
+
+  // Calculate dynamic center and bounding coordinates for results display map
+  let mapCenter = [22.45, 78.20];
+  let mapBounds = [[22.43, 78.18], [22.47, 78.22]];
+  if (config?.roi) {
+    mapCenter = [config.roi.lat, config.roi.lon];
+    const buf = config.roi.buffer_degree || 0.02;
+    mapBounds = [
+      [config.roi.lat - buf, config.roi.lon - buf],
+      [config.roi.lat + buf, config.roi.lon + buf]
+    ];
+  }
+
+  // Pre-mapped output urls from backend mount static directories
+  const beforeUrl = metrics ? `${API_BASE}/static/before_rgb.png` : null;
+  const afterUrl = metrics ? `${API_BASE}/static/after_rgb.png` : null;
+
   return (
-    <div className="space-y-8 max-w-7xl mx-auto">
-      {/* Welcome Hero Card */}
-      <div className="glass-panel p-8 rounded-3xl relative overflow-hidden flex flex-col md:flex-row md:items-center md:justify-between shadow-2xl">
-        <div className="absolute -right-16 -top-16 w-64 h-64 bg-forest-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute -left-16 -bottom-16 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl"></div>
-        
-        <div className="space-y-3 z-10">
-          <span className="bg-forest-900/40 text-forest-300 border border-forest-500/25 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase inline-block">
-            Status: Active Monitoring
-          </span>
-          <h1 className="text-4xl font-extrabold text-white tracking-tight">AranyaSentinel AI</h1>
-          <p className="text-slate-300 text-lg max-w-xl font-medium">
-            AI-Powered Forest Protection & Geospatial Intelligence Platform
-          </p>
-        </div>
+    <div className="space-y-8 max-w-7xl mx-auto pb-12">
+      {/* SECTION 1: Top Header */}
+      <Header config={config} lastAnalysisTime={lastAnalysisTime} />
 
-        <div className="flex space-x-4 mt-6 md:mt-0 z-10">
-          <Link
-            to="/analyze"
-            className="bg-forest-500 hover:bg-forest-600 text-white px-6 py-3.5 rounded-xl font-bold shadow-lg transition duration-200"
-          >
-            Start Analysis
-          </Link>
-          <Link
-            to="/reports"
-            className="bg-slate-900/80 hover:bg-slate-900 text-slate-300 hover:text-white border border-forest-900/50 px-6 py-3.5 rounded-xl font-bold transition duration-200"
-          >
-            View Reports
-          </Link>
-        </div>
+      {/* SECTION 2: Summary Cards */}
+      <SummaryCards metrics={metrics} loading={loading} healthScore={forestHealth?.score} />
+
+      {/* Grid Layout for map, slider, and charts */}
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
+        {/* SECTION 3: Before / After Slider Comparison */}
+        <ImageCompare beforeUrl={beforeUrl} afterUrl={afterUrl} loading={loading} />
+
+        {/* SECTION 4: Interactive GIS Map */}
+        <MapSection center={mapCenter} bounds={mapBounds} analysisResult={metrics ? { output_files: { heatmap: "/static/heatmap.png", change_mask: "/static/change_mask.png" } } : null} loading={loading} />
       </div>
 
-      {/* KPI Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-        {/* Card 1: Total Analyses */}
-        <div className="glass-panel glass-panel-hover p-6 rounded-2xl flex flex-col justify-between">
-          <span className="text-slate-400 text-sm font-semibold uppercase tracking-wider">Total Runs</span>
-          <h2 className="text-3xl font-extrabold text-white mt-2">12 Runs</h2>
-          <span className="text-xs text-forest-400 font-semibold mt-3 block">🛰️ GEE Sentinel-2</span>
-        </div>
+      {/* SECTION 5: Analytics Charts */}
+      <Analytics metrics={metrics} loading={loading} />
 
-        {/* Card 2: Forest Loss % */}
-        <div className="glass-panel glass-panel-hover p-6 rounded-2xl flex flex-col justify-between">
-          <span className="text-slate-400 text-sm font-semibold uppercase tracking-wider">Forest Loss %</span>
-          <h2 className="text-3xl font-extrabold text-emerald-400 mt-2">
-            {loading ? "..." : `${metrics.forest_loss_percentage}%`}
-          </h2>
-          <span className="text-xs text-slate-500 mt-3 block">
-            Area: {metrics.changed_area_hectares} Ha
-          </span>
-        </div>
-
-        {/* Card 3: Severity */}
-        <div className="glass-panel glass-panel-hover p-6 rounded-2xl flex flex-col justify-between">
-          <span className="text-slate-400 text-sm font-semibold uppercase tracking-wider">Severity Status</span>
-          <h2 className={`text-3xl font-extrabold mt-2 ${
-            metrics.severity_score === "High" ? "text-red-400" :
-            metrics.severity_score === "Medium" ? "text-amber-400" : "text-emerald-400"
-          }`}>
-            {loading ? "..." : metrics.severity_score}
-          </h2>
-          <span className="text-xs text-slate-500 mt-3 block">Threshold-defined</span>
-        </div>
-
-        {/* Card 4: Encroachments */}
-        <div className="glass-panel glass-panel-hover p-6 rounded-2xl flex flex-col justify-between">
-          <span className="text-slate-400 text-sm font-semibold uppercase tracking-wider">Encroachments</span>
-          <h2 className="text-3xl font-extrabold text-white mt-2">
-            {loading ? "..." : metrics.encroachment_count}
-          </h2>
-          <span className="text-xs text-red-400 font-semibold mt-3 block">⚠️ YOLOv8 Detections</span>
-        </div>
-
-        {/* Card 5: AI Confidence */}
-        <div className="glass-panel glass-panel-hover p-6 rounded-2xl flex flex-col justify-between">
-          <span className="text-slate-400 text-sm font-semibold uppercase tracking-wider">U-Net Accuracy</span>
-          <h2 className="text-3xl font-extrabold text-forest-300 mt-2">
-            {loading ? "..." : `${(metrics.average_unet_confidence * 100).toFixed(1)}%`}
-          </h2>
-          <span className="text-xs text-slate-500 mt-3 block">Dice + BCE loss verified</span>
-        </div>
-      </div>
-
-      {/* Main Charts & Analytics Details */}
+      {/* Grid Layout for Health score & AI summaries */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Trend Graph */}
-        <div className="lg:col-span-2 glass-panel p-6 rounded-3xl">
-          <Line data={lineChartData} options={lineChartOptions} />
+        {/* SECTION 6: Forest Health breakdown */}
+        <div className="lg:col-span-2">
+          <ForestHealth metrics={metrics} loading={loading} healthScore={forestHealth?.score} healthMetrics={forestHealth?.metrics} />
         </div>
 
-        {/* Model Metrics Display */}
-        <div className="glass-panel p-6 rounded-3xl flex flex-col justify-between space-y-6">
-          <h3 className="text-lg font-bold text-white tracking-wide border-b border-forest-900/20 pb-3">
-            AI Platform Overview
-          </h3>
-          
-          <div className="space-y-4 flex-1 justify-center flex flex-col">
-            <div className="flex justify-between items-center bg-forest-950/20 p-3 rounded-xl border border-forest-900/10">
-              <span className="text-slate-400 text-sm font-semibold">U-Net Segmenter</span>
-              <span className="text-xs bg-forest-900 text-forest-300 px-2.5 py-1 rounded font-bold">CUDA Active</span>
-            </div>
-            
-            <div className="flex justify-between items-center bg-forest-950/20 p-3 rounded-xl border border-forest-900/10">
-              <span className="text-slate-400 text-sm font-semibold">YOLOv8 Detector</span>
-              <span className="text-xs bg-forest-900 text-forest-300 px-2.5 py-1 rounded font-bold">Loaded (GPU 0)</span>
-            </div>
-            
-            <div className="flex justify-between items-center bg-forest-950/20 p-3 rounded-xl border border-forest-900/10">
-              <span className="text-slate-400 text-sm font-semibold">Dynamic Configuration</span>
-              <span className="text-xs bg-forest-900 text-forest-300 px-2.5 py-1 rounded font-bold">Enabled</span>
-            </div>
-          </div>
-
-          <div className="bg-forest-950/40 p-4 rounded-xl text-xs text-slate-400 leading-relaxed border border-forest-900/20">
-            <strong>System Engine:</strong> AranyaSentinel utilizes Earth Engine for Cloud-masked Sentinel-2 bands, computes NDVI differentials, executes U-Net + YOLO segmentation inference in memory, and classifies deforestation severity level.
-          </div>
+        {/* SECTION 7: AI Copilot text summary */}
+        <div className="lg:col-span-1">
+          <AiSummary metrics={metrics} loading={loading} insights={aiSummary} />
         </div>
+      </div>
+
+      {/* SECTION 8: Predictive Analytics */}
+      <Prediction metrics={metrics} loading={loading} predictionData={prediction} />
+
+      {/* SECTION 9: Ecosystem Knowledge Explorer */}
+      <Knowledge knowledgeData={knowledge} />
+
+      {/* Grid Layout for reports & history timeline */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* SECTION 10: Reports downloaders */}
+        <ReportsSection
+          metrics={metrics}
+          summaryText={summaryText}
+          downloadTextReport={downloadTextReport}
+          downloadJsonReport={downloadJsonReport}
+          loading={loading}
+        />
+
+        {/* SECTION 11: Activity timeline log */}
+        <HistorySection events={history} />
       </div>
     </div>
   );
