@@ -1,0 +1,43 @@
+dates:
+  after:
+    end: '2026-03-31'
+    start: '2026-01-01'
+  before:
+    end: '2022-03-31'
+    start: '2022-01-01'
+gee:
+  dataset: COPERNICUS/S2_SR_HARMONIZED
+  max_cloud_percentage: 20
+  scale: 10
+roi:
+  buffer_degree: 0.02
+  geojson_path: config/roi.geojson
+  lat: 22.334
+  lon: 80.611
+  name: Kanha Santury
+thresholds:
+  morphology_kernel_size: 5
+  ndvi_loss_threshold: 0.15
+  severity:
+    low: 5
+    medium: 15
+  unet_threshold: 0.5
+  yolo_conf: 0.25
+
+forest_health:
+  weights:
+    ndvi: 0.25
+    ndmi: 0.15
+    ndwi: 0.10
+    nbr: 0.10
+    vv: 0.10
+    vh: 0.10
+    forest_loss_pct: 0.10
+    unet_density: 0.05
+    yolo_encroachment: 0.05
+  thresholds:
+    excellent: 85
+    good: 70
+    moderate: 50
+    poor: 30
+

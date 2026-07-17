@@ -1,0 +1,28 @@
+# AI/ML & Deep Learning
+torch
+torchvision
+ultralytics
+albumentations
+opencv-python
+scikit-learn
+roboflow
+
+# Data Manipulation & Visualization
+numpy
+pandas
+matplotlib
+
+# Remote Sensing & GIS
+earthengine-api
+geopandas
+rasterio
+shapely
+
+# Backend API & Database
+fastapi
+uvicorn
+python-dotenv
+sqlalchemy
+psycopg2-binary
+geoalchemy2
+pydantic

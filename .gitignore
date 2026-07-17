@@ -1,0 +1,28 @@
+# Virtual environment
+.venv/
+venv/
+ENV/
+
+# Environment variables
+.env
+.env.local
+
+# Python caches
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Local data & runs
+data/
+runs/
+yolo26n.pt
+yolov8n.pt
+
+# Output directories (temporary test runs)
+outputs/
+
+# OS specific files
+.DS_Store
+Thumbs.db
