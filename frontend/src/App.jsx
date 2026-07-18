@@ -9,6 +9,7 @@ import History from "./pages/History";
 import Knowledge from "./pages/Knowledge";
 import NotificationCenter from "./pages/NotificationCenter";
 import CloudRemoval from "./pages/CloudRemoval";
+import DroneSimulation from "./pages/DroneSimulation";
 import LanguageSwitcher from "./components/LanguageSwitcher";
 
 function NavLink({ to, icon, children }) {
@@ -99,6 +100,16 @@ function Sidebar() {
         >
           Notifications
         </NavLink>
+        <NavLink
+          to="/drone-simulation"
+          icon={
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+            </svg>
+          }
+        >
+          Drone Simulation
+        </NavLink>
         <div className="pt-4 mt-4 border-t border-slate-700/50">
         <NavLink
           to="/settings"
@@ -144,6 +155,7 @@ export default function App() {
             <Route path="/cloud-removal" element={<CloudRemoval />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/notifications" element={<NotificationCenter />} />
+            <Route path="/drone-simulation" element={<DroneSimulation />} />
           </Routes>
         </div>
       </div>
