@@ -3,7 +3,7 @@ import sys
 import time
 import logging
 import numpy as np
-from fastapi import APIRouter, Request, HTTPException, status
+from fastapi import APIRouter, Request, HTTPException, status, BackgroundTasks
 from fastapi.responses import PlainTextResponse
 from typing import Dict, Any
 
@@ -43,6 +43,11 @@ from forest_knowledge.schemas import ForestKnowledgeRequest, ForestKnowledgeResp
 
 # Import AI Prediction modules
 from ai_prediction import compute_ai_prediction, AIPredictionRequest, AIPredictionResponse
+# Import Alerts modules
+from alerts.database import SessionLocal
+from alerts.alert_service import create_alert
+from alerts.alert_schema import AlertCreate, AlertSeverity
+import uuid
 
 router = APIRouter()
 logger = logging.getLogger("backend")
@@ -63,7 +68,7 @@ async def health_check():
     }
 
 @router.post("/analyze", response_model=AnalyzeResponse, status_code=status.HTTP_200_OK)
-async def analyze_forest_loss(request: AnalyzeRequest, req: Request):
+async def analyze_forest_loss(request: AnalyzeRequest, req: Request, background_tasks: BackgroundTasks):
     """
     Main Analysis API. Downloads Sentinel-2 images, calculates NDVI,
     runs U-Net and YOLOv8 inference, and generates visualizations.
@@ -480,6 +485,29 @@ async def analyze_forest_loss(request: AnalyzeRequest, req: Request):
         )
     except Exception as e:
         logger.error(f"AI Prediction Engine failed: {e}. Continuing.")
+        
+    def process_alert_background():
+        try:
+            if not prediction_detail:
+                return
+            db = SessionLocal()
+            try:
+                alert_data = AlertCreate(
+                    analysis_id=str(uuid.uuid4()),
+                    forest_name=knowledge_detail.forest_type if knowledge_detail else "Unknown Forest",
+                    forest_location=roi_desc,
+                    forest_loss_percentage=metrics.get('forest_loss_percentage', 0.0),
+                    forest_health_score=health_val if health_val else 0.0,
+                    severity=AlertSeverity(prediction_detail.severity.capitalize()),
+                    alert_type="Deforestation / Encroachment"
+                )
+                create_alert(db=db, alert_data=alert_data)
+            finally:
+                db.close()
+        except Exception as ex:
+            logger.error(f"Background alert creation failed: {ex}")
+
+    background_tasks.add_task(process_alert_background)
 
     # Construct and return response
     return AnalyzeResponse(

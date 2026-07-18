@@ -52,8 +52,8 @@ export default function Analysis() {
   const [afterDates, setAfterDates] = useState({ start: "2026-01-01", end: "2026-03-31" });
 
   // Lat/Lon Inputs
-  const [lat, setLat] = useState(22.45);
-  const [lon, setLon] = useState(78.20);
+  const [lat, setLat] = useState(22.50);
+  const [lon, setLon] = useState(78.00);
   const [buffer, setBuffer] = useState(0.02);
 
   // Map Polygon coordinates

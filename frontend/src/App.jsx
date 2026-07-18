@@ -8,8 +8,9 @@ import Settings from "./pages/Settings";
 import History from "./pages/History";
 import Knowledge from "./pages/Knowledge";
 import NotificationCenter from "./pages/NotificationCenter";
-import CloudRemoval from "./pages/CloudRemoval";
 import DroneSimulation from "./pages/DroneSimulation";
+import AlertHistory from "./pages/AlertHistory";
+import CloudRemoval from "./pages/CloudRemoval";
 import LanguageSwitcher from "./components/LanguageSwitcher";
 
 function NavLink({ to, icon, children }) {
@@ -112,6 +113,16 @@ function Sidebar() {
         </NavLink>
         <div className="pt-4 mt-4 border-t border-slate-700/50">
         <NavLink
+          to="/alerts"
+          icon={
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+          }
+        >
+          Smart Alerts
+        </NavLink>
+        <NavLink
           to="/settings"
           icon={
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -153,6 +164,7 @@ export default function App() {
             <Route path="/reports" element={<Reports />} />
             <Route path="/knowledge" element={<Knowledge />} />
             <Route path="/cloud-removal" element={<CloudRemoval />} />
+            <Route path="/alerts" element={<AlertHistory />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/notifications" element={<NotificationCenter />} />
             <Route path="/drone-simulation" element={<DroneSimulation />} />

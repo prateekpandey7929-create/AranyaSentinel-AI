@@ -4,6 +4,7 @@ import axios from "axios";
 
 // Dashboard Components
 import HeroSection from "../components/Dashboard/HeroSection";
+import DashboardAlerts from "../components/Dashboard/DashboardAlerts";
 import AboutSection from "../components/Dashboard/AboutSection";
 import CapabilityCards from "../components/Dashboard/CapabilityCards";
 import StatisticsCards from "../components/Dashboard/StatisticsCards";
@@ -50,6 +51,9 @@ export default function Dashboard() {
         overview={overview} 
         onNavigate={navigate} 
       />
+
+      {/* 1.5 Smart Alerts Widget */}
+      <DashboardAlerts />
 
       {/* 2. About AranyaSentinel AI */}
       <AboutSection />
