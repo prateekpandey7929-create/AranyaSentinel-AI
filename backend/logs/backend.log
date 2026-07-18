@@ -3921,3 +3921,171 @@ WHERE alerts.status = ?]
 2026-07-18 06:23:27,064 [INFO] apscheduler.executors.default: Job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:23:32 IST)" executed successfully
 2026-07-18 06:23:40,871 [INFO] backend: Initializing FastAPI Backend server...
 2026-07-18 06:23:40,873 [INFO] backend: Mounted static outputs route at: /static (pointing to D:\Projects\AS\outputs)
+2026-07-18 06:23:40,875 [INFO] backend: Initializing FastAPI Backend server...
+2026-07-18 06:23:40,876 [INFO] backend: Mounted static outputs route at: /static (pointing to D:\Projects\AS\outputs)
+2026-07-18 06:23:41,931 [INFO] backend: Registered API routes successfully.
+2026-07-18 06:23:41,933 [INFO] backend: Lifespan startup: Initializing Earth Engine and loading model weights...
+2026-07-18 06:23:41,933 [INFO] backend: Cleaning outputs directory of stale files...
+2026-07-18 06:23:50,169 [INFO] backend: Inference device: cuda
+2026-07-18 06:23:50,169 [INFO] backend: Loading U-Net weights from: D:\Projects\AS\weights\unet_forest_loss.pth
+2026-07-18 06:23:50,314 [INFO] backend: Loading YOLOv8 weights from: D:\Projects\AS\weights\yolov8_encroachment.pt
+2026-07-18 06:23:50,377 [INFO] backend: AI models pre-loaded in memory successfully!
+2026-07-18 06:23:50,377 [INFO] apscheduler.scheduler: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-07-18 06:23:50,377 [INFO] apscheduler.scheduler: Added job "Check for unacknowledged alerts to escalate" to job store "default"
+2026-07-18 06:23:50,378 [INFO] apscheduler.scheduler: Scheduler started
+2026-07-18 06:23:50,378 [INFO] backend.scheduler: Escalation Background Scheduler Started. Running every 1 minute.
+2026-07-18 06:23:55,389 [INFO] apscheduler.executors.default: Running job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:23:55 IST)" (scheduled at 2026-07-18 06:23:55.377571+05:30)
+2026-07-18 06:23:55,408 [INFO] apscheduler.executors.default: Job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:24:00 IST)" executed successfully
+2026-07-18 06:24:00,387 [INFO] apscheduler.executors.default: Running job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:24:05 IST)" (scheduled at 2026-07-18 06:24:00.377571+05:30)
+2026-07-18 06:24:00,391 [INFO] apscheduler.executors.default: Job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:24:05 IST)" executed successfully
+2026-07-18 06:24:05,380 [INFO] apscheduler.executors.default: Running job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:24:10 IST)" (scheduled at 2026-07-18 06:24:05.377571+05:30)
+2026-07-18 06:24:05,382 [INFO] apscheduler.executors.default: Job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:24:10 IST)" executed successfully
+2026-07-18 06:24:10,387 [INFO] apscheduler.executors.default: Running job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:24:15 IST)" (scheduled at 2026-07-18 06:24:10.377571+05:30)
+2026-07-18 06:24:10,390 [INFO] apscheduler.executors.default: Job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:24:15 IST)" executed successfully
+2026-07-18 06:24:15,383 [INFO] apscheduler.executors.default: Running job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:24:20 IST)" (scheduled at 2026-07-18 06:24:15.377571+05:30)
+2026-07-18 06:24:15,386 [INFO] apscheduler.executors.default: Job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:24:20 IST)" executed successfully
+2026-07-18 06:24:20,389 [INFO] apscheduler.executors.default: Running job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:24:25 IST)" (scheduled at 2026-07-18 06:24:20.377571+05:30)
+2026-07-18 06:24:20,393 [INFO] apscheduler.executors.default: Job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:24:25 IST)" executed successfully
+2026-07-18 06:24:23,068 [INFO] backend: ==================================================
+2026-07-18 06:24:23,068 [INFO] backend: API EXECUTION: POST /analyze request received
+2026-07-18 06:24:23,068 [INFO] backend: ROI Parameters: Coordinates (Center: Lat 22.5, Lon 78.0, Buffer: 0.02)
+2026-07-18 06:24:23,068 [INFO] backend: Before Date Range: 2022-01-01 to 2022-03-31
+2026-07-18 06:24:23,071 [INFO] backend: After Date Range: 2026-01-01 to 2026-03-31
+2026-07-18 06:24:23,071 [INFO] backend: ==================================================
+2026-07-18 06:24:25,380 [INFO] apscheduler.executors.default: Running job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:24:30 IST)" (scheduled at 2026-07-18 06:24:25.377571+05:30)
+2026-07-18 06:24:25,386 [INFO] apscheduler.executors.default: Job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:24:30 IST)" executed successfully
+2026-07-18 06:24:30,381 [INFO] apscheduler.executors.default: Running job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:24:35 IST)" (scheduled at 2026-07-18 06:24:30.377571+05:30)
+2026-07-18 06:24:30,385 [INFO] apscheduler.executors.default: Job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:24:35 IST)" executed successfully
+2026-07-18 06:24:35,381 [INFO] apscheduler.executors.default: Running job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:24:40 IST)" (scheduled at 2026-07-18 06:24:35.377571+05:30)
+2026-07-18 06:24:35,387 [INFO] apscheduler.executors.default: Job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:24:40 IST)" executed successfully
+2026-07-18 06:24:40,381 [INFO] apscheduler.executors.default: Running job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:24:45 IST)" (scheduled at 2026-07-18 06:24:40.377571+05:30)
+2026-07-18 06:24:40,386 [INFO] apscheduler.executors.default: Job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:24:45 IST)" executed successfully
+2026-07-18 06:24:45,381 [INFO] apscheduler.executors.default: Running job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:24:50 IST)" (scheduled at 2026-07-18 06:24:45.377571+05:30)
+2026-07-18 06:24:45,387 [INFO] apscheduler.executors.default: Job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:24:50 IST)" executed successfully
+2026-07-18 06:24:50,381 [INFO] apscheduler.executors.default: Running job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:24:55 IST)" (scheduled at 2026-07-18 06:24:50.377571+05:30)
+2026-07-18 06:24:50,387 [INFO] apscheduler.executors.default: Job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:24:55 IST)" executed successfully
+2026-07-18 06:24:54,596 [INFO] backend: GEE Download status: SUCCESS (Time taken: 31.52 seconds)
+2026-07-18 06:24:54,596 [INFO] backend: Running preprocessing on downloaded GeoTIFFs...
+2026-07-18 06:24:54,660 [WARNING] rasterio._env: CPLE_AppDefined in before.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 06:24:54,744 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 06:24:54,869 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 06:24:54,874 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 06:24:54,961 [INFO] backend: Running Monsoon Cloud Filter...
+2026-07-18 06:24:54,976 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 06:24:54,983 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 06:24:54,984 [INFO] backend: Detected Cloud Coverage - Before: 0.00%, After: 0.00%
+2026-07-18 06:24:54,986 [INFO] backend: Executing Cloud Removal & Image Enhancement Pipeline...
+2026-07-18 06:24:54,991 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 06:24:54,992 [INFO] backend: Original image cloud cover: 0.00%
+2026-07-18 06:24:54,993 [INFO] backend: Gap filling and pixel reconstruction completed.
+2026-07-18 06:24:55,029 [INFO] backend: Atmospheric correction, noise reduction, and CLAHE enhancement completed successfully.
+2026-07-18 06:24:55,052 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 06:24:55,054 [INFO] backend: Enhanced image remaining cloud cover: 0.00%
+2026-07-18 06:24:55,054 [INFO] backend: Cloud removal pipeline completed in 0.0688s. Quality Score: Excellent
+2026-07-18 06:24:55,054 [INFO] backend: Executing Cloud Removal & Image Enhancement Pipeline...
+2026-07-18 06:24:55,068 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 06:24:55,070 [INFO] backend: Original image cloud cover: 0.00%
+2026-07-18 06:24:55,084 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 06:24:55,086 [INFO] backend: No pixels could be filled using historical imagery (historical also cloudy or no overlaps).
+2026-07-18 06:24:55,086 [INFO] backend: Gap filling and pixel reconstruction completed.
+2026-07-18 06:24:55,140 [INFO] backend: Atmospheric correction, noise reduction, and CLAHE enhancement completed successfully.
+2026-07-18 06:24:55,153 [INFO] backend: Cloud detection complete: 0.00% cloud cover detected.
+2026-07-18 06:24:55,153 [INFO] backend: Enhanced image remaining cloud cover: 0.00%
+2026-07-18 06:24:55,153 [INFO] backend: Cloud removal pipeline completed in 0.0982s. Quality Score: Excellent
+2026-07-18 06:24:55,182 [INFO] backend: Cloud removal and image enhancement finished successfully.
+2026-07-18 06:24:55,277 [INFO] backend: Calculating NDVI maps...
+2026-07-18 06:24:55,381 [INFO] apscheduler.executors.default: Running job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:25:00 IST)" (scheduled at 2026-07-18 06:24:55.377571+05:30)
+2026-07-18 06:24:55,399 [INFO] apscheduler.executors.default: Job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:25:00 IST)" executed successfully
+2026-07-18 06:24:55,597 [INFO] backend: Running AI Model Inference...
+2026-07-18 06:25:00,398 [INFO] apscheduler.executors.default: Running job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:25:05 IST)" (scheduled at 2026-07-18 06:25:00.377571+05:30)
+2026-07-18 06:25:00,406 [INFO] apscheduler.executors.default: Job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:25:05 IST)" executed successfully
+2026-07-18 06:25:05,417 [INFO] apscheduler.executors.default: Running job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:25:10 IST)" (scheduled at 2026-07-18 06:25:05.377571+05:30)
+2026-07-18 06:25:05,467 [INFO] apscheduler.executors.default: Job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:25:10 IST)" executed successfully
+2026-07-18 06:25:07,631 [INFO] backend: AI Inference execution time: 12.03 seconds (U-Net + YOLOv8)
+2026-07-18 06:25:07,631 [INFO] backend: Combining NDVI and AI results to compute metrics...
+2026-07-18 06:25:07,631 [INFO] backend: Executing Season-Aware Verification & Forest Knowledge Explorer...
+2026-07-18 06:25:07,640 [INFO] backend: Running Season-Aware False Positive Decision Engine...
+2026-07-18 06:25:07,642 [INFO] backend: Resolved weather parameters: Season=Winter (Cool & Dry), Temp=19.4°C, Rainfall=12.0mm.
+2026-07-18 06:25:07,643 [INFO] backend: Historical NDVI baseline calculated for coordinates (22.5, 78.0) in Month 1: Avg: 0.55, Range: [0.46 - 0.62]
+2026-07-18 06:25:07,644 [INFO] backend: Seasonal Verification Outcome: Result=Actual Deforestation, Confidence=82.0%
+2026-07-18 06:25:07,644 [INFO] backend: Resolving forest knowledge for coordinates (22.5000, 78.0000)...
+2026-07-18 06:25:07,644 [INFO] backend: Spatial match found in database: satpura (Satpura Tiger Reserve).
+2026-07-18 06:25:07,644 [INFO] backend: Forest knowledge resolved in 0.0000s.
+2026-07-18 06:25:07,644 [INFO] backend: Generating heatmap and visual dashboard overlays...
+2026-07-18 06:25:07,933 [INFO] backend: Visual outputs and report generated in 1.33 seconds.
+2026-07-18 06:25:07,933 [INFO] backend: API /analyze run completed in 44.88 seconds.
+2026-07-18 06:25:07,943 [INFO] backend: Executing AI Prediction Engine after report outputs are written...
+2026-07-18 06:25:07,943 [INFO] backend: Starting Multi-Index Forest Health Score computation...
+2026-07-18 06:25:08,021 [INFO] backend: Successfully loaded forest loss and detection metrics from severity.json
+2026-07-18 06:25:08,072 [INFO] backend: Successfully loaded ndvi_after.tif
+2026-07-18 06:25:08,086 [INFO] backend: Successfully loaded change_mask.png
+2026-07-18 06:25:08,093 [WARNING] rasterio._env: CPLE_AppDefined in after.tif: TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 06:25:08,104 [WARNING] rasterio._env: CPLE_AppDefined in TIFFReadDirectory:Sum of Photometric type-related color channels and ExtraSamples doesn't match SamplesPerPixel. Defining non-color channels as ExtraSamples.
+2026-07-18 06:25:08,176 [INFO] backend: Successfully loaded B3 and B8 bands from after.tif (SWIR missing)
+2026-07-18 06:25:08,196 [INFO] backend: Forest Health Score calculation completed. Score: 46.24, Category: Poor
+2026-07-18 06:25:08,196 [INFO] backend: Prediction Service: Running unified pipeline analysis...
+2026-07-18 06:25:08,198 [INFO] backend: Rule Engine: Evaluating classification and severity...
+2026-07-18 06:25:08,200 [INFO] backend: Recommendation Engine: Resolving action checklist for 'Deforestation Alarm (Potential Logging)'...
+2026-07-18 06:25:08,200 [INFO] backend: Explanation Generator: Formatting reason details...
+2026-07-18 06:25:08,200 [INFO] backend: Trend Engine: Calculating forest trend direction and future prediction...
+2026-07-18 06:25:08,200 [INFO] backend: Trend Engine resolved: Trend=Degrading , Recovery=20%
+2026-07-18 06:25:08,200 [INFO] backend: Prediction Service: Completed. Result = Deforestation Alarm (Potential Logging) (High)
+2026-07-18 06:25:08,304 [INFO] backend.alert_service: Alert #7 created successfully.
+2026-07-18 06:25:10,390 [INFO] apscheduler.executors.default: Running job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:25:15 IST)" (scheduled at 2026-07-18 06:25:10.377571+05:30)
+2026-07-18 06:25:10,398 [INFO] backend.escalation_service: Checking Alert #7 - Delta: 2.39256s, ReminderSent: False
+2026-07-18 06:25:10,407 [INFO] apscheduler.executors.default: Job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:25:15 IST)" executed successfully
+2026-07-18 06:25:15,382 [INFO] apscheduler.executors.default: Running job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:25:20 IST)" (scheduled at 2026-07-18 06:25:15.377571+05:30)
+2026-07-18 06:25:15,387 [INFO] backend.escalation_service: Checking Alert #7 - Delta: 7.38247s, ReminderSent: False
+2026-07-18 06:25:15,390 [INFO] backend.escalation_service: Alert #7 reached reminder threshold. Sending reminder to Ranger...
+2026-07-18 06:25:17,268 [INFO] backend.email_service: Email sent successfully to harshsharma7929@gmail.com
+2026-07-18 06:25:20,383 [WARNING] apscheduler.scheduler: Execution of job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:25:20 IST)" skipped: maximum number of running instances reached (1)
+2026-07-18 06:25:24,398 [INFO] backend.email_service: Email sent successfully to harshsharma7929@gmail.com
+2026-07-18 06:25:24,429 [INFO] apscheduler.executors.default: Job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:25:25 IST)" executed successfully
+2026-07-18 06:25:25,393 [INFO] apscheduler.executors.default: Running job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:25:30 IST)" (scheduled at 2026-07-18 06:25:25.377571+05:30)
+2026-07-18 06:25:25,393 [INFO] backend.escalation_service: Checking Alert #7 - Delta: 17.393736s, ReminderSent: True
+2026-07-18 06:25:25,401 [INFO] backend.escalation_service: Alert #7 breached escalation threshold. Escalating...
+2026-07-18 06:25:30,382 [WARNING] apscheduler.scheduler: Execution of job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:25:30 IST)" skipped: maximum number of running instances reached (1)
+2026-07-18 06:25:35,393 [WARNING] apscheduler.scheduler: Execution of job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:25:35 IST)" skipped: maximum number of running instances reached (1)
+2026-07-18 06:25:36,485 [INFO] backend.email_service: Email sent successfully to harshsharma7929@gmail.com
+2026-07-18 06:25:36,500 [INFO] backend.escalation_service: Successfully escalated 1 alerts.
+2026-07-18 06:25:36,516 [INFO] apscheduler.executors.default: Job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:25:40 IST)" executed successfully
+2026-07-18 06:25:40,389 [INFO] apscheduler.executors.default: Running job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:25:45 IST)" (scheduled at 2026-07-18 06:25:40.377571+05:30)
+2026-07-18 06:25:40,394 [INFO] apscheduler.executors.default: Job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:25:45 IST)" executed successfully
+2026-07-18 06:25:45,389 [INFO] apscheduler.executors.default: Running job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:25:50 IST)" (scheduled at 2026-07-18 06:25:45.377571+05:30)
+2026-07-18 06:25:45,393 [INFO] apscheduler.executors.default: Job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:25:50 IST)" executed successfully
+2026-07-18 06:25:50,387 [INFO] apscheduler.executors.default: Running job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:25:55 IST)" (scheduled at 2026-07-18 06:25:50.377571+05:30)
+2026-07-18 06:25:50,391 [INFO] apscheduler.executors.default: Job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:25:55 IST)" executed successfully
+2026-07-18 06:25:55,381 [INFO] apscheduler.executors.default: Running job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:26:00 IST)" (scheduled at 2026-07-18 06:25:55.377571+05:30)
+2026-07-18 06:25:55,386 [INFO] apscheduler.executors.default: Job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:26:00 IST)" executed successfully
+2026-07-18 06:26:00,380 [INFO] apscheduler.executors.default: Running job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:26:05 IST)" (scheduled at 2026-07-18 06:26:00.377571+05:30)
+2026-07-18 06:26:00,380 [INFO] apscheduler.executors.default: Job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:26:05 IST)" executed successfully
+2026-07-18 06:26:05,393 [INFO] apscheduler.executors.default: Running job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:26:10 IST)" (scheduled at 2026-07-18 06:26:05.377571+05:30)
+2026-07-18 06:26:05,396 [INFO] apscheduler.executors.default: Job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:26:10 IST)" executed successfully
+2026-07-18 06:26:10,393 [INFO] apscheduler.executors.default: Running job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:26:15 IST)" (scheduled at 2026-07-18 06:26:10.377571+05:30)
+2026-07-18 06:26:10,398 [INFO] apscheduler.executors.default: Job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:26:15 IST)" executed successfully
+2026-07-18 06:26:15,389 [INFO] apscheduler.executors.default: Running job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:26:20 IST)" (scheduled at 2026-07-18 06:26:15.377571+05:30)
+2026-07-18 06:26:15,393 [INFO] apscheduler.executors.default: Job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:26:20 IST)" executed successfully
+2026-07-18 06:26:20,389 [INFO] apscheduler.executors.default: Running job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:26:25 IST)" (scheduled at 2026-07-18 06:26:20.377571+05:30)
+2026-07-18 06:26:20,394 [INFO] apscheduler.executors.default: Job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:26:25 IST)" executed successfully
+2026-07-18 06:26:25,386 [INFO] apscheduler.executors.default: Running job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:26:30 IST)" (scheduled at 2026-07-18 06:26:25.377571+05:30)
+2026-07-18 06:26:25,391 [INFO] apscheduler.executors.default: Job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:26:30 IST)" executed successfully
+2026-07-18 06:26:30,387 [INFO] apscheduler.executors.default: Running job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:26:35 IST)" (scheduled at 2026-07-18 06:26:30.377571+05:30)
+2026-07-18 06:26:30,390 [INFO] apscheduler.executors.default: Job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:26:35 IST)" executed successfully
+2026-07-18 06:26:35,386 [INFO] apscheduler.executors.default: Running job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:26:40 IST)" (scheduled at 2026-07-18 06:26:35.377571+05:30)
+2026-07-18 06:26:35,389 [INFO] apscheduler.executors.default: Job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:26:40 IST)" executed successfully
+2026-07-18 06:26:40,381 [INFO] apscheduler.executors.default: Running job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:26:45 IST)" (scheduled at 2026-07-18 06:26:40.377571+05:30)
+2026-07-18 06:26:40,383 [INFO] apscheduler.executors.default: Job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:26:45 IST)" executed successfully
+2026-07-18 06:26:45,381 [INFO] apscheduler.executors.default: Running job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:26:50 IST)" (scheduled at 2026-07-18 06:26:45.377571+05:30)
+2026-07-18 06:26:45,385 [INFO] apscheduler.executors.default: Job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:26:50 IST)" executed successfully
+2026-07-18 06:26:50,378 [INFO] apscheduler.executors.default: Running job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:26:55 IST)" (scheduled at 2026-07-18 06:26:50.377571+05:30)
+2026-07-18 06:26:50,381 [INFO] apscheduler.executors.default: Job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:26:55 IST)" executed successfully
+2026-07-18 06:26:55,389 [INFO] apscheduler.executors.default: Running job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:27:00 IST)" (scheduled at 2026-07-18 06:26:55.377571+05:30)
+2026-07-18 06:26:55,392 [INFO] apscheduler.executors.default: Job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:27:00 IST)" executed successfully
+2026-07-18 06:27:00,382 [INFO] apscheduler.executors.default: Running job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:27:05 IST)" (scheduled at 2026-07-18 06:27:00.377571+05:30)
+2026-07-18 06:27:00,385 [INFO] apscheduler.executors.default: Job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:27:05 IST)" executed successfully
+2026-07-18 06:27:05,383 [INFO] apscheduler.executors.default: Running job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:27:10 IST)" (scheduled at 2026-07-18 06:27:05.377571+05:30)
+2026-07-18 06:27:05,385 [INFO] apscheduler.executors.default: Job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:27:10 IST)" executed successfully
+2026-07-18 06:27:10,386 [INFO] apscheduler.executors.default: Running job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:27:15 IST)" (scheduled at 2026-07-18 06:27:10.377571+05:30)
+2026-07-18 06:27:10,388 [INFO] apscheduler.executors.default: Job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:27:15 IST)" executed successfully
+2026-07-18 06:27:15,387 [INFO] apscheduler.executors.default: Running job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:27:20 IST)" (scheduled at 2026-07-18 06:27:15.377571+05:30)
+2026-07-18 06:27:15,390 [INFO] apscheduler.executors.default: Job "Check for unacknowledged alerts to escalate (trigger: interval[0:00:05], next run at: 2026-07-18 06:27:20 IST)" executed successfully
