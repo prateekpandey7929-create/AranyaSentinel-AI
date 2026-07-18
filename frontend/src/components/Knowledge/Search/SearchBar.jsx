@@ -52,7 +52,10 @@ export default function SearchBar({ forests, onSelect }) {
           {suggestions.map((f, i) => (
             <div 
               key={i} 
-              onClick={() => handleSelect(f)}
+              onMouseDown={(e) => {
+                e.preventDefault(); // Prevent focus loss just in case
+                handleSelect(f);
+              }}
               className="p-3 hover:bg-forest-700/50 cursor-pointer border-b border-forest-900/20 last:border-0 flex justify-between items-center transition-colors"
             >
               <div>

@@ -68,11 +68,19 @@ export default function DroneSimulation() {
     formData.append("file", fileToUpload);
 
     try {
-      // Port 8001 is where the drone edge simulation microservice runs
       const res = await axios.post("http://127.0.0.1:8001/api/v1/edge/simulate-drone", formData, {
         headers: { "Content-Type": "multipart/form-data" }
       });
       setResult(res.data);
+      
+      // Trigger an alert to the main backend if an anomaly is detected
+      if (res.data.alert_triggered) {
+        try {
+          await axios.post("http://127.0.0.1:8000/api/alerts/drone-alert");
+        } catch (alertErr) {
+          console.error("Failed to trigger main backend alert:", alertErr);
+        }
+      }
     } catch (err) {
       console.error(err);
       setError("Failed to connect to the Drone Simulation microservice. Make sure the server on port 8001 is running.");

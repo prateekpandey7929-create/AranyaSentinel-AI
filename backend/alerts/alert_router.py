@@ -24,6 +24,27 @@ def get_alert(alert_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Alert not found")
     return alert
 
+@router.post("/drone-alert", response_model=AlertResponse)
+def create_drone_alert(db: Session = Depends(get_db)):
+    from .alert_schema import AlertCreate, AlertSeverity
+    from .alert_service import create_alert
+    import uuid
+
+    alert_data = AlertCreate(
+        analysis_id=str(uuid.uuid4()),
+        forest_name="Edge Drone Sector",
+        forest_location="Live Feed",
+        forest_loss_percentage=0.0,
+        forest_health_score=0.0,
+        severity=AlertSeverity.CRITICAL,
+        alert_type="Drone Object Detection (Intruder/Vehicle)"
+    )
+    
+    alert = create_alert(db=db, alert_data=alert_data)
+    if not alert:
+        raise HTTPException(status_code=500, detail="Failed to create drone alert")
+    return alert
+
 @router.post("/acknowledge/{alert_id}", response_model=AlertResponse)
 def acknowledge_alert(alert_id: int, req: AlertAcknowledgeRequest, db: Session = Depends(get_db)):
     alert = db.query(Alert).filter(Alert.id == alert_id).first()
